@@ -23,12 +23,12 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        try {  //definindo o look and feel do windows
+        /*try {  //definindo o look and feel do windows
            
             UIManager.setLookAndFeel(new WindowsLookAndFeel());
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 
 }
