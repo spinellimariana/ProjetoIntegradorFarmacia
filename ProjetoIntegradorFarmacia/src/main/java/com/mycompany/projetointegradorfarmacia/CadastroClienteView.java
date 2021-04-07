@@ -111,6 +111,12 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
         lblDataNascimento.setText("Data Nasc.:");
 
+        try {
+            txtNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         lblEmail.setText("E-mail:");
 
         lblEstado.setText("Estado:");
