@@ -4,12 +4,23 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="jMenuArquivo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Editar"/>
+            <Property name="text" type="java.lang.String" value="Arquivo"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuNovo">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+N"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Abrir Novo Formul&#xe1;rio"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuNovoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuConsultarCliente">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+C"/>
@@ -17,15 +28,18 @@
                 <Property name="text" type="java.lang.String" value="Consultar Cliente"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuSalvarCliente">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+S"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salvar Cadastro"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuSalvarClienteActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuExcluirCliente">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+E"/>
@@ -33,23 +47,29 @@
                 <Property name="text" type="java.lang.String" value="Excluir Cliente"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuAlterarCliente">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+A"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Alterar Cadastro Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuAlterarClienteActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuSair">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+L"/>
+                  <KeyStroke key="Ctrl+F"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Sair"/>
+                <Property name="text" type="java.lang.String" value="Fechar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuSairActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -136,52 +156,64 @@
                               <Component id="lblGenero" min="-2" max="-2" attributes="0"/>
                               <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
                               <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCidade" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtNome" min="-2" pref="430" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtBairro" max="32767" attributes="0"/>
+                                      <Component id="cboCidade" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="cboEstado" min="-2" pref="51" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblCEPcliente" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="ftxCepCliente" min="-2" pref="124" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Component id="txtEndereco" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cboGenero" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cboEstadoCivil" linkSize="3" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTelefone" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ftxTelefone" min="-2" pref="142" max="-2" attributes="0"/>
-                                      <Component id="txtNascimento" min="-2" pref="142" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtNome" min="-2" pref="430" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="ftxCPF" min="-2" pref="207" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="cboGenero" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cboEstadoCivil" linkSize="3" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblTelefone" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnConsultarCliente" linkSize="5" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="ftxTelefone" min="-2" pref="142" max="-2" attributes="0"/>
+                                              <Component id="txtNascimento" min="-2" pref="142" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <Component id="txtEndereco" max="32767" attributes="0"/>
-                                      <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="ftxCPF" min="-2" pref="207" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnConsultarCliente" linkSize="5" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cboEstado" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jTextField2" min="-2" pref="168" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="lblCidade" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" min="-2" pref="166" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="90" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -226,17 +258,26 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtEndereco" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cboEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblBairro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtBairro" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCEPcliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ftxCepCliente" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cboCidade" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="lblEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboEstado" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnSalvar" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnNovoCliente" linkSize="6" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
@@ -255,6 +296,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNome">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="NOME" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeKeyReleased"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCPF">
           <Properties>
@@ -266,13 +314,20 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="###.###.###-##" subtype="-1" type="5"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="CPF" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ftxCPFKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnConsultarCliente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar"/>
             <Property name="doubleBuffered" type="boolean" value="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblGenero">
           <Properties>
@@ -288,6 +343,7 @@
                 <StringItem index="2" value="Feminino"/>
               </StringArray>
             </Property>
+            <Property name="name" type="java.lang.String" value="G&#xca;NERO" noResource="true"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -299,13 +355,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEndereco">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="ENDERE&#xc7;O" noResource="true"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnderecoActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEnderecoKeyReleased"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEnderecoKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblTelefone">
           <Properties>
             <Property name="text" type="java.lang.String" value="Telefone:"/>
+            <Property name="name" type="java.lang.String" value="TELEFONE" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="ftxTelefone">
@@ -313,6 +375,7 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="(##) #####-####" subtype="-1" type="5"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="TELEFONE" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblBairro">
@@ -320,7 +383,14 @@
             <Property name="text" type="java.lang.String" value="Bairro:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="txtBairro">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="BAIRRO" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBairroKeyReleased"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBairroKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblEstadoCivil">
           <Properties>
@@ -339,6 +409,7 @@
                 <StringItem index="5" value="Separado Jud."/>
               </StringArray>
             </Property>
+            <Property name="name" type="java.lang.String" value="ESTADO CIVIL" noResource="true"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -347,6 +418,7 @@
         <Component class="javax.swing.JLabel" name="lblDataNascimento">
           <Properties>
             <Property name="text" type="java.lang.String" value="Data Nasc.:"/>
+            <Property name="name" type="java.lang.String" value="DATA DE NASCIMENTO" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtNascimento">
@@ -354,6 +426,7 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="DATA DE NASCIMENTO" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblEmail">
@@ -362,6 +435,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmail">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="E-MAIL" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailKeyReleased"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblEstado">
           <Properties>
@@ -371,11 +451,13 @@
         <Component class="javax.swing.JComboBox" name="cboEstado">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="SP"/>
-                <StringItem index="1" value=" "/>
+              <StringArray count="3">
+                <StringItem index="0" value="--"/>
+                <StringItem index="1" value="SP"/>
+                <StringItem index="2" value=" "/>
               </StringArray>
             </Property>
+            <Property name="name" type="java.lang.String" value="ESTADO" noResource="true"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -386,16 +468,17 @@
             <Property name="text" type="java.lang.String" value="Cidade: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cboCidade">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
+                <StringItem index="0" value="Escolha sua cidade"/>
                 <StringItem index="1" value="Item 2"/>
                 <StringItem index="2" value="Item 3"/>
                 <StringItem index="3" value="Item 4"/>
               </StringArray>
             </Property>
+            <Property name="name" type="java.lang.String" value="CIDADE" noResource="true"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -405,11 +488,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNovoCliente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Novo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovoClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnExcluirCliente">
           <Properties>
@@ -419,6 +508,19 @@
         <Component class="javax.swing.JButton" name="btnAlterarCliente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Alterar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCEPcliente">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CEP:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="ftxCepCliente">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="#####-###" subtype="-1" type="5"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="CEP" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
