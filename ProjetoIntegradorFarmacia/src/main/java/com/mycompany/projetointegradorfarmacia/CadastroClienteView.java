@@ -6,7 +6,7 @@
 package com.mycompany.projetointegradorfarmacia;
 
 import com.mycompany.projetointegradorfarmacia.utils.Validadora;
-import java.util.Locale;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,7 +49,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         lblEstadoCivil = new javax.swing.JLabel();
         cboEstadoCivil = new javax.swing.JComboBox<>();
         lblDataNascimento = new javax.swing.JLabel();
-        txtNascimento = new javax.swing.JFormattedTextField();
+        ftxNascimento = new javax.swing.JFormattedTextField();
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         lblEstado = new javax.swing.JLabel();
@@ -97,6 +97,11 @@ public class CadastroClienteView extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         ftxCPF.setName("CPF"); // NOI18N
+        ftxCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ftxCPFFocusLost(evt);
+            }
+        });
         ftxCPF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 ftxCPFKeyTyped(evt);
@@ -142,6 +147,16 @@ public class CadastroClienteView extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         ftxTelefone.setName("TELEFONE"); // NOI18N
+        ftxTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ftxTelefoneFocusLost(evt);
+            }
+        });
+        ftxTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ftxTelefoneKeyTyped(evt);
+            }
+        });
 
         lblBairro.setText("Bairro:");
 
@@ -164,11 +179,21 @@ public class CadastroClienteView extends javax.swing.JFrame {
         lblDataNascimento.setName("DATA DE NASCIMENTO"); // NOI18N
 
         try {
-            txtNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            ftxNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtNascimento.setName("DATA DE NASCIMENTO"); // NOI18N
+        ftxNascimento.setName("DATA DE NASCIMENTO"); // NOI18N
+        ftxNascimento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ftxNascimentoFocusLost(evt);
+            }
+        });
+        ftxNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ftxNascimentoKeyTyped(evt);
+            }
+        });
 
         lblEmail.setText("E-mail:");
 
@@ -218,6 +243,16 @@ public class CadastroClienteView extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         ftxCepCliente.setName("CEP"); // NOI18N
+        ftxCepCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ftxCepClienteFocusLost(evt);
+            }
+        });
+        ftxCepCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ftxCepClienteKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -275,7 +310,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(ftxTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(ftxNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(ftxCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,7 +350,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblEstadoCivil)
                         .addComponent(cboEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ftxNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail)
@@ -347,7 +382,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboCidade, cboEstado, cboEstadoCivil, cboGenero, ftxCPF, ftxCepCliente, ftxTelefone, txtBairro, txtEmail, txtEndereco, txtNascimento, txtNome});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboCidade, cboEstado, cboEstadoCivil, cboGenero, ftxCPF, ftxCepCliente, ftxNascimento, ftxTelefone, txtBairro, txtEmail, txtEndereco, txtNome});
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAlterarCliente, btnConsultarCliente, btnExcluirCliente, btnNovoCliente, btnSalvar});
 
@@ -451,7 +486,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuSairActionPerformed
 
     private void btnConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClienteActionPerformed
-        //não está funcionanco, ver função na classe validadora
+//não está funcionanco, ver função na classe validadora
         Validadora validadorConsulta = new Validadora();
         validadorConsulta.ValidarNumero(ftxCPF);
 
@@ -465,6 +500,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
         Validadora validadorSalvar = new Validadora();
 
         //NÃO ESTOU CONSEGUINDO VALIDAR CAMPOS FORMATTED TEXT FIELD
+        //validadorSalvar.ValidarNumero(ftxCPF); //não dá certo
+        
         //validando campos de texto
         validadorSalvar.ValidarTexto(txtNome);
         validadorSalvar.ValidarTexto(txtEndereco);
@@ -485,7 +522,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
     private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
         if (txtNome.getText().length() > 40) {
-            evt.consume(); 
+            evt.consume();
             JOptionPane.showMessageDialog(this, "Máximo de 40 caracteres antingidos para o campo nome!");
         }
     }//GEN-LAST:event_txtNomeKeyTyped
@@ -493,11 +530,11 @@ public class CadastroClienteView extends javax.swing.JFrame {
     private void txtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyReleased
         String textoAnterior = txtNome.getText();
         txtNome.setText(textoAnterior.toUpperCase());
-          
+
     }//GEN-LAST:event_txtNomeKeyReleased
 
     private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
-         if (txtEmail.getText().length() > 40) {
+        if (txtEmail.getText().length() > 40) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Máximo de 40 caracteres antingidos para o campo e-mail!");
         }
@@ -532,16 +569,65 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBairroKeyReleased
 
     private void ftxCPFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftxCPFKeyTyped
-        
+        char c = evt.getKeyChar();
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Somente números");
+        }
     }//GEN-LAST:event_ftxCPFKeyTyped
 
+    private void ftxTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftxTelefoneKeyTyped
+        char c = evt.getKeyChar();
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Somente números");
+        }
+    }//GEN-LAST:event_ftxTelefoneKeyTyped
+
+    private void ftxNascimentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftxNascimentoKeyTyped
+        char c = evt.getKeyChar();
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Formato da Data: DD/MM/AAAA - Somente números");
+        }      
+     
+    }//GEN-LAST:event_ftxNascimentoKeyTyped
+
+    private void ftxCepClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftxCepClienteKeyTyped
+        char c = evt.getKeyChar();
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Somente números");
+        }
+    }//GEN-LAST:event_ftxCepClienteKeyTyped
+
+    //aqui não tá dando certo - ver anotações no caderno
     
-    
-    
-    
-    
-    
-    
+    private void ftxCepClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ftxCepClienteFocusLost
+       /* if (ftxCepCliente.getText().length() != 9){
+            JOptionPane.showMessageDialog(this, "Campo CEP deve conter 8 números!");
+        }*/
+    }//GEN-LAST:event_ftxCepClienteFocusLost
+
+    private void ftxNascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ftxNascimentoFocusLost
+        /*if (ftxNascimento.getText().length() != 10){
+            JOptionPane.showMessageDialog(this, "Formato da Data: DD/MM/AAAA!");
+        }*/
+    }//GEN-LAST:event_ftxNascimentoFocusLost
+
+    private void ftxTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ftxTelefoneFocusLost
+        /*if (ftxTelefone.getText().length() != 14){
+            JOptionPane.showMessageDialog(this, "O campo telefone deve conter 11 números!");
+            //no campo CPF isso deu certo
+        }*/
+    }//GEN-LAST:event_ftxTelefoneFocusLost
+
+    private void ftxCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ftxCPFFocusLost
+        /*if (ftxCPF.getText().length() != 14){
+            JOptionPane.showMessageDialog(this, "Formato CPF: ###.###.###-##!");
+        }*/
+    }//GEN-LAST:event_ftxCPFFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -585,6 +671,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboGenero;
     private javax.swing.JFormattedTextField ftxCPF;
     private javax.swing.JFormattedTextField ftxCepCliente;
+    private javax.swing.JFormattedTextField ftxNascimento;
     private javax.swing.JFormattedTextField ftxTelefone;
     private javax.swing.JMenu jMenuArquivo;
     private javax.swing.JMenuBar jMenuBar1;
@@ -611,7 +698,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
-    private javax.swing.JFormattedTextField txtNascimento;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

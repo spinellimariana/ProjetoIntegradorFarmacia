@@ -236,7 +236,7 @@ public class LoginView extends javax.swing.JFrame {
     private void txtSenhaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyTyped
         if (txtSenha.getText().length() > 6) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Senha deve conter até 6 números!");
+            JOptionPane.showMessageDialog(this, "Senha deve conter até 6 caracteres!");
         }
 
         char c = evt.getKeyChar();

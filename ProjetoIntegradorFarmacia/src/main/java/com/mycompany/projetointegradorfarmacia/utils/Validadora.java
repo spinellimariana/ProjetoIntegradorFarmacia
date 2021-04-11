@@ -45,37 +45,34 @@ public class Validadora {
 
     public void ValidarComboBox(JComboBox cbo) {
         if (cbo.getSelectedIndex() == 0) {
-            cbo.setBackground(Color.RED); //não está trocando a cor de fundo
+           //não está trocando a cor de fundo
             this.mensagensErro.add("Selecione uma opção no campo " + cbo.getName());
+            cbo.setBackground(Color.RED);
 
         }
     }
 
     public void ValidarNumero(JTextField txt) {
-
         try {
-
-            //Verifico se o campo está vazio
             if (txt.getText().trim().equals("")) {
                 throw new IllegalArgumentException();
             }
-
             int valorConvertido = Integer.parseInt(txt.getText());
             txt.setBackground(Color.WHITE);
 
         } catch (NumberFormatException e) {
-
             this.mensagensErro.add("Digite apenas números no campo: " + txt.getName());
+            txt.setText("");
             txt.setBackground(Color.red);
         } catch (IllegalArgumentException e) {
             this.mensagensErro.add("Digite um valor para o campo: " + txt.getName());
+            txt.setText("");
             txt.setBackground(Color.red);
         }
 
     }
 
     public void ValidarTexto(JTextField txt) {
-
         try {
             if (txt.getText().trim().equals("")) {
                 throw new IllegalArgumentException();
@@ -84,34 +81,30 @@ public class Validadora {
             }
         } catch (IllegalArgumentException ex) {
             this.mensagensErro.add("Digite um valor para o campo: " + txt.getName());
+            txt.setText("");
             txt.setBackground(Color.red);
 
         } catch (Exception e) {
-
             this.mensagensErro.add("Ocorreu um erro inesperado no campo: " + txt.getName());
-
+            txt.setText("");
         }
 
     }
 
     public void ValidarFloat(JTextField txt) {
-
         try {
-
-            //Verifico se o campo está vazio
             if (txt.getText().trim().equals("")) {
                 throw new IllegalArgumentException();
             }
-
             float valorConvertido = Float.parseFloat(txt.getText());
             txt.setBackground(Color.WHITE);
-
         } catch (NumberFormatException e) {
-
             this.mensagensErro.add("Falha ao converter o valor do campo " + txt.getName() + " em float");
+            txt.setText("");
             txt.setBackground(Color.red);
         } catch (IllegalArgumentException e) {
             this.mensagensErro.add("Digite um valor para o campo " + txt.getName());
+            txt.setText("");
             txt.setBackground(Color.red);
         }
 
@@ -119,17 +112,14 @@ public class Validadora {
 
     //COLOCAR RESTO DAS VALIDAÇÕES AQUI
     public void limparMensagens() {
-
         this.mensagensErro.clear();
     }
 
     public void ExibirMensagensErro() {
-
         String errosFormulario = "";
         for (String msg : this.mensagensErro) {
             errosFormulario += msg + "\n";
         }
-
         if (!errosFormulario.equals("")) {
             JOptionPane.showMessageDialog(null, errosFormulario);
             this.limparMensagens();
@@ -138,24 +128,18 @@ public class Validadora {
     }
 
     public String getMensagensErro() {
-
         String errosFormulario = "";
-
-        //Percorro o arrayList e concateno na variável errosFormulario
         for (String msg : this.mensagensErro) {
             errosFormulario += msg + "\n";
         }
-
         if (!errosFormulario.equals("")) {
             this.limparMensagens();
         }
-
         return errosFormulario;
 
     }
 
     public boolean hasErro() {
-
         if (this.mensagensErro.size() > 0) {
             return true;
         } else {
