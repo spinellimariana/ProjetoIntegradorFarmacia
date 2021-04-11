@@ -196,7 +196,7 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="ftxTelefone" min="-2" pref="142" max="-2" attributes="0"/>
-                                              <Component id="txtNascimento" min="-2" pref="142" max="-2" attributes="0"/>
+                                              <Component id="ftxNascimento" min="-2" pref="142" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
@@ -246,7 +246,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cboEstadoCivil" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNascimento" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ftxNascimento" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -317,6 +317,7 @@
             <Property name="name" type="java.lang.String" value="CPF" noResource="true"/>
           </Properties>
           <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ftxCPFFocusLost"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ftxCPFKeyTyped"/>
           </Events>
         </Component>
@@ -377,6 +378,10 @@
             </Property>
             <Property name="name" type="java.lang.String" value="TELEFONE" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ftxTelefoneFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ftxTelefoneKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblBairro">
           <Properties>
@@ -421,13 +426,17 @@
             <Property name="name" type="java.lang.String" value="DATA DE NASCIMENTO" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtNascimento">
+        <Component class="javax.swing.JFormattedTextField" name="ftxNascimento">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
             <Property name="name" type="java.lang.String" value="DATA DE NASCIMENTO" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ftxNascimentoFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ftxNascimentoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblEmail">
           <Properties>
@@ -522,6 +531,10 @@
             </Property>
             <Property name="name" type="java.lang.String" value="CEP" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ftxCepClienteFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ftxCepClienteKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
