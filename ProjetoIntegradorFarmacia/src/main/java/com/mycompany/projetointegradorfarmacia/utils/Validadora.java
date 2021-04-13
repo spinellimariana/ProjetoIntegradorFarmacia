@@ -24,10 +24,10 @@ public class Validadora {
     //perguntar para o professor segunda
     public void ValidarCPF(JFormattedTextField ftx) {
 
-        /*try {
+        try {
 
             //Verifico se o campo está vazio
-            if (ftx.getText().trim().equals("..-")) {
+            if (ftx.getText().replace(".","").replace("-","").trim().equals("")) {
                 throw new IllegalArgumentException();
             }
 
@@ -40,7 +40,7 @@ public class Validadora {
         } catch (IllegalArgumentException e) {
             this.mensagensErro.add("Digite um valor para o campo " + ftx.getName());
             ftx.setBackground(Color.red);
-        }*/
+        }
     }
 
     public void ValidarComboBox(JComboBox cbo) {
