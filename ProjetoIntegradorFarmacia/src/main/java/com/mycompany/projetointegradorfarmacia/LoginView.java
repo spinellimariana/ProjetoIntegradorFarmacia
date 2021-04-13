@@ -49,6 +49,7 @@ public class LoginView extends javax.swing.JFrame {
 
         lblBemVindo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblBemVindo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBemVindo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medicine-cart-icon (1).png"))); // NOI18N
         lblBemVindo.setText("Bem-Vindo!");
         lblBemVindo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblBemVindo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -114,6 +115,7 @@ public class LoginView extends javax.swing.JFrame {
 
         pnlInternoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtLogin, txtSenha});
 
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ok-icon.png"))); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +123,7 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close-2-icon.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
