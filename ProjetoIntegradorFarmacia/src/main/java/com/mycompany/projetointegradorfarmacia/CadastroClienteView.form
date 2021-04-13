@@ -65,6 +65,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+F"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Log-Out-icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Fechar"/>
               </Properties>
               <Events>
@@ -139,13 +142,14 @@
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="btnSalvar" linkSize="5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnNovoCliente" linkSize="5" min="-2" pref="88" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnExcluirCliente" linkSize="5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnAlterarCliente" linkSize="5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnSalvar" linkSize="7" min="-2" pref="102" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnNovoCliente" linkSize="7" min="-2" pref="86" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnExcluirCliente" linkSize="7" min="-2" pref="82" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAlterarCliente" linkSize="7" min="-2" pref="82" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -158,7 +162,7 @@
                               <Component id="lblName" min="-2" max="-2" attributes="0"/>
                               <Component id="lblCidade" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -180,35 +184,30 @@
                                   </Group>
                               </Group>
                               <Component id="txtEndereco" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtNome" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtNome" min="-2" pref="430" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cboGenero" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cboEstadoCivil" linkSize="3" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblTelefone" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="ftxTelefone" min="-2" pref="142" max="-2" attributes="0"/>
-                                              <Component id="ftxNascimento" min="-2" pref="142" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="ftxCPF" min="-2" pref="207" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnConsultarCliente" linkSize="5" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="cboGenero" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cboEstadoCivil" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTelefone" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="ftxTelefone" max="32767" attributes="0"/>
+                                      <Component id="ftxNascimento" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="ftxCPF" min="-2" pref="207" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnConsultarCliente" linkSize="7" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -277,7 +276,7 @@
                           <Component id="cboEstado" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                  <EmptySpace pref="31" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnSalvar" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnNovoCliente" linkSize="6" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
@@ -323,6 +322,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnConsultarCliente">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Zoom-icon.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Consultar"/>
             <Property name="doubleBuffered" type="boolean" value="true"/>
           </Properties>
@@ -495,6 +497,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnSalvar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/save-icon.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
           <Events>
@@ -503,6 +508,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnNovoCliente">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/application-add-icon.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Novo"/>
           </Properties>
           <Events>
@@ -511,11 +519,17 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnExcluirCliente">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/delete-icon.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Excluir"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnAlterarCliente">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/change-icon.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Alterar"/>
           </Properties>
         </Component>
