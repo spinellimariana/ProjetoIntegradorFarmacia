@@ -5,18 +5,17 @@ package com.mycompany.projetointegradorfarmacia;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 /**
  *
  * @author Lenovo
  */
 public class Cliente {
 
-    private int CPF;
-    private int telCliente;
-    private int dataNascimento;
-    private int CEPcliente;
+    private int id;
+    private String CPF; //string ou int?
+    private String telCliente; //string ou int?
+    private String dataNascimento; //string ou int?
+    private String CEPcliente; //string ou int?
     private String nomeCliente;
     private String generoCliente;
     private String estadoCivilCliente;
@@ -29,36 +28,50 @@ public class Cliente {
     public Cliente() { //construtor
     }
 
+    /*public String getCPFSomenteNumeros() { ????
+        return CPF.replace(".", "").replace("-", "");
+    }*/
+
     //abaixo todos os getters and setters
-    public int getCPF() {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(int CPF) {
+    public void setCPF(String CPF) {
         this.CPF = CPF;
     }
 
-    public int getTelCliente() {
+    public String getTelCliente() {
         return telCliente;
     }
 
-    public void setTelCliente(int telCliente) {
+    public void setTelCliente(String telCliente) {
         this.telCliente = telCliente;
     }
 
-    public int getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(int dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public int getCEPcliente() {
+    public String getCEPcliente() {
         return CEPcliente;
     }
 
-    public void setCEPcliente(int CEPcliente) {
+    public void setCEPcliente(String CEPcliente) {
         this.CEPcliente = CEPcliente;
     }
 
@@ -125,5 +138,6 @@ public class Cliente {
     public void setCidadeCliente(String cidadeCliente) {
         this.cidadeCliente = cidadeCliente;
     }
+
 
 }
