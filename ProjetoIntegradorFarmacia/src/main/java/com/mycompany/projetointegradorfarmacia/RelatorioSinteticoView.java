@@ -5,6 +5,9 @@
  */
 package com.mycompany.projetointegradorfarmacia;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Matheus
@@ -49,6 +52,7 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
         jTable3 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Relatório Sintético");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Filtro"));
 
@@ -147,6 +151,11 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
         );
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnVisualizar.setText("Visualizar");
         btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -159,14 +168,14 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {"1", "Analgésico"},
+                {"2", "Anti-convulsivantes"},
+                {"3", "Antiespasmódio"},
+                {"4", "Anti-infamatório não-estoidal"},
+                {"5", "Narcótico: Opiaéceo e Opióide"},
+                {"6", "Relaxante muscular"},
+                {"7", null},
+                {"8", null}
             },
             new String [] {
                 "Código", "Grupos"
@@ -189,14 +198,14 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {"1", "Hypermarcas"},
+                {"2", "Sanofi-Medley"},
+                {"3", "Aché"},
+                {"4", "Teuto"},
+                {"5", "Eurofarma"},
+                {"6", "Novartis Sandoz"},
+                {"7", "Bayer"},
+                {"8", "Takeda"}
             },
             new String [] {
                 "Código", "Empresas"
@@ -268,6 +277,16 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
     private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVisualizarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        JFrame frame = new JFrame("CANCELAR");
+        if(JOptionPane.showConfirmDialog(frame, "Conforme se você quer cancelar"
+                ,"CANCELAR",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION)
+        {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

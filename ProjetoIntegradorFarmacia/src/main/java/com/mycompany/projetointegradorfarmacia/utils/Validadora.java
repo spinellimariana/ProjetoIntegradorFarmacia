@@ -20,14 +20,18 @@ public class Validadora {
 
     public ArrayList<String> mensagensErro = new ArrayList<>();
 
-    //não está funcionando a validação em formatted text field
-    //perguntar para o professor segunda
+    //não está funcionando 100% a validação em formatted text field
+    //Só da certo quando o campo está vazio.
+    //ERRO: There is no method "replace" in class "com.mycompany.projetointegradorfarmacia.utils.Validadora"
+    //ERRO: None of the "replace" methods in class "com.mycompany.projetointegradorfarmacia.utils.Validadora" takes parameters of types "(java.lang.String, java.lang.String)"
+    //RETORNA FALSA A CONDIÇÃO NO IF QUANDO O NÚMERO É DIGITADO;
+    //Quando digitamos o número completo dá mensagem que não pode converter em inteiros
     public void ValidarCPF(JFormattedTextField ftx) {
-
         /*try {
 
-            //Verifico se o campo está vazio
-            if (ftx.getText().trim().equals("..-")) {
+            //Só da certo quando o campo está vazio.
+            //Quando digitamos o número completo dá mensagem que não pode converter em inteiros
+            if (ftx.getText().replace(".", "").replace("-", "").trim().equals("")) {
                 throw new IllegalArgumentException();
             }
 
@@ -41,14 +45,125 @@ public class Validadora {
             this.mensagensErro.add("Digite um valor para o campo " + ftx.getName());
             ftx.setBackground(Color.red);
         }*/
+
+        try {
+
+            if (ftx.getText().replace(".", "").replace("-", "").trim().equals("")) {
+                throw new IllegalArgumentException();
+            } else {
+                ftx.setBackground(Color.WHITE);
+            }
+
+        } catch (IllegalArgumentException e) {
+            this.mensagensErro.add("Digite um valor para o campo " + ftx.getName());
+            ftx.setBackground(Color.red);
+        } catch (Exception e) {
+            this.mensagensErro.add("Ocorreu um erro inesperado no campo: " + ftx.getName());
+            ftx.setText("");
+        }
+
+    }
+
+    public void ValidarData(JFormattedTextField ftx) {
+        /*ESTAVA DANDO ERROtry {
+            if (ftx.getText().replace("/", "").replace("/", "").trim().equals("")) {
+                throw new IllegalArgumentException();
+            }
+            int valorConvertido = Integer.parseInt(ftx.getText());
+            ftx.setBackground(Color.WHITE);
+        } catch (NumberFormatException e) {
+            this.mensagensErro.add("Falha ao converter o valor do campo " + ftx.getName() + " em inteiro");
+        } catch (IllegalArgumentException e) {
+            this.mensagensErro.add("Digite um valor para o campo " + ftx.getName());
+            ftx.setBackground(Color.red);
+        }*/
+
+        try {
+
+            if (ftx.getText().replace("/", "").replace("/", "").trim().equals("")) {
+                throw new IllegalArgumentException();
+            } else {
+                ftx.setBackground(Color.WHITE);
+            }
+
+        } catch (IllegalArgumentException e) {
+            this.mensagensErro.add("Digite um valor para o campo " + ftx.getName());
+            ftx.setBackground(Color.red);
+        } catch (Exception e) {
+            this.mensagensErro.add("Ocorreu um erro inesperado no campo: " + ftx.getName());
+            ftx.setText("");
+        }
+    }
+
+    public void ValidarCEP(JFormattedTextField ftx) {
+        /*try {
+            if (ftx.getText().replace("-", "").trim().equals("")) {
+                throw new IllegalArgumentException();
+            }
+            int valorConvertido = Integer.parseInt(ftx.getText());
+            ftx.setBackground(Color.WHITE);
+        } catch (NumberFormatException e) {
+            this.mensagensErro.add("Falha ao converter o valor do campo " + ftx.getName() + " em inteiro");
+        } catch (IllegalArgumentException e) {
+            this.mensagensErro.add("Digite um valor para o campo " + ftx.getName());
+            ftx.setBackground(Color.red);
+        }*/
+
+        try {
+
+            if (ftx.getText().replace("-", "").trim().equals("")) {
+                throw new IllegalArgumentException();
+            } else {
+                ftx.setBackground(Color.WHITE);
+            }
+
+        } catch (IllegalArgumentException e) {
+            this.mensagensErro.add("Digite um valor para o campo " + ftx.getName());
+            ftx.setBackground(Color.red);
+        } catch (Exception e) {
+            this.mensagensErro.add("Ocorreu um erro inesperado no campo: " + ftx.getName());
+            ftx.setText("");
+        }
+
+    }
+
+    public void ValidarTelefone(JFormattedTextField ftx) {
+        /*try {
+            if (ftx.getText().replace("(", "").replace(")", "").replace("-", "").trim().equals("")) {
+                throw new IllegalArgumentException();
+            }
+            int valorConvertido = Integer.parseInt(ftx.getText());
+            ftx.setBackground(Color.WHITE);
+        } catch (NumberFormatException e) {
+            this.mensagensErro.add("Falha ao converter o valor do campo " + ftx.getName() + " em inteiro");
+        } catch (IllegalArgumentException e) {
+            this.mensagensErro.add("Digite um valor para o campo " + ftx.getName());
+            ftx.setBackground(Color.red);
+        }*/
+        try {
+
+            if (ftx.getText().replace("(", "").replace(")", "").replace("-", "").trim().equals("")) {
+                throw new IllegalArgumentException();
+            } else {
+                ftx.setBackground(Color.WHITE);
+            }
+
+        } catch (IllegalArgumentException e) {
+            this.mensagensErro.add("Digite um valor para o campo " + ftx.getName());
+            ftx.setBackground(Color.red);
+        } catch (Exception e) {
+            this.mensagensErro.add("Ocorreu um erro inesperado no campo: " + ftx.getName());
+            ftx.setText("");
+        }
     }
 
     public void ValidarComboBox(JComboBox cbo) {
         if (cbo.getSelectedIndex() == 0) {
-           //não está trocando a cor de fundo
+            //não está trocando a cor de fundo
             this.mensagensErro.add("Selecione uma opção no campo " + cbo.getName());
             cbo.setBackground(Color.RED);
-
+        }else{
+            cbo.setBackground(Color.WHITE);
         }
     }
 
@@ -109,8 +224,7 @@ public class Validadora {
         }
 
     }
-
-    //COLOCAR RESTO DAS VALIDAÇÕES AQUI
+    
     public void limparMensagens() {
         this.mensagensErro.clear();
     }

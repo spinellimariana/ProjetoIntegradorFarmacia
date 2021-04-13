@@ -40,11 +40,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         rboCliente = new javax.swing.JRadioButton();
         rboSintetico = new javax.swing.JRadioButton();
         cboProduto = new javax.swing.JRadioButton();
+        rboVendas = new javax.swing.JRadioButton();
         lblTitulo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuOpcoes = new javax.swing.JMenu();
         mnuCadastroCliente = new javax.swing.JMenuItem();
         mnuCadastroProduto = new javax.swing.JMenuItem();
+        mnuVendas = new javax.swing.JMenuItem();
         mnuAnalitico = new javax.swing.JMenuItem();
         mnuSintetico = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
@@ -55,6 +57,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         pnlEscolha.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escolha o que deseja fazer:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16))); // NOI18N
 
+        btnAbrir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/open-mail-folded-icon.png"))); // NOI18N
         btnAbrir.setText("Abrir");
         btnAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +66,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
 
+        btnFechar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close-icon.png"))); // NOI18N
         btnFechar.setText("Fechar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +82,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(btnFechar)
                 .addContainerGap())
         );
@@ -86,11 +92,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFechar))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnFechar)))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAbrir, btnFechar});
@@ -115,6 +120,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         cboProduto.setText("Cadastro de Produto");
         cboProduto.setActionCommand("Produto");
 
+        grupoOpcaoCadastro.add(rboVendas);
+        rboVendas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        rboVendas.setText("Vendas");
+        rboVendas.setActionCommand("Vendas");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -123,16 +133,21 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(rboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84))
+                        .addComponent(rboVendas)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cboProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(93, 93, 93)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rboAnaltico, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(rboSintetico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(15, 15, 15)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(rboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(84, 84, 84))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cboProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(93, 93, 93)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rboAnaltico, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(rboSintetico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(15, 15, 15)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -142,11 +157,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rboCliente)
                     .addComponent(rboAnaltico))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rboSintetico)
                     .addComponent(cboProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rboVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboProduto, rboAnaltico, rboCliente, rboSintetico});
@@ -169,23 +186,36 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             .addGroup(pnlEscolhaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         lblTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medicine-cart-icon (1).png"))); // NOI18N
         lblTitulo.setText("REDE FARMÁCIA");
+        lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jMenuOpcoes.setText("Opções");
 
         mnuCadastroCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         mnuCadastroCliente.setText("Cadastro Cliente");
+        mnuCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastroClienteActionPerformed(evt);
+            }
+        });
         jMenuOpcoes.add(mnuCadastroCliente);
 
         mnuCadastroProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         mnuCadastroProduto.setText("Cadastro Produto");
         jMenuOpcoes.add(mnuCadastroProduto);
+
+        mnuVendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        mnuVendas.setText("Vendas");
+        jMenuOpcoes.add(mnuVendas);
 
         mnuAnalitico.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         mnuAnalitico.setText("Relatório Analítico");
@@ -197,6 +227,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jMenuOpcoes.add(jSeparator1);
 
         mnuFechar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        mnuFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Log-Out-icon.png"))); // NOI18N
         mnuFechar.setText("Fechar");
         mnuFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,16 +244,19 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlEscolha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(206, 206, 206)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(200, 200, 200))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlEscolha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -243,7 +277,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         if (escolhaCadastro.equals("Cliente")) {
             CadastroClienteView frame = new CadastroClienteView();
             frame.setVisible(true);
-            
+
         } else if (escolhaCadastro.equals("Produto")) {
             //inserir código parecido com o acima aqui quando a tela de produto estiver disponível 
             JOptionPane.showMessageDialog(this, escolhaCadastro);
@@ -252,6 +286,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, escolhaCadastro);
 
         } else if (escolhaCadastro.equals("Sintetico")) {
+            RelatorioSinteticoView frame = new RelatorioSinteticoView();
+            frame.setVisible(true);
+
+        } else if (escolhaCadastro.equals("Vendas")) {
             JOptionPane.showMessageDialog(this, escolhaCadastro);
         }
 
@@ -266,6 +304,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_mnuFecharActionPerformed
 
+    private void mnuCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastroClienteActionPerformed
+        CadastroClienteView frame = new CadastroClienteView();
+        frame.setVisible(true);
+
+
+    }//GEN-LAST:event_mnuCadastroClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -276,7 +321,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -316,9 +361,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCadastroProduto;
     private javax.swing.JMenuItem mnuFechar;
     private javax.swing.JMenuItem mnuSintetico;
+    private javax.swing.JMenuItem mnuVendas;
     private javax.swing.JPanel pnlEscolha;
     private javax.swing.JRadioButton rboAnaltico;
     private javax.swing.JRadioButton rboCliente;
     private javax.swing.JRadioButton rboSintetico;
+    private javax.swing.JRadioButton rboVendas;
     // End of variables declaration//GEN-END:variables
 }

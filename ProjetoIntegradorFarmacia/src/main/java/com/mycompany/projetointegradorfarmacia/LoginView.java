@@ -49,6 +49,7 @@ public class LoginView extends javax.swing.JFrame {
 
         lblBemVindo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblBemVindo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBemVindo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medicine-cart-icon (1).png"))); // NOI18N
         lblBemVindo.setText("Bem-Vindo!");
         lblBemVindo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblBemVindo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -62,6 +63,11 @@ public class LoginView extends javax.swing.JFrame {
         jLabel2.setText("Senha:");
 
         txtSenha.setName("SENHA"); // NOI18N
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
         txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtSenhaKeyTyped(evt);
@@ -114,6 +120,7 @@ public class LoginView extends javax.swing.JFrame {
 
         pnlInternoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtLogin, txtSenha});
 
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ok-icon.png"))); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +128,7 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close-2-icon.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,12 +208,12 @@ public class LoginView extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         /*PARA O MARCO 2:
-        1) Validar login e senha de acordo com o bando de dados
+        1) Validar login e senha de acordo com o bando de dados??
          */
 
         Validadora validarLogin = new Validadora();
         validarLogin.ValidarTexto(txtLogin);
-        validarLogin.ValidarNumero(txtSenha);
+        validarLogin.ValidarTexto(txtSenha);
         if (validarLogin.hasErro()) {
             JOptionPane.showMessageDialog(this, validarLogin.getMensagensErro());
         } else {
@@ -217,7 +225,7 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
-        //validando obrigatoriedade e texto
+
     }//GEN-LAST:event_txtLoginActionPerformed
 
     private void txtLoginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyTyped
@@ -250,6 +258,10 @@ public class LoginView extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+       
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,7 +273,7 @@ public class LoginView extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
