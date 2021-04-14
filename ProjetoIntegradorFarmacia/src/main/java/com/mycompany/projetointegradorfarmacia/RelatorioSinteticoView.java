@@ -19,6 +19,7 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
      */
     public RelatorioSinteticoView() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -51,8 +52,8 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Relatório Sintético");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Rede Farmácia - Relatório Sintético");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Filtro"));
 
