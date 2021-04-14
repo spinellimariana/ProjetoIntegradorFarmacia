@@ -279,18 +279,21 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             frame.setVisible(true);
 
         } else if (escolhaCadastro.equals("Produto")) {
-            //inserir código parecido com o acima aqui quando a tela de produto estiver disponível 
-            JOptionPane.showMessageDialog(this, escolhaCadastro);
+            //DESFAZER OS COMENTÁRIOS
+            //CadastroProdutoView frame = new CadastroProdutoView();
+            //frame.setVisible(true);
 
         } else if (escolhaCadastro.equals("Analitico")) {
-            JOptionPane.showMessageDialog(this, escolhaCadastro);
+            RelatorioAnaliticoView frame = new RelatorioAnaliticoView();
+            frame.setVisible(true);
 
         } else if (escolhaCadastro.equals("Sintetico")) {
             RelatorioSinteticoView frame = new RelatorioSinteticoView();
             frame.setVisible(true);
 
         } else if (escolhaCadastro.equals("Vendas")) {
-            JOptionPane.showMessageDialog(this, escolhaCadastro);
+            VendaView frame = new VendaView();
+            frame.setVisible(true);
         }
 
 

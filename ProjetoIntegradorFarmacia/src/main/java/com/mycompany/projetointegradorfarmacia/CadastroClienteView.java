@@ -15,12 +15,6 @@ import javax.swing.JOptionPane;
  */
 public class CadastroClienteView extends javax.swing.JFrame {
 
-    //Validadora validador = new Validadora();
-    //Validadora validadorSalvar = new Validadora();
-
-    /**
-     * Creates new form CadastroClienteView
-     */
     public CadastroClienteView() {
         initComponents();
         setLocationRelativeTo(null);
@@ -77,8 +71,9 @@ public class CadastroClienteView extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnuSair = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro Cliente");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Rede Farmácia - Cadastro Cliente");
+        setName("Frame Cadastro Cliente"); // NOI18N
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro do cliente", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
@@ -270,10 +265,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "CPF", "Nome", "Gênero", "E.Civil", "Telefone", "Data Nasc.", "E-mail", "Endereço", "Bairro", "Cidade", "Estado", "CEP"
