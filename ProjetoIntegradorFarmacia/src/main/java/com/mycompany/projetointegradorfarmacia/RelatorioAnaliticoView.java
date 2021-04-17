@@ -35,129 +35,175 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
 
         grupoFiltros = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
+        txtPesquisa = new javax.swing.JTextField();
+        lblCodVenda = new javax.swing.JLabel();
+        lblDataCompra = new javax.swing.JLabel();
+        lblCliente = new javax.swing.JLabel();
+        txtNomeCliente = new javax.swing.JTextField();
+        lblCPFCliente = new javax.swing.JLabel();
+        ftxCPFCliente = new javax.swing.JFormattedTextField();
+        ftxDataCompra = new javax.swing.JFormattedTextField();
+        lblValorTotal = new javax.swing.JLabel();
+        ftxValorTotal = new javax.swing.JFormattedTextField();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
-        btnConsultar = new javax.swing.JButton();
-        lblPesquisa = new javax.swing.JLabel();
-        txtPesquisa = new javax.swing.JTextField();
-        rboProduto = new javax.swing.JRadioButton();
-        lblFiltros = new javax.swing.JLabel();
-        rboCodVenda = new javax.swing.JRadioButton();
-        rboDataVenda = new javax.swing.JRadioButton();
-        btnFiltrar = new javax.swing.JToggleButton();
-        btnVisualizar = new javax.swing.JToggleButton();
+        chkCódProduto = new javax.swing.JCheckBox();
+        chkNomeProduto = new javax.swing.JCheckBox();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Rede Farmácia - Relatório Analítico");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Relatório Analítico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
+        txtPesquisa.setName("PESQUISA"); // NOI18N
+
+        lblCodVenda.setText("Cód. de Venda:");
+
+        lblDataCompra.setText("Data:");
+
+        lblCliente.setText("Cliente:");
+
+        lblCPFCliente.setText("CPF do Cliente:");
+
+        try {
+            ftxCPFCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            ftxDataCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        lblValorTotal.setText("Valor Total:");
+
+        ftxValorTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes da Compra"));
+
+        tblProdutos.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes da Compra"));
         tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Data", "Cód. Venda", "Produto", "Cód. Produto", "Quantidade", "Valor Unitário", "Subtotal"
+                "Cód. Produto", "Produto", "Descrição", "Quantidade", "Valor Unitário", "Subtotal"
             }
         ));
         jScrollPane1.setViewportView(tblProdutos);
 
-        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom-icon.png"))); // NOI18N
-        btnConsultar.setText("Consultar");
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
-            }
-        });
+        chkCódProduto.setText("Cód. do Produto");
 
-        lblPesquisa.setText("Pesquisa:");
+        chkNomeProduto.setText("Nome do Produto");
 
-        txtPesquisa.setName("PESQUISA"); // NOI18N
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/funnel-icon.png"))); // NOI18N
+        jToggleButton1.setText("Filtrar");
 
-        grupoFiltros.add(rboProduto);
-        rboProduto.setText("Cód. do Produto");
-        rboProduto.setActionCommand("Produto");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(chkCódProduto)
+                        .addGap(18, 18, 18)
+                        .addComponent(chkNomeProduto)
+                        .addGap(18, 18, 18)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkNomeProduto)
+                    .addComponent(chkCódProduto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
 
-        lblFiltros.setText("Filtros:");
-
-        grupoFiltros.add(rboCodVenda);
-        rboCodVenda.setText("Cód. de Venda");
-        rboCodVenda.setActionCommand("Venda");
-
-        grupoFiltros.add(rboDataVenda);
-        rboDataVenda.setText("Data da Venda");
-
-        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/funnel-icon.png"))); // NOI18N
-        btnFiltrar.setText("Filtrar");
-
-        btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Show-Property-icon.png"))); // NOI18N
-        btnVisualizar.setText("Visualizar");
+        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom-icon.png"))); // NOI18N
+        jToggleButton2.setText("Pesquisar");
+        jToggleButton2.setPreferredSize(new java.awt.Dimension(99, 48));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
+                        .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFiltros)
-                            .addComponent(lblPesquisa))
+                            .addComponent(lblCodVenda)
+                            .addComponent(lblDataCompra)
+                            .addComponent(lblCliente))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(rboProduto)
-                                .addGap(18, 18, 18)
-                                .addComponent(rboCodVenda)
-                                .addGap(18, 18, 18)
-                                .addComponent(rboDataVenda)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVisualizar)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftxDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblValorTotal)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(ftxValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblCPFCliente)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(ftxCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 45, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnConsultar, btnFiltrar, btnVisualizar});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ftxDataCompra, txtPesquisa});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPesquisa)
-                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultar))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFiltros)
-                            .addComponent(rboProduto)
-                            .addComponent(rboCodVenda)
-                            .addComponent(rboDataVenda)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCodVenda))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDataCompra)
+                    .addComponent(ftxCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftxDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCPFCliente)
+                    .addComponent(lblValorTotal)
+                    .addComponent(ftxValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCliente)
+                    .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(btnVisualizar)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnConsultar, btnFiltrar, btnVisualizar});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ftxCPFCliente, ftxDataCompra, ftxValorTotal, txtNomeCliente, txtPesquisa});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,17 +224,6 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        Validadora validador = new Validadora();
-        validador.ValidarTexto(txtPesquisa);
-        
-        if (validador.hasErro()) {
-            JOptionPane.showMessageDialog(this, validador.getMensagensErro());
-        }
-
-
-    }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,18 +264,24 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsultar;
-    private javax.swing.JToggleButton btnFiltrar;
-    private javax.swing.JToggleButton btnVisualizar;
+    private javax.swing.JCheckBox chkCódProduto;
+    private javax.swing.JCheckBox chkNomeProduto;
+    private javax.swing.JFormattedTextField ftxCPFCliente;
+    private javax.swing.JFormattedTextField ftxDataCompra;
+    private javax.swing.JFormattedTextField ftxValorTotal;
     private javax.swing.ButtonGroup grupoFiltros;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblFiltros;
-    private javax.swing.JLabel lblPesquisa;
-    private javax.swing.JRadioButton rboCodVenda;
-    private javax.swing.JRadioButton rboDataVenda;
-    private javax.swing.JRadioButton rboProduto;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JLabel lblCPFCliente;
+    private javax.swing.JLabel lblCliente;
+    private javax.swing.JLabel lblCodVenda;
+    private javax.swing.JLabel lblDataCompra;
+    private javax.swing.JLabel lblValorTotal;
     private javax.swing.JTable tblProdutos;
+    private javax.swing.JTextField txtNomeCliente;
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 }
