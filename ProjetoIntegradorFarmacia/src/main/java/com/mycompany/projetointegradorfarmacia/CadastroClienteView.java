@@ -234,7 +234,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         btnExcluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete-icon.png"))); // NOI18N
         btnExcluirCliente.setText("Excluir");
 
-        btnAlterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/change-icon.png"))); // NOI18N
+        btnAlterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alterar.png"))); // NOI18N
         btnAlterarCliente.setText("Alterar");
 
         lblCEPcliente.setText("CEP:");
@@ -501,7 +501,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
     private void mnuSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalvarClienteActionPerformed
         // REPETIR AQUI VALIDAÇÕES DO BOTÃO SALVAR
-        //Validadora validadorSalvar = new Validadora();
         Validadora validador = new Validadora();
 
         //validando campos de formatted text field

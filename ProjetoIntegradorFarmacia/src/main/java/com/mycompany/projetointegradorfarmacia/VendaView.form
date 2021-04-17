@@ -74,7 +74,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jPanel2" max="32767" attributes="0"/>
                       <Component id="jPanel4" max="32767" attributes="0"/>
@@ -83,9 +83,9 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="tbnCancelar" min="-2" pref="114" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btnConfirmar" min="-2" pref="114" max="-2" attributes="0"/>
+                  <Component id="tbnCancelar" linkSize="1" min="-2" pref="114" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnConfirmar" linkSize="1" min="-2" pref="141" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -97,10 +97,10 @@
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="8" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="tbnCancelar" pref="57" max="32767" attributes="0"/>
-                      <Component id="btnConfirmar" max="32767" attributes="0"/>
+                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnConfirmar" linkSize="2" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                      <Component id="tbnCancelar" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -122,20 +122,20 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblCliente" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="ftxCPF" min="-2" pref="134" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnConsultarCliente" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblCliente" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtNomeCliente" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -145,16 +145,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnConsultarCliente" alignment="1" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblCPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ftxCPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnConsultarCliente" alignment="3" pref="41" max="32767" attributes="0"/>
+                          <Component id="ftxCPF" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCPF" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblCliente" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNomeCliente" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -195,6 +196,8 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarClienteActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JTextField" name="txtNomeCliente">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel4">
@@ -218,27 +221,32 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="lblValorTotal" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jTextField2" min="-2" pref="138" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="lblProduto" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="txtProduto" min="-2" pref="135" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnConsultarProduto" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="lblQTD" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnConsultarProduto" linkSize="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="lblValorProduto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblValorProduto" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jTextField1" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblQTD" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="txtQuantidadeProdutos" pref="72" max="32767" attributes="0"/>
+                                      <Component id="txtQuantidadeProdutos" pref="88" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnAdicionarProduto" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAdicionarProduto" linkSize="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="cbDeData1" max="32767" attributes="0"/>
                               </Group>
@@ -255,20 +263,24 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblQTD" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtQuantidadeProdutos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAdicionarProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnConsultarProduto" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="txtQuantidadeProdutos" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAdicionarProduto" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProduto" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnConsultarProduto" linkSize="4" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblValorProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbDeData1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField1" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblValorTotal" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblValorTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -291,6 +303,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnAdicionarProduto">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/application-add-icon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Adicionar"/>
                 <Property name="doubleBuffered" type="boolean" value="true"/>
               </Properties>
@@ -398,7 +413,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblValorProduto">
               <Properties>
-                <Property name="text" type="java.lang.String" value="valor do produto:"/>
+                <Property name="text" type="java.lang.String" value="Valor do produto:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbDeData1">
@@ -419,10 +434,17 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JTextField" name="jTextField1">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField2">
+            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JToggleButton" name="btnConfirmar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Cart-icon.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Confirmar"/>
           </Properties>
           <Events>
@@ -431,6 +453,9 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="tbnCancelar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/cancelar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
         </Component>

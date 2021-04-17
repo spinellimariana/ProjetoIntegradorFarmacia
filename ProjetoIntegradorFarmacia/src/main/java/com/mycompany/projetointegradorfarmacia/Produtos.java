@@ -10,20 +10,38 @@ package com.mycompany.projetointegradorfarmacia;
  * @author Computador
  */
 public class Produtos {
-    
+
     private int codProd;
     private double pVenda;
-    private double quantProd;
+    private int quantProd;
     private String descProduto;
+    private String fabricante;
+    private String nomeProduto;
 
     public Produtos() {
     }
 
-    public Produtos(int codProd, double pVenda, double quantProd, String descProduto) {
+    public Produtos(int codProd, double pVenda, int quantProd, String descProduto) {
         this.codProd = codProd;
         this.pVenda = pVenda;
         this.quantProd = quantProd;
         this.descProduto = descProduto;
+    }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
 
     public int getCodProd() {
@@ -46,7 +64,7 @@ public class Produtos {
         return quantProd;
     }
 
-    public void setQuantProd(double quantProd) {
+    public void setQuantProd(int quantProd) {
         this.quantProd = quantProd;
     }
 
@@ -58,7 +76,4 @@ public class Produtos {
         this.descProduto = descProduto;
     }
 
-
-    
 }
-
