@@ -211,18 +211,38 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         mnuCadastroProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         mnuCadastroProduto.setText("Cadastro Produto");
+        mnuCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastroProdutoActionPerformed(evt);
+            }
+        });
         jMenuOpcoes.add(mnuCadastroProduto);
 
         mnuVendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         mnuVendas.setText("Vendas");
+        mnuVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuVendasActionPerformed(evt);
+            }
+        });
         jMenuOpcoes.add(mnuVendas);
 
         mnuAnalitico.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         mnuAnalitico.setText("Relatório Analítico");
+        mnuAnalitico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAnaliticoActionPerformed(evt);
+            }
+        });
         jMenuOpcoes.add(mnuAnalitico);
 
         mnuSintetico.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         mnuSintetico.setText("Relatório Sintético");
+        mnuSintetico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSinteticoActionPerformed(evt);
+            }
+        });
         jMenuOpcoes.add(mnuSintetico);
         jMenuOpcoes.add(jSeparator1);
 
@@ -310,8 +330,27 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         CadastroClienteView frame = new CadastroClienteView();
         frame.setVisible(true);
 
-
     }//GEN-LAST:event_mnuCadastroClienteActionPerformed
+
+    private void mnuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastroProdutoActionPerformed
+        CadastroProdutoView frame = new CadastroProdutoView();
+        frame.setVisible(true);
+    }//GEN-LAST:event_mnuCadastroProdutoActionPerformed
+
+    private void mnuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVendasActionPerformed
+        VendaView frame = new VendaView();
+        frame.setVisible(true);
+    }//GEN-LAST:event_mnuVendasActionPerformed
+
+    private void mnuAnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAnaliticoActionPerformed
+        RelatorioAnaliticoView frame = new RelatorioAnaliticoView();
+        frame.setVisible(true);
+    }//GEN-LAST:event_mnuAnaliticoActionPerformed
+
+    private void mnuSinteticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSinteticoActionPerformed
+        RelatorioSinteticoView frame = new RelatorioSinteticoView();
+        frame.setVisible(true);
+    }//GEN-LAST:event_mnuSinteticoActionPerformed
 
     /**
      * @param args the command line arguments

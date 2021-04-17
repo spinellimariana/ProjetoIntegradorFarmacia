@@ -33,53 +33,34 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoFiltros = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTProdutos = new javax.swing.JTable();
-        lblData = new javax.swing.JLabel();
-        chkItem = new javax.swing.JCheckBox();
-        chkID = new javax.swing.JCheckBox();
-        ftxData = new javax.swing.JFormattedTextField();
+        tblProdutos = new javax.swing.JTable();
         btnConsultar = new javax.swing.JButton();
-        lblValorTotal = new javax.swing.JLabel();
-        txtValorTotal = new javax.swing.JTextField();
+        lblPesquisa = new javax.swing.JLabel();
+        txtPesquisa = new javax.swing.JTextField();
+        rboProduto = new javax.swing.JRadioButton();
+        lblFiltros = new javax.swing.JLabel();
+        rboCodVenda = new javax.swing.JRadioButton();
+        rboDataVenda = new javax.swing.JRadioButton();
+        btnFiltrar = new javax.swing.JToggleButton();
+        btnVisualizar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Rede Farmácia - Relatório Analítico");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Relatório Analítico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
-        jTProdutos.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Data", "ID", "Item", "Quantidade", "Valor Unitário", "Subtotal"
+                "Data", "Cód. Venda", "Produto", "Cód. Produto", "Quantidade", "Valor Unitário", "Subtotal"
             }
         ));
-        jScrollPane1.setViewportView(jTProdutos);
-
-        lblData.setText("Data:");
-
-        chkItem.setText("Filtrar por item");
-
-        chkID.setText("Filtrar por ID");
-
-        try {
-            ftxData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        ftxData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftxDataActionPerformed(evt);
-            }
-        });
-        ftxData.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                ftxDataKeyTyped(evt);
-            }
-        });
+        jScrollPane1.setViewportView(tblProdutos);
 
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom-icon.png"))); // NOI18N
         btnConsultar.setText("Consultar");
@@ -89,7 +70,28 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
             }
         });
 
-        lblValorTotal.setText("Total:");
+        lblPesquisa.setText("Pesquisa:");
+
+        txtPesquisa.setName("PESQUISA"); // NOI18N
+
+        grupoFiltros.add(rboProduto);
+        rboProduto.setText("Cód. do Produto");
+        rboProduto.setActionCommand("Produto");
+
+        lblFiltros.setText("Filtros:");
+
+        grupoFiltros.add(rboCodVenda);
+        rboCodVenda.setText("Cód. de Venda");
+        rboCodVenda.setActionCommand("Venda");
+
+        grupoFiltros.add(rboDataVenda);
+        rboDataVenda.setText("Data da Venda");
+
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/funnel-icon.png"))); // NOI18N
+        btnFiltrar.setText("Filtrar");
+
+        btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Show-Property-icon.png"))); // NOI18N
+        btnVisualizar.setText("Visualizar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -99,49 +101,63 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblValorTotal)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblData)
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFiltros)
+                            .addComponent(lblPesquisa))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(ftxData, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(rboProduto)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(rboCodVenda)
                                 .addGap(18, 18, 18)
-                                .addComponent(chkItem)
-                                .addGap(18, 18, 18)
-                                .addComponent(chkID)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                .addComponent(rboDataVenda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVisualizar)
+                .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ftxData, txtValorTotal});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnConsultar, btnFiltrar, btnVisualizar});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkItem)
-                    .addComponent(lblData)
-                    .addComponent(ftxData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chkID)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblValorTotal)
-                    .addComponent(txtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPesquisa)
+                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultar))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblFiltros)
+                            .addComponent(rboProduto)
+                            .addComponent(rboCodVenda)
+                            .addComponent(rboDataVenda)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(btnVisualizar)
                 .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ftxData, txtValorTotal});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnConsultar, btnFiltrar, btnVisualizar});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,24 +181,14 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         Validadora validador = new Validadora();
-        validador.ValidarData(ftxData);
+        validador.ValidarTexto(txtPesquisa);
+        
         if (validador.hasErro()) {
             JOptionPane.showMessageDialog(this, validador.getMensagensErro());
         }
+
+
     }//GEN-LAST:event_btnConsultarActionPerformed
-
-    private void ftxDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxDataActionPerformed
-
-    }//GEN-LAST:event_ftxDataActionPerformed
-
-    private void ftxDataKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftxDataKeyTyped
-        char c = evt.getKeyChar();
-        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
-            evt.consume();
-            JOptionPane.showMessageDialog(this, "Formato da Data: DD/MM/AAAA - Somente números.");
-        }
-
-    }//GEN-LAST:event_ftxDataKeyTyped
 
     /**
      * @param args the command line arguments
@@ -224,14 +230,17 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
-    private javax.swing.JCheckBox chkID;
-    private javax.swing.JCheckBox chkItem;
-    private javax.swing.JFormattedTextField ftxData;
+    private javax.swing.JToggleButton btnFiltrar;
+    private javax.swing.JToggleButton btnVisualizar;
+    private javax.swing.ButtonGroup grupoFiltros;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTProdutos;
-    private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblValorTotal;
-    private javax.swing.JTextField txtValorTotal;
+    private javax.swing.JLabel lblFiltros;
+    private javax.swing.JLabel lblPesquisa;
+    private javax.swing.JRadioButton rboCodVenda;
+    private javax.swing.JRadioButton rboDataVenda;
+    private javax.swing.JRadioButton rboProduto;
+    private javax.swing.JTable tblProdutos;
+    private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 }

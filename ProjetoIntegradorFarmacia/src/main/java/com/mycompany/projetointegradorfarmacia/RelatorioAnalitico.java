@@ -11,35 +11,19 @@ package com.mycompany.projetointegradorfarmacia;
  */
 public class RelatorioAnalitico {
 
-    private int IDproduto;
-    private int qtdAnalitico;
     private String dataAnalitico;
-    private String item;
+    private int Codvenda;
+    private String Produto;
+    private int Codproduto;
+    private int qtdProduto;
     private float valorUnitario;
     private float subTotal;
-    private float valorTotal;
 
     public RelatorioAnalitico() {
         //criando construtor da classe
     }
 
     //abaixo todos os getters e setters
-    public int getIDproduto() {
-        return IDproduto;
-    }
-
-    public void setIDproduto(int IDproduto) {
-        this.IDproduto = IDproduto;
-    }
-
-    public int getQtdAnalitico() {
-        return qtdAnalitico;
-    }
-
-    public void setQtdAnalitico(int qtdAnalitico) {
-        this.qtdAnalitico = qtdAnalitico;
-    }
-
     public String getDataAnalitico() {
         return dataAnalitico;
     }
@@ -48,12 +32,36 @@ public class RelatorioAnalitico {
         this.dataAnalitico = dataAnalitico;
     }
 
-    public String getItem() {
-        return item;
+    public int getCodvenda() {
+        return Codvenda;
     }
 
-    public void setItem(String item) {
-        this.item = item;
+    public void setCodvenda(int Codvenda) {
+        this.Codvenda = Codvenda;
+    }
+
+    public String getProduto() {
+        return Produto;
+    }
+
+    public void setProduto(String Produto) {
+        this.Produto = Produto;
+    }
+
+    public int getCodproduto() {
+        return Codproduto;
+    }
+
+    public void setCodproduto(int Codproduto) {
+        this.Codproduto = Codproduto;
+    }
+
+    public int getQtdProduto() {
+        return qtdProduto;
+    }
+
+    public void setQtdProduto(int qtdProduto) {
+        this.qtdProduto = qtdProduto;
     }
 
     public float getValorUnitario() {
@@ -71,13 +79,5 @@ public class RelatorioAnalitico {
     public void setSubTotal(float subTotal) {
         this.subTotal = subTotal;
     }
-
-    public float getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(float valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
+    
 }
