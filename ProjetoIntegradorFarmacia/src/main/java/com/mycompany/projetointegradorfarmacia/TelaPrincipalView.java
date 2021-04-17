@@ -279,9 +279,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             frame.setVisible(true);
 
         } else if (escolhaCadastro.equals("Produto")) {
-            //DESFAZER OS COMENTÁRIOS
-            //CadastroProdutoView frame = new CadastroProdutoView();
-            //frame.setVisible(true);
+            CadastroProdutoView frame = new CadastroProdutoView();
+            frame.setVisible(true);
 
         } else if (escolhaCadastro.equals("Analitico")) {
             RelatorioAnaliticoView frame = new RelatorioAnaliticoView();

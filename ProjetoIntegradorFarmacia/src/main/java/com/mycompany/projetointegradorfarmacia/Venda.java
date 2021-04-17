@@ -17,6 +17,11 @@ public class Venda {
     private int idProduto;
     private double valorFinal;
     
+    public Venda(){
+    //construtor vazio
+    }
+    
+    //getters and getters
     public int getIdCliente() {
         return idCliente;
     }
