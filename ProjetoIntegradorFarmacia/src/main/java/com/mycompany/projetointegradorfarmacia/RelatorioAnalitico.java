@@ -10,20 +10,20 @@ package com.mycompany.projetointegradorfarmacia;
  * @author Lenovo
  */
 public class RelatorioAnalitico {
-    
+
     private int IDproduto;
     private int qtdAnalitico;
     private String dataAnalitico;
     private String item;
     private float valorUnitario;
     private float subTotal;
-    
-    public RelatorioAnalitico(){
-    //criando construtor da classe
-    }
-    
-    //abaixo todos os getters e setters
+    private float valorTotal;
 
+    public RelatorioAnalitico() {
+        //criando construtor da classe
+    }
+
+    //abaixo todos os getters e setters
     public int getIDproduto() {
         return IDproduto;
     }
@@ -71,8 +71,13 @@ public class RelatorioAnalitico {
     public void setSubTotal(float subTotal) {
         this.subTotal = subTotal;
     }
-    
-    
-    
-    
+
+    public float getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
 }
