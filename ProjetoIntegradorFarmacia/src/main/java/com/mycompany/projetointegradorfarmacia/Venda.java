@@ -5,37 +5,31 @@
  */
 package com.mycompany.projetointegradorfarmacia;
 
+import java.awt.List;
+
 /**
  *
  * @author vinic
  */
 public class Venda {
     
-    //possibilidade de tabela explosão para as vendas.
-    
-    private int idCliente;
-    private int idProduto;
+    private int id;
     private double valorFinal;
+    private List item;
+    private Cliente cliente;
+    private int idProduto;
+    
     
     public Venda(){
     //construtor vazio
     }
     
-    //getters and getters
-    public int getIdCliente() {
-        return idCliente;
+    public int getId() {
+        return id;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public int getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(int idProduto) {
-        this.idProduto = idProduto;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getValorFinal() {
@@ -44,6 +38,31 @@ public class Venda {
 
     public void setValorFinal(double valorFinal) {
         this.valorFinal = valorFinal;
+    }
+
+    public List getItem() {
+        return item;
+    }
+
+    public void setItem(List item) {
+        this.item = item;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public int getIdProduto() {
+        return idProduto;
+    }
+
+    //possibilidade de tabela explosão para as vendas.
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
     
 }
