@@ -114,8 +114,6 @@ public class RelatorioAnalitico {
 
     public void setDescricaoProduto(String descricaoProduto) {
         this.descricaoProduto = descricaoProduto;
-    }
-    
-    
+    }   
 
 }

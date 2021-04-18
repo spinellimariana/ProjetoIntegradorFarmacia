@@ -28,12 +28,7 @@ public class Cliente {
     public Cliente() { //construtor
     }
 
-    /*public String getCPFSomenteNumeros() { ????
-        return CPF.replace(".", "").replace("-", "");
-    }*/
-
     //abaixo todos os getters and setters
-
     public int getId() {
         return id;
     }
@@ -41,8 +36,7 @@ public class Cliente {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
+
     public String getCPF() {
         return CPF;
     }
@@ -138,6 +132,5 @@ public class Cliente {
     public void setCidadeCliente(String cidadeCliente) {
         this.cidadeCliente = cidadeCliente;
     }
-
 
 }
