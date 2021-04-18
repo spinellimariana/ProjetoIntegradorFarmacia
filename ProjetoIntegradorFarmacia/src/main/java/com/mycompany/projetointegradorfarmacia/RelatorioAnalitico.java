@@ -18,6 +18,10 @@ public class RelatorioAnalitico {
     private int qtdProduto;
     private float valorUnitario;
     private float subTotal;
+    private float valorTotal;
+    private String CPFcliente;
+    private String nomeCliente;
+    private String descricaoProduto;
 
     public RelatorioAnalitico() {
         //criando construtor da classe
@@ -79,5 +83,37 @@ public class RelatorioAnalitico {
     public void setSubTotal(float subTotal) {
         this.subTotal = subTotal;
     }
-    
+
+    public float getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public String getCPFcliente() {
+        return CPFcliente;
+    }
+
+    public void setCPFcliente(String CPFcliente) {
+        this.CPFcliente = CPFcliente;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public String getDescricaoProduto() {
+        return descricaoProduto;
+    }
+
+    public void setDescricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
+    }   
+
 }
