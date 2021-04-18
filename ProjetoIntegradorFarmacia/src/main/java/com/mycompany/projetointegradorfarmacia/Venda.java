@@ -12,18 +12,25 @@ import java.awt.List;
  * @author vinic
  */
 public class Venda {
-    
+
     private int id;
     private double valorFinal;
     private List item;
     private Cliente cliente;
     private int idProduto;
-    
-    
-    public Venda(){
-    //construtor vazio
+
+    public Venda() {
+        //construtor vazio
     }
-    
+
+    public Venda(int pID, double pValorFinal, List pItem, Cliente pCliente, int pIdProduto) {
+        this.id = pID;
+        this.valorFinal = pValorFinal;
+        this.item = pItem;
+        this.cliente = pCliente;
+        this.idProduto = pIdProduto;
+    }
+
     public int getId() {
         return id;
     }
@@ -64,5 +71,5 @@ public class Venda {
     public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
     }
-    
+
 }

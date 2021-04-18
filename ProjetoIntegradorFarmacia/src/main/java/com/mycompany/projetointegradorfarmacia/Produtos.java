@@ -21,11 +21,11 @@ public class Produtos {
     public Produtos() {
     }
 
-    public Produtos(int codProd, double pVenda, int quantProd, String descProduto) {
-        this.codProd = codProd;
+    public Produtos(int pCodProd, double pVenda, int pQuantProd, String pDescProduto) {
+        this.codProd = pCodProd;
         this.pVenda = pVenda;
-        this.quantProd = quantProd;
-        this.descProduto = descProduto;
+        this.quantProd = pQuantProd;
+        this.descProduto = pDescProduto;
     }
 
     public String getFabricante() {

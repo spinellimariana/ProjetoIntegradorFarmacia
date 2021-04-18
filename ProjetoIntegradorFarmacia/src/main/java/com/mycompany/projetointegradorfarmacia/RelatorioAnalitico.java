@@ -12,7 +12,7 @@ package com.mycompany.projetointegradorfarmacia;
 public class RelatorioAnalitico {
 
     private String dataAnalitico;
-    private int Codvenda;
+    private int codVenda;
     private String Produto;
     private int Codproduto;
     private int qtdProduto;
@@ -26,6 +26,24 @@ public class RelatorioAnalitico {
     public RelatorioAnalitico() {
         //criando construtor da classe
     }
+    
+    public RelatorioAnalitico(String pDataAnalitico, int pCodVenda, String pProduto, int pCodProduto,
+            int pQtdProduto, float pValorUnitario, float pSubTotal, float pValorTotal, String pCPFcliente,
+            String pNomeCliente, String pDescricaoProduto){
+        
+        this.dataAnalitico = pDataAnalitico;
+        this.codVenda = pCodVenda;
+        this.Produto = pProduto;
+        this.Codproduto = pCodProduto;
+        this.qtdProduto = pQtdProduto;
+        this.valorUnitario = pValorUnitario;
+        this.subTotal = pSubTotal;
+        this.valorTotal = pValorTotal;
+        this.CPFcliente = pCPFcliente;
+        this.nomeCliente = pNomeCliente;
+        this.descricaoProduto = pDescricaoProduto;
+        
+    }
 
     //abaixo todos os getters e setters
     public String getDataAnalitico() {
@@ -37,11 +55,11 @@ public class RelatorioAnalitico {
     }
 
     public int getCodvenda() {
-        return Codvenda;
+        return codVenda;
     }
 
-    public void setCodvenda(int Codvenda) {
-        this.Codvenda = Codvenda;
+    public void setCodvenda(int codVenda) {
+        this.codVenda = codVenda;
     }
 
     public String getProduto() {

@@ -16,6 +16,20 @@ public class ItemVenda {
     private Venda venda;
     private int quantidade;
 
+    public ItemVenda(){
+    //vazio
+    }
+    
+    
+    public ItemVenda(int pID, Produtos pProdutos, Venda pVenda, int pQuantidade){
+        this.id = pID;
+        this.produtos = pProdutos;
+        this.quantidade = pQuantidade;
+        this.venda = pVenda;
+    }
+    
+
+    
     public int getId() {
         return id;
     }

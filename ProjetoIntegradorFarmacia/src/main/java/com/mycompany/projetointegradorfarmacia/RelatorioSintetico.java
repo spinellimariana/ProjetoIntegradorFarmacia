@@ -19,6 +19,13 @@ public class RelatorioSintetico{
     
     public RelatorioSintetico(){
 }
+    
+    public RelatorioSintetico(String pCbDeData, String pCbAData, String pCbDasHoras, String pCbAsHoras){
+        this.cbAData = pCbDeData;
+        this.cbAsHoras = pCbAsHoras;
+        this.cbDasHoras = pCbDasHoras;
+        this.cbDeData = pCbDeData;    
+        }
  
     public String getcbDeData(){
         return cbDeData;

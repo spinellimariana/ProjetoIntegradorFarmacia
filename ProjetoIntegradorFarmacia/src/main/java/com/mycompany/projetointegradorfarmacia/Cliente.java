@@ -12,10 +12,10 @@ package com.mycompany.projetointegradorfarmacia;
 public class Cliente {
 
     private int id;
-    private String CPF; //string ou int?
-    private String telCliente; //string ou int?
-    private String dataNascimento; //string ou int?
-    private String CEPcliente; //string ou int?
+    private String CPF;
+    private String telCliente;
+    private String dataNascimento;
+    private String CEPcliente;
     private String nomeCliente;
     private String generoCliente;
     private String estadoCivilCliente;
@@ -26,6 +26,26 @@ public class Cliente {
     private String cidadeCliente;
 
     public Cliente() { //construtor
+    }
+    
+    public Cliente(int pId, String pCPF, String pTelCliente, String pDataNascimento,
+            String pCEPcliente, String pNomeCliente, String pGeneroCliente, String pEstadoCivilCliente,
+            String pEmailCliente, String pEnderecoCliente, String pBairroCliente, String pEstadoCliente,
+            String pCidadeCliente) {
+        this.id = pId; 
+        this.CPF = pCPF;
+        this.telCliente = pTelCliente;
+        this.dataNascimento = pDataNascimento;
+        this.CEPcliente = pCEPcliente;
+        this.nomeCliente = pNomeCliente;
+        this.generoCliente = pGeneroCliente;
+        this.estadoCivilCliente = pEstadoCivilCliente;
+        this.emailCliente = pEmailCliente;
+        this.enderecoCliente = pEnderecoCliente;
+        this.bairroCliente = pBairroCliente;
+        this.estadoCliente = pEstadoCliente;
+        this.cidadeCliente = pCidadeCliente;
+
     }
 
     //abaixo todos os getters and setters
