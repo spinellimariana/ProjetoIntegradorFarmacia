@@ -1,4 +1,4 @@
-package com.mycompany.projetointegradorfarmacia;
+package com.mycompany.projetointegradorfarmacia.view;
 
 import com.mycompany.projetointegradorfarmacia.utils.Validadora;
 import java.awt.Image;

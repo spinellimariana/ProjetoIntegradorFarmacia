@@ -12,7 +12,7 @@ package com.mycompany.projetointegradorfarmacia;
 public class ItemVenda {
     
     private int id;
-    private Produtos produtos;
+    private Produto produtos;
     private Venda venda;
     private int quantidade;
 
@@ -21,7 +21,7 @@ public class ItemVenda {
     }
     
     
-    public ItemVenda(int pID, Produtos pProdutos, Venda pVenda, int pQuantidade){
+    public ItemVenda(int pID, Produto pProdutos, Venda pVenda, int pQuantidade){
         this.id = pID;
         this.produtos = pProdutos;
         this.quantidade = pQuantidade;
@@ -38,11 +38,11 @@ public class ItemVenda {
         this.id = id;
     }
 
-    public Produtos getProdutos() {
+    public Produto getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(Produtos produtos) {
+    public void setProdutos(Produto produtos) {
         this.produtos = produtos;
     }
 
