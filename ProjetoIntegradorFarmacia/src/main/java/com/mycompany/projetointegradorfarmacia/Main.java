@@ -6,6 +6,7 @@
 package com.mycompany.projetointegradorfarmacia;
 
 
+import com.mycompany.projetointegradorfarmacia.view.LoginView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
