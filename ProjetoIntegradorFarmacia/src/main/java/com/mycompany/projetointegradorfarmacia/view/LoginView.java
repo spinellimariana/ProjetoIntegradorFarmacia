@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.projetointegradorfarmacia;
+package com.mycompany.projetointegradorfarmacia.view;
 
+import com.mycompany.projetointegradorfarmacia.view.TelaPrincipalView;
 import com.mycompany.projetointegradorfarmacia.utils.Validadora;
 import javax.swing.JOptionPane;
 
