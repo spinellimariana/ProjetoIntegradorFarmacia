@@ -9,7 +9,7 @@ package com.mycompany.projetointegradorfarmacia;
  *
  * @author Computador
  */
-public class Produtos {
+public class Produto {
 
     private int codProd;
     private double pVenda;
@@ -18,10 +18,10 @@ public class Produtos {
     private String fabricante;
     private String nomeProduto;
 
-    public Produtos() {
+    public Produto() {
     }
 
-    public Produtos(int pCodProd, double pVenda, int pQuantProd, String pDescProduto) {
+    public Produto(int pCodProd, double pVenda, int pQuantProd, String pDescProduto) {
         this.codProd = pCodProd;
         this.pVenda = pVenda;
         this.quantProd = pQuantProd;

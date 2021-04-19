@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.projetointegradorfarmacia;
+package com.mycompany.projetointegradorfarmacia.view;
 
+import com.mycompany.projetointegradorfarmacia.view.CadastroProdutoView;
+import com.mycompany.projetointegradorfarmacia.view.CadastroClienteView;
 import javax.swing.JOptionPane;
 
 /**
