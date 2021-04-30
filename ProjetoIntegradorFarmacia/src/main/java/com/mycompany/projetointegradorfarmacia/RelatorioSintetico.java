@@ -11,51 +11,25 @@ package com.mycompany.projetointegradorfarmacia;
  */
 public class RelatorioSintetico{
     
-    private String cbDeData;
-    private String cbAData;
-    private String cbDasHoras;
-    private String cbAsHoras;
-    
+    private String jfDataInicial;
+    private String jfDataFinal;
     
     public RelatorioSintetico(){
 }
-    
-    public RelatorioSintetico(String pCbDeData, String pCbAData, String pCbDasHoras, String pCbAsHoras){
-        this.cbAData = pCbDeData;
-        this.cbAsHoras = pCbAsHoras;
-        this.cbDasHoras = pCbDasHoras;
-        this.cbDeData = pCbDeData;    
-        }
- 
-    public String getcbDeData(){
-        return cbDeData;
+
+    public String getJfDataInicial() {
+        return jfDataInicial;
     }
-    
-    public void setcbDedata(String cbDeData){
-        this.cbDeData = cbDeData;
+
+    public void setJfDataInicial(String jfDataInicial) {
+        this.jfDataInicial = jfDataInicial;
     }
-    
-    public String getcbAData(){
-        return cbAData;
+
+    public String getJfDataFinal() {
+        return jfDataFinal;
     }
-    
-    public void setcbAdata(String cbAData){
-        this.cbAData = cbAData;
-    }
-    
-    public String getcbDasHoras(){
-        return cbDasHoras;
-    }
-    
-    public void setcbDasHoras(String cbDasHoras){
-        this.cbDasHoras = cbDasHoras;
-    }
-    
-    public String getcbAsHoras(){
-        return cbAsHoras;
-    }
-    
-    public void setcbAsHoras(String cbAsHoras){
-        this.cbAsHoras = cbAsHoras;
+
+    public void setJfDataFinal(String jfDataFinal) {
+        this.jfDataFinal = jfDataFinal;
     }
 }
