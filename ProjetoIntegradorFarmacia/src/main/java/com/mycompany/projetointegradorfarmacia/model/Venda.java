@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.projetointegradorfarmacia;
+package com.mycompany.projetointegradorfarmacia.model;
 
+import com.mycompany.projetointegradorfarmacia.model.Cliente;
 import java.awt.List;
 
 /**

@@ -37,21 +37,14 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
         pnlPrincipal = new javax.swing.JPanel();
         txtPesquisa = new javax.swing.JTextField();
         lblCodVenda = new javax.swing.JLabel();
-        lblDataCompra = new javax.swing.JLabel();
         lblCliente = new javax.swing.JLabel();
-        txtNomeCliente = new javax.swing.JTextField();
-        lblCPFCliente = new javax.swing.JLabel();
-        ftxCPFCliente = new javax.swing.JFormattedTextField();
-        ftxDataCompra = new javax.swing.JFormattedTextField();
         lblValorTotal = new javax.swing.JLabel();
-        ftxValorTotal = new javax.swing.JFormattedTextField();
         pnlDetalhes = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
-        chkCódProduto = new javax.swing.JCheckBox();
-        chkNomeProduto = new javax.swing.JCheckBox();
-        jToggleButton1 = new javax.swing.JToggleButton();
         btnPesquisar = new javax.swing.JToggleButton();
+        lblNomeClienteView = new javax.swing.JLabel();
+        lblValorTotalView = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Rede Farmácia - Relatório Analítico");
@@ -62,27 +55,9 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
 
         lblCodVenda.setText("Cód. de Venda:");
 
-        lblDataCompra.setText("Data:");
-
         lblCliente.setText("Cliente:");
 
-        lblCPFCliente.setText("CPF do Cliente:");
-
-        try {
-            ftxCPFCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            ftxDataCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         lblValorTotal.setText("Valor Total:");
-
-        ftxValorTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
 
         pnlDetalhes.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes da Compra"));
 
@@ -97,41 +72,15 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblProdutos);
 
-        chkCódProduto.setText("Cód. do Produto");
-
-        chkNomeProduto.setText("Nome do Produto");
-
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/funnel-icon.png"))); // NOI18N
-        jToggleButton1.setText("Filtrar");
-
         javax.swing.GroupLayout pnlDetalhesLayout = new javax.swing.GroupLayout(pnlDetalhes);
         pnlDetalhes.setLayout(pnlDetalhesLayout);
         pnlDetalhesLayout.setHorizontalGroup(
             pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDetalhesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDetalhesLayout.createSequentialGroup()
-                        .addComponent(chkCódProduto)
-                        .addGap(18, 18, 18)
-                        .addComponent(chkNomeProduto)
-                        .addGap(18, 18, 18)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
         );
         pnlDetalhesLayout.setVerticalGroup(
             pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDetalhesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chkNomeProduto)
-                    .addComponent(chkCódProduto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
         );
 
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom-icon.png"))); // NOI18N
@@ -142,6 +91,10 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
                 btnPesquisarActionPerformed(evt);
             }
         });
+
+        lblNomeClienteView.setText("Nome do Cliente Aqui");
+
+        lblValorTotalView.setText("valor total");
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
@@ -156,34 +109,21 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblCodVenda)
-                            .addComponent(lblDataCompra)
-                            .addComponent(lblCliente))
+                            .addComponent(lblValorTotal))
                         .addGap(18, 18, 18)
+                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                            .addComponent(lblValorTotalView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(45, 45, 45)
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ftxDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblValorTotal)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ftxValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblCPFCliente)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ftxCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 45, Short.MAX_VALUE)))
+                                .addComponent(lblCliente)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblNomeClienteView, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-
-        pnlPrincipalLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ftxDataCompra, txtPesquisa});
-
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
@@ -191,25 +131,16 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
                     .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodVenda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ftxCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDataCompra)
-                        .addComponent(ftxDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCPFCliente)
-                        .addComponent(lblValorTotal)
-                        .addComponent(ftxValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14)
+                .addGap(18, 18, 18)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCliente)
-                    .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNomeClienteView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblValorTotal)
+                    .addComponent(lblValorTotalView))
                 .addGap(18, 18, 18)
                 .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        pnlPrincipalLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ftxCPFCliente, ftxDataCompra, ftxValorTotal, txtNomeCliente, txtPesquisa});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,8 +155,8 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -280,23 +211,16 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnPesquisar;
-    private javax.swing.JCheckBox chkCódProduto;
-    private javax.swing.JCheckBox chkNomeProduto;
-    private javax.swing.JFormattedTextField ftxCPFCliente;
-    private javax.swing.JFormattedTextField ftxDataCompra;
-    private javax.swing.JFormattedTextField ftxValorTotal;
     private javax.swing.ButtonGroup grupoFiltros;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel lblCPFCliente;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblCodVenda;
-    private javax.swing.JLabel lblDataCompra;
+    private javax.swing.JLabel lblNomeClienteView;
     private javax.swing.JLabel lblValorTotal;
+    private javax.swing.JLabel lblValorTotalView;
     private javax.swing.JPanel pnlDetalhes;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JTable tblProdutos;
-    private javax.swing.JTextField txtNomeCliente;
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 }
