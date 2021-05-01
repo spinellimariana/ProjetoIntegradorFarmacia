@@ -34,7 +34,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         lblCPF = new javax.swing.JLabel();
         ftxCPF = new javax.swing.JFormattedTextField();
-        btnConsultarCliente = new javax.swing.JButton();
+        btnConsultarCPF = new javax.swing.JButton();
         lblGenero = new javax.swing.JLabel();
         cboGenero = new javax.swing.JComboBox<>();
         lblEndereco = new javax.swing.JLabel();
@@ -61,6 +61,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         txtCidade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
+        btnConsultarNome = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuArquivo = new javax.swing.JMenu();
         mnuNovo = new javax.swing.JMenuItem();
@@ -77,7 +78,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro do cliente", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
-        lblName.setText("Nome:");
+        lblName.setText("Nome*:");
 
         txtNome.setName("NOME"); // NOI18N
         txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -89,7 +90,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
             }
         });
 
-        lblCPF.setText("CPF:");
+        lblCPF.setText("CPF*:");
 
         try {
             ftxCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -108,21 +109,21 @@ public class CadastroClienteView extends javax.swing.JFrame {
             }
         });
 
-        btnConsultarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom-icon.png"))); // NOI18N
-        btnConsultarCliente.setText("Consultar");
-        btnConsultarCliente.setDoubleBuffered(true);
-        btnConsultarCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultarCPF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom-icon.png"))); // NOI18N
+        btnConsultarCPF.setText("Consulta por CPF");
+        btnConsultarCPF.setDoubleBuffered(true);
+        btnConsultarCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarClienteActionPerformed(evt);
+                btnConsultarCPFActionPerformed(evt);
             }
         });
 
-        lblGenero.setText("Gênero:");
+        lblGenero.setText("Gênero*:");
 
         cboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não especificado", "Masculino", "Feminino" }));
         cboGenero.setName("GÊNERO"); // NOI18N
 
-        lblEndereco.setText("Endereço:");
+        lblEndereco.setText("Endereço*:");
 
         txtEndereco.setName("ENDEREÇO"); // NOI18N
         txtEndereco.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +160,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
             }
         });
 
-        lblBairro.setText("Bairro:");
+        lblBairro.setText("Bairro*:");
 
         txtBairro.setName("BAIRRO"); // NOI18N
         txtBairro.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -196,7 +197,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
             }
         });
 
-        lblEmail.setText("E-mail:");
+        lblEmail.setText("E-mail*:");
 
         txtEmail.setName("E-MAIL"); // NOI18N
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -208,12 +209,12 @@ public class CadastroClienteView extends javax.swing.JFrame {
             }
         });
 
-        lblEstado.setText("Estado:");
+        lblEstado.setText("Estado*:");
 
         cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cboEstado.setName("ESTADO"); // NOI18N
 
-        lblCidade.setText("Cidade: ");
+        lblCidade.setText("Cidade*: ");
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/save-icon.png"))); // NOI18N
         btnSalvar.setText("Salvar");
@@ -237,7 +238,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         btnAlterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alterar.png"))); // NOI18N
         btnAlterarCliente.setText("Alterar");
 
-        lblCEPcliente.setText("CEP:");
+        lblCEPcliente.setText("CEP*:");
 
         try {
             ftxCepCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -273,14 +274,30 @@ public class CadastroClienteView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblCliente);
 
+        btnConsultarNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom-icon.png"))); // NOI18N
+        btnConsultarNome.setText("Consulta por nome");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluirCliente)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAlterarCliente))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblEmail)
                             .addComponent(lblEstadoCivil)
@@ -292,6 +309,19 @@ public class CadastroClienteView extends javax.swing.JFrame {
                             .addComponent(lblCidade))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEndereco)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cboGenero, 0, 302, Short.MAX_VALUE)
+                                    .addComponent(cboEstadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(78, 78, 78)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblDataNascimento)
+                                    .addComponent(lblTelefone))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ftxTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                                    .addComponent(ftxNascimento)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,45 +336,23 @@ public class CadastroClienteView extends javax.swing.JFrame {
                                         .addComponent(lblCEPcliente)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(ftxCepCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(txtEndereco)
-                            .addComponent(txtNome)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboGenero, 0, 292, Short.MAX_VALUE)
-                                    .addComponent(cboEstadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(78, 78, 78)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDataNascimento)
-                                    .addComponent(lblTelefone))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ftxTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                                    .addComponent(ftxNascimento)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(ftxCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(btnConsultarCliente))
-                                .addComponent(txtEmail))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAlterarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnConsultarCPF)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnConsultarNome))
+                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)))))
                 .addGap(90, 90, 90))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterarCliente, btnConsultarCliente, btnExcluirCliente, btnNovoCliente, btnSalvar});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterarCliente, btnExcluirCliente, btnNovoCliente, btnSalvar});
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtBairro, txtCidade});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnConsultarCPF, btnConsultarNome});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,7 +361,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCPF)
                     .addComponent(ftxCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultarCliente))
+                    .addComponent(btnConsultarCPF)
+                    .addComponent(btnConsultarNome))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -394,20 +403,22 @@ public class CadastroClienteView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblEstado)
                         .addComponent(cboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAlterarCliente)
                     .addComponent(btnExcluirCliente)
                     .addComponent(btnNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboEstado, cboEstadoCivil, cboGenero, ftxCPF, ftxCepCliente, ftxNascimento, ftxTelefone, txtBairro, txtCidade, txtEmail, txtEndereco, txtNome});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAlterarCliente, btnConsultarCliente, btnExcluirCliente, btnNovoCliente, btnSalvar});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAlterarCliente, btnExcluirCliente, btnNovoCliente, btnSalvar});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnConsultarCPF, btnConsultarNome});
 
         txtCidade.getAccessibleContext().setAccessibleName("CIDADE");
 
@@ -474,8 +485,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,9 +516,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
         //validando campos de formatted text field
         validador.ValidarCPF(ftxCPF);
-        validador.ValidarData(ftxNascimento);
         validador.ValidarCEP(ftxCepCliente);
-        validador.ValidarTelefone(ftxTelefone);
 
         //validando campos de texto
         validador.ValidarTexto(txtNome);
@@ -517,9 +526,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
         validador.ValidarTexto(txtCidade);
 
         //validando campos de combo box
-        validador.ValidarComboBox(cboEstado);
-        validador.ValidarComboBox(cboEstadoCivil);
         validador.ValidarComboBox(cboGenero);
+        validador.ValidarComboBox(cboEstado);
 
         if (validador.hasErro()) {
             JOptionPane.showMessageDialog(this, validador.getMensagensErro());
@@ -539,7 +547,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_mnuSairActionPerformed
 
-    private void btnConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClienteActionPerformed
+    private void btnConsultarCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarCPFActionPerformed
         Validadora validador = new Validadora();
         validador.ValidarCPF(ftxCPF);
 
@@ -547,15 +555,12 @@ public class CadastroClienteView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, validador.getMensagensErro());
         }
 
-    }//GEN-LAST:event_btnConsultarClienteActionPerformed
+    }//GEN-LAST:event_btnConsultarCPFActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Validadora validador = new Validadora();
-        //validando campos de formatted text field
         validador.ValidarCPF(ftxCPF);
-        validador.ValidarData(ftxNascimento);
         validador.ValidarCEP(ftxCepCliente);
-        validador.ValidarTelefone(ftxTelefone);
 
         //validando campos de texto
         validador.ValidarTexto(txtNome);
@@ -565,9 +570,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
         validador.ValidarTexto(txtCidade);
 
         //validando campos de combo box
-        validador.ValidarComboBox(cboEstado);
-        validador.ValidarComboBox(cboEstadoCivil);
         validador.ValidarComboBox(cboGenero);
+        validador.ValidarComboBox(cboEstado);
 
         if (validador.hasErro()) {
             JOptionPane.showMessageDialog(this, validador.getMensagensErro());
@@ -728,7 +732,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarCliente;
-    private javax.swing.JButton btnConsultarCliente;
+    private javax.swing.JButton btnConsultarCPF;
+    private javax.swing.JButton btnConsultarNome;
     private javax.swing.JButton btnExcluirCliente;
     private javax.swing.JButton btnNovoCliente;
     private javax.swing.JButton btnSalvar;
