@@ -11,6 +11,8 @@ package com.mycompany.projetointegradorfarmacia.model;
  */
 public class Cliente {
 
+    private static int qtdClientesCadastrados;
+
     private int id;
     private String CPF;
     private String telCliente;
@@ -26,13 +28,37 @@ public class Cliente {
     private String cidadeCliente;
 
     public Cliente() { //construtor
+        qtdClientesCadastrados++;
+        this.id = qtdClientesCadastrados;
     }
-    
+
+    public Cliente(String pCPF, String pTelCliente, String pDataNascimento,
+            String pCEPcliente, String pNomeCliente, String pGeneroCliente, String pEstadoCivilCliente,
+            String pEmailCliente, String pEnderecoCliente, String pBairroCliente, String pEstadoCliente,
+            String pCidadeCliente) {
+
+        qtdClientesCadastrados++;
+        this.id = qtdClientesCadastrados;
+        this.CPF = pCPF;
+        this.telCliente = pTelCliente;
+        this.dataNascimento = pDataNascimento;
+        this.CEPcliente = pCEPcliente;
+        this.nomeCliente = pNomeCliente;
+        this.generoCliente = pGeneroCliente;
+        this.estadoCivilCliente = pEstadoCivilCliente;
+        this.emailCliente = pEmailCliente;
+        this.enderecoCliente = pEnderecoCliente;
+        this.bairroCliente = pBairroCliente;
+        this.estadoCliente = pEstadoCliente;
+        this.cidadeCliente = pCidadeCliente;
+
+    }
+
     public Cliente(int pId, String pCPF, String pTelCliente, String pDataNascimento,
             String pCEPcliente, String pNomeCliente, String pGeneroCliente, String pEstadoCivilCliente,
             String pEmailCliente, String pEnderecoCliente, String pBairroCliente, String pEstadoCliente,
             String pCidadeCliente) {
-        this.id = pId; 
+        this.id = pId;
         this.CPF = pCPF;
         this.telCliente = pTelCliente;
         this.dataNascimento = pDataNascimento;
@@ -61,12 +87,20 @@ public class Cliente {
         return CPF;
     }
 
+    public String getCPFSomenteNumeros() {
+        return CPF.replace(".", "").replace("-", "");
+    }
+
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
 
     public String getTelCliente() {
         return telCliente;
+    }
+
+    public String getTelSomenteNumeros() {
+        return telCliente.replace("(", "").replace(")", "").replace("-", "");
     }
 
     public void setTelCliente(String telCliente) {
@@ -76,6 +110,13 @@ public class Cliente {
     public String getDataNascimento() {
         return dataNascimento;
     }
+    
+    //TALVEZ NÃO PRECISE DEPOIS QUE UTILIZAR O ESTEQUEMA DE GRAVAR DATA DA AULA 10
+    //VER AULA 10
+    public String getDataSomenteNumeros(){
+        return dataNascimento.replace("/", "").replace("/", "");
+    
+    }
 
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
@@ -83,6 +124,11 @@ public class Cliente {
 
     public String getCEPcliente() {
         return CEPcliente;
+    }
+    
+    public String getCEPSomenteNumeros(){
+        return CEPcliente.replace("-", "");
+    
     }
 
     public void setCEPcliente(String CEPcliente) {
