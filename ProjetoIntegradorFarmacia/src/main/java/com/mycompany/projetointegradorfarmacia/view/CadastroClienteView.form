@@ -148,48 +148,38 @@
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnSalvar" linkSize="7" min="-2" pref="102" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnNovoCliente" linkSize="7" min="-2" pref="86" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnExcluirCliente" linkSize="7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnAlterarCliente" linkSize="7" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBairro" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEndereco" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblGenero" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCidade" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="txtEndereco" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cboGenero" alignment="0" pref="302" max="32767" attributes="0"/>
+                              <Component id="cboEstadoCivil" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblBairro" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEndereco" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblGenero" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblName" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCidade" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTelefone" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtEndereco" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cboGenero" alignment="0" pref="302" max="32767" attributes="0"/>
-                                      <Component id="cboEstadoCivil" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTelefone" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ftxTelefone" pref="226" max="32767" attributes="0"/>
-                                      <Component id="ftxNascimento" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="ftxTelefone" pref="226" max="32767" attributes="0"/>
+                              <Component id="ftxNascimento" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtBairro" linkSize="8" min="-2" pref="278" max="-2" attributes="0"/>
@@ -209,18 +199,28 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="ftxCPF" min="-2" pref="207" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnConsultarCPF" linkSize="9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnConsultarNome" linkSize="9" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtNome" alignment="0" pref="688" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="ftxCPF" min="-2" pref="207" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnConsultarCPF" linkSize="9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnConsultarNome" linkSize="9" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtNome" alignment="0" pref="688" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="btnSalvar" linkSize="7" min="-2" pref="102" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnNovoCliente" linkSize="7" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnExcluirCliente" linkSize="7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnAlterarCliente" linkSize="7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnLimpar" linkSize="7" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
@@ -289,14 +289,22 @@
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnAlterarCliente" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnExcluirCliente" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnNovoCliente" linkSize="6" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="btnSalvar" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" pref="262" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnLimpar" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAlterarCliente" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnExcluirCliente" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnNovoCliente" linkSize="6" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="btnSalvar" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="262" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -581,6 +589,7 @@
           </AccessibilityProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCidadeActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCidadeKeyReleased"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -619,6 +628,17 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Consulta por nome"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnLimpar">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/clear.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Limpar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
