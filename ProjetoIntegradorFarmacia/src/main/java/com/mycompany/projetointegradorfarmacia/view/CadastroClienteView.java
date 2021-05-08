@@ -9,7 +9,9 @@ import com.mycompany.projetointegradorfarmacia.utils.Validadora;
 import com.mycompany.projetointegradorfarmacia.model.Cliente;
 import com.mycompany.projetointegradorfarmacia.controller.ClienteController;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,7 +32,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
     public CadastroClienteView(Cliente c) {
         initComponents();
         this.objCliente = c;
-        this.ftxCPF.setText(c.getCPFSomenteNumeros());
+        this.ftxCPF.setText(c.getCPF());
         this.txtNome.setText(c.getNomeCliente());
         this.cboGenero.setSelectedItem(c);       //duvida
         this.cboEstadoCivil.setSelectedItem(c);  //duvida
@@ -262,9 +264,19 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
         btnExcluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete-icon.png"))); // NOI18N
         btnExcluirCliente.setText("Excluir");
+        btnExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirClienteActionPerformed(evt);
+            }
+        });
 
         btnAlterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alterar.png"))); // NOI18N
         btnAlterarCliente.setText("Alterar");
+        btnAlterarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarClienteActionPerformed(evt);
+            }
+        });
 
         lblCEPcliente.setText("CEP*:");
 
@@ -309,6 +321,11 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
         btnConsultarNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom-icon.png"))); // NOI18N
         btnConsultarNome.setText("Consulta por nome");
+        btnConsultarNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarNomeActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clear.png"))); // NOI18N
         btnLimpar.setText("Limpar");
@@ -445,7 +462,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblEstado)
                         .addComponent(cboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
@@ -624,7 +640,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, validador.getMensagensErro());
         } else {
             if (modoTela == "criação") {
-                //PAREI AQUI
+
                 String CPF = ftxCPF.getText();
                 String nome = txtNome.getText();
                 String genero = cboGenero.getSelectedItem().toString();
@@ -651,6 +667,32 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
             } else {
                 //MODO ALTERAÇÃO BOTAO ALTERAR
+                int id = objCliente.getId();
+
+                String CPF = ftxCPF.getText();
+                String nome = txtNome.getText();
+                String genero = cboGenero.getSelectedItem().toString();
+                String estadoCivil = cboEstadoCivil.getSelectedItem().toString();
+                String telefone = ftxTelefone.getText();
+                String dtNascimento = ftxNascimento.getText(); //fazer jCalendar
+                String email = txtEmail.getText();
+                String endereco = txtEndereco.getText();
+                String bairro = txtBairro.getText();
+                String cidade = txtCidade.getText();
+                String estado = cboEstado.getSelectedItem().toString();
+                String CEP = ftxCepCliente.getText();
+
+                boolean retorno = ClienteController.atualizar(id, CPF, nome, genero, estadoCivil, telefone, dtNascimento,
+                        email, endereco, bairro, cidade, estado, CEP);
+
+                if (retorno == true) {
+                    JOptionPane.showMessageDialog(null, "Cliente ALTERADO com sucesso!",
+                            "Cadastro realizado", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Falha na ALTERAÇÃO de cliente!",
+                            "Falha", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
         }
 
@@ -794,9 +836,151 @@ public class CadastroClienteView extends javax.swing.JFrame {
         String textoAnterior = txtCidade.getText();
         txtCidade.setText(textoAnterior.toUpperCase());
     }//GEN-LAST:event_txtCidadeKeyReleased
+
+    private void btnExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirClienteActionPerformed
+        if (tblCliente.getRowCount() > 0) {
+
+            int numeroLinha = tblCliente.getSelectedRow();
+
+            if (numeroLinha < 0) {
+
+                JOptionPane.showMessageDialog(this, "Selecione um cliente!");
+
+            } else {
+
+                int IDcliente = Integer.parseInt(tblCliente.getModel().getValueAt(numeroLinha, 0).toString());
+                objCliente.setId(IDcliente);
+                int id = objCliente.getId();
+                boolean retorno = ClienteController.excluir(id);
+
+                if (retorno == true) {
+                    JOptionPane.showMessageDialog(this, "Cliente excluído com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Falha ao excluir cliente!");
+                }
+
+                listarClientes();
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Não há clientes cadastrados!");
+        }
+
+    }//GEN-LAST:event_btnExcluirClienteActionPerformed
+
+    private void btnAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClienteActionPerformed
+        if (tblCliente.getRowCount() > 0) {
+            int numeroLinha = tblCliente.getSelectedRow();
+
+            if (numeroLinha < 0) {
+                JOptionPane.showMessageDialog(this, "Selecione um produto da tabela!");
+            } else {
+
+                int IDcliente = Integer.parseInt(tblCliente.getModel().getValueAt(numeroLinha, 0).toString());
+
+                String CPF = tblCliente.getModel().getValueAt(numeroLinha, 1).toString();
+                String nome = tblCliente.getModel().getValueAt(numeroLinha, 2).toString();
+                String genero = tblCliente.getModel().getValueAt(numeroLinha, 3).toString();
+                String estadoCivil = tblCliente.getModel().getValueAt(numeroLinha, 4).toString();
+                String telefone = tblCliente.getModel().getValueAt(numeroLinha, 5).toString();
+                String dtNascimento = tblCliente.getModel().getValueAt(numeroLinha, 6).toString(); //fazer jCalendar
+                String email = tblCliente.getModel().getValueAt(numeroLinha, 7).toString();
+                String endereco = tblCliente.getModel().getValueAt(numeroLinha, 8).toString();
+                String bairro = tblCliente.getModel().getValueAt(numeroLinha, 9).toString();
+                String cidade = tblCliente.getModel().getValueAt(numeroLinha, 10).toString();
+                String estado = tblCliente.getModel().getValueAt(numeroLinha, 11).toString();
+                String CEP = tblCliente.getModel().getValueAt(numeroLinha, 12).toString();
+
+                //PAREI AQUI, DEFINIR COMO VOU FAZER A ALTERAÇÃO COM UMA TELA SÓ               
+                objCliente.setId(IDcliente);
+                objCliente.setCPF(CPF);
+                objCliente.setNomeCliente(nome);
+                objCliente.setGeneroCliente(genero);
+                objCliente.setEstadoCivilCliente(estadoCivil);
+                objCliente.setTelCliente(telefone);
+                objCliente.setDataNascimento(dtNascimento);
+                objCliente.setEmailCliente(email);
+                objCliente.setEnderecoCliente(endereco);
+                objCliente.setBairroCliente(bairro);
+                objCliente.setCidadeCliente(cidade);
+                objCliente.setEstadoCliente(estadoCivil);
+                objCliente.setCEPcliente(CEP);
+
+                CadastroClienteView telaAlteracao = new CadastroClienteView(objCliente);
+                telaAlteracao.modoTela = "alteração";
+
+                telaAlteracao.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_btnAlterarClienteActionPerformed
+
+    private void btnConsultarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarNomeActionPerformed
+        ArrayList<String[]> filtro = ClienteController.filtroNome(txtNome.getText());
+
+        DefaultTableModel modelo = (DefaultTableModel) tblCliente.getModel();
+        modelo.setRowCount(0);
+
+        for (String[] item : filtro) {
+            modelo.addRow(item);
+        }
+
+        tblCliente.getColumnModel().getColumn(0).setPreferredWidth(10); //id
+        tblCliente.getColumnModel().getColumn(1).setPreferredWidth(50); //CPF
+        tblCliente.getColumnModel().getColumn(2).setPreferredWidth(50); //nome
+        tblCliente.getColumnModel().getColumn(3).setPreferredWidth(30); //Genero
+        tblCliente.getColumnModel().getColumn(4).setPreferredWidth(50); //E. Civil
+        tblCliente.getColumnModel().getColumn(5).setPreferredWidth(50); //Telefone
+        tblCliente.getColumnModel().getColumn(6).setPreferredWidth(50); //data nascimento
+        tblCliente.getColumnModel().getColumn(7).setPreferredWidth(50); //e-mail
+        tblCliente.getColumnModel().getColumn(8).setPreferredWidth(50); //endereço
+        tblCliente.getColumnModel().getColumn(9).setPreferredWidth(50); //bairro
+        tblCliente.getColumnModel().getColumn(10).setPreferredWidth(50); //cidade
+        tblCliente.getColumnModel().getColumn(11).setPreferredWidth(10); //estado
+        tblCliente.getColumnModel().getColumn(12).setPreferredWidth(50); //CEP
+
+
+    }//GEN-LAST:event_btnConsultarNomeActionPerformed
     public void listarClientes() {
         //lista toda a base de dados daquela tabela
-        //PAREI AQUI
+        ArrayList<String[]> listaCliente = ClienteController.listarC();
+
+        DefaultTableModel tmCliente = new DefaultTableModel();
+        tmCliente.addColumn("ID");
+        tmCliente.addColumn("CPF");
+        tmCliente.addColumn("Nome");
+        tmCliente.addColumn("Genero");
+        tmCliente.addColumn("E. Civil");
+        tmCliente.addColumn("Telefone");
+        tmCliente.addColumn("D. Nasc.");
+        tmCliente.addColumn("E-mail");
+        tmCliente.addColumn("Endereço");
+        tmCliente.addColumn("Bairro");
+        tmCliente.addColumn("Cidade");
+        tmCliente.addColumn("Estado");
+        tmCliente.addColumn("CEP");
+
+        tblCliente.setModel(tmCliente);
+        tmCliente.setRowCount(0);
+
+        for (String[] item : listaCliente) {
+            tmCliente.addRow(item);
+
+        }
+
+        tblCliente.getColumnModel().getColumn(0).setPreferredWidth(10); //id
+        tblCliente.getColumnModel().getColumn(1).setPreferredWidth(50); //CPF
+        tblCliente.getColumnModel().getColumn(2).setPreferredWidth(50); //nome
+        tblCliente.getColumnModel().getColumn(3).setPreferredWidth(30); //Genero
+        tblCliente.getColumnModel().getColumn(4).setPreferredWidth(50); //E. Civil
+        tblCliente.getColumnModel().getColumn(5).setPreferredWidth(50); //Telefone
+        tblCliente.getColumnModel().getColumn(6).setPreferredWidth(50); //data nascimento
+        tblCliente.getColumnModel().getColumn(7).setPreferredWidth(50); //e-mail
+        tblCliente.getColumnModel().getColumn(8).setPreferredWidth(50); //endereço
+        tblCliente.getColumnModel().getColumn(9).setPreferredWidth(50); //bairro
+        tblCliente.getColumnModel().getColumn(10).setPreferredWidth(50); //cidade
+        tblCliente.getColumnModel().getColumn(11).setPreferredWidth(10); //estado
+        tblCliente.getColumnModel().getColumn(12).setPreferredWidth(50); //CEP
+
     }
 
     /**
