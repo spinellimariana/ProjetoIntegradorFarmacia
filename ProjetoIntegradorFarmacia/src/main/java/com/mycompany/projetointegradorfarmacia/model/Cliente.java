@@ -1,5 +1,6 @@
 package com.mycompany.projetointegradorfarmacia.model;
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -87,10 +88,9 @@ public class Cliente {
         return CPF;
     }
 
-    public String getCPFSomenteNumeros() {
+    /*public String getCPFSomenteNumeros() {
         return CPF.replace(".", "").replace("-", "");
-    }
-
+    }*/
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
@@ -99,10 +99,9 @@ public class Cliente {
         return telCliente;
     }
 
-    public String getTelSomenteNumeros() {
+    /*public String getTelSomenteNumeros() {
         return telCliente.replace("(", "").replace(")", "").replace("-", "");
-    }
-
+    }*/
     public void setTelCliente(String telCliente) {
         this.telCliente = telCliente;
     }
@@ -110,14 +109,13 @@ public class Cliente {
     public String getDataNascimento() {
         return dataNascimento;
     }
-    
-    //TALVEZ NÃO PRECISE DEPOIS QUE UTILIZAR O ESTEQUEMA DE GRAVAR DATA DA AULA 10
+
+    /* //TALVEZ NÃO PRECISE DEPOIS QUE UTILIZAR O ESTEQUEMA DE GRAVAR DATA DA AULA 10
     //VER AULA 10
     public String getDataSomenteNumeros(){
         return dataNascimento.replace("/", "").replace("/", "");
     
-    }
-
+    }*/
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
@@ -125,12 +123,11 @@ public class Cliente {
     public String getCEPcliente() {
         return CEPcliente;
     }
-    
-    public String getCEPSomenteNumeros(){
+
+    /*public String getCEPSomenteNumeros(){
         return CEPcliente.replace("-", "");
     
-    }
-
+    }*/
     public void setCEPcliente(String CEPcliente) {
         this.CEPcliente = CEPcliente;
     }
