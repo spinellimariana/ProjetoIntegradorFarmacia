@@ -1,5 +1,7 @@
 package com.mycompany.projetointegradorfarmacia.model;
 
+import java.util.Date;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -7,8 +9,12 @@ package com.mycompany.projetointegradorfarmacia.model;
  * and open the template in the editor.
  */
 /**
- *
- * @author Lenovo
+ * Classe model para definição de atributos, construtores e getters/setters dos clientes
+ * @author mariana.spinelli
+ * @version 1.0
+ * @since 2021.05.12
+ * 
+ * 
  */
 public class Cliente {
 
@@ -17,7 +23,8 @@ public class Cliente {
     private int id;
     private String CPF;
     private String telCliente;
-    private String dataNascimento;
+    //private String dataNascimento;
+    private Date dataNascimento;
     private String CEPcliente;
     private String nomeCliente;
     private String generoCliente;
@@ -33,7 +40,7 @@ public class Cliente {
         this.id = qtdClientesCadastrados;
     }
 
-    public Cliente(String pCPF, String pTelCliente, String pDataNascimento,
+    public Cliente(String pCPF, String pTelCliente, Date pDataNascimento,
             String pCEPcliente, String pNomeCliente, String pGeneroCliente, String pEstadoCivilCliente,
             String pEmailCliente, String pEnderecoCliente, String pBairroCliente, String pEstadoCliente,
             String pCidadeCliente) {
@@ -55,7 +62,7 @@ public class Cliente {
 
     }
 
-    public Cliente(int pId, String pCPF, String pTelCliente, String pDataNascimento,
+    public Cliente(int pId, String pCPF, String pTelCliente, Date pDataNascimento,
             String pCEPcliente, String pNomeCliente, String pGeneroCliente, String pEstadoCivilCliente,
             String pEmailCliente, String pEnderecoCliente, String pBairroCliente, String pEstadoCliente,
             String pCidadeCliente) {
@@ -75,7 +82,6 @@ public class Cliente {
 
     }
 
-    //abaixo todos os getters and setters
     public int getId() {
         return id;
     }
@@ -88,9 +94,6 @@ public class Cliente {
         return CPF;
     }
 
-    /*public String getCPFSomenteNumeros() {
-        return CPF.replace(".", "").replace("-", "");
-    }*/
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
@@ -99,24 +102,15 @@ public class Cliente {
         return telCliente;
     }
 
-    /*public String getTelSomenteNumeros() {
-        return telCliente.replace("(", "").replace(")", "").replace("-", "");
-    }*/
     public void setTelCliente(String telCliente) {
         this.telCliente = telCliente;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    /* //TALVEZ NÃO PRECISE DEPOIS QUE UTILIZAR O ESTEQUEMA DE GRAVAR DATA DA AULA 10
-    //VER AULA 10
-    public String getDataSomenteNumeros(){
-        return dataNascimento.replace("/", "").replace("/", "");
-    
-    }*/
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -124,10 +118,6 @@ public class Cliente {
         return CEPcliente;
     }
 
-    /*public String getCEPSomenteNumeros(){
-        return CEPcliente.replace("-", "");
-    
-    }*/
     public void setCEPcliente(String CEPcliente) {
         this.CEPcliente = CEPcliente;
     }

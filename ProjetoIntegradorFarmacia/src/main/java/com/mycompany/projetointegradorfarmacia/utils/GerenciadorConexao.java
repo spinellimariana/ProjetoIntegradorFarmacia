@@ -10,8 +10,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author Lenovo
+ * Classe para gerenciar a conexão com o banco de dados.
+ * @author mariana.spinelli
+ * @see pacote DAO
+ * @version 1.0
+ * @since 2021-11-02
+ * 
  */
 public class GerenciadorConexao {
 
@@ -28,6 +32,13 @@ public class GerenciadorConexao {
 
     public static Connection CONEXAO;
 
+    /**
+     * 
+     * @param URL String
+     * @param root String
+     * @param string String
+     * @return UnsupportedOperationException
+     */
     public static Connection abrirConexao(String URL, String root, String string) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -35,6 +46,12 @@ public class GerenciadorConexao {
     public GerenciadorConexao() {
     }
 
+    /**
+     * Método para abrir conexão com o banco de dados
+     * @return STATUS infornando se foi possível realizar a conexão
+     * @throws ClassNotFoundException se o driver não for encontrado
+     * @throws SQLException se houver falha na conexão
+     */
     public static Connection abrirConexao() throws ClassNotFoundException, SQLException {
 
         URL = "jdbc:mysql://" + SERVER + ":3306/" + DATABASE + "?useTimezone=true&serverTimezone=UTC&useSSL=false";
@@ -78,6 +95,12 @@ public class GerenciadorConexao {
     public static String getStatusConexao() {
         return STATUS;
     }
+    
+    /**
+     * Método para fechar a conexão com o banco de dados
+     * @return true se não conectado | false se houver erro no fechamento
+     * @throws SQLException se houver erro no fechamento
+     */
 
     public static boolean fecharConexao() throws SQLException {
 
