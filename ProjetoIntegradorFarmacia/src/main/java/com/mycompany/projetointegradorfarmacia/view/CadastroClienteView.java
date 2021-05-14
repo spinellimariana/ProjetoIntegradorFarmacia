@@ -9,13 +9,23 @@ import com.mycompany.projetointegradorfarmacia.utils.Validadora;
 import com.mycompany.projetointegradorfarmacia.model.Cliente;
 import com.mycompany.projetointegradorfarmacia.controller.ClienteController;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
+ * Classe responsável pela interface de cadastro, manutenção e consulta de
+ * clientes
  *
- * @author Lenovo
+ * @author mariana.spinelli
+ * @since 2021.05.12
+ * @version 1.0
+ *
  */
 public class CadastroClienteView extends javax.swing.JFrame {
 
@@ -37,7 +47,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
         this.cboGenero.setSelectedItem(c);
         this.cboEstadoCivil.setSelectedItem(c);
         this.ftxTelefone.setText(c.getTelCliente());
-        this.ftxNascimento.setText(c.getDataNascimento());
+        this.jDateChooser1.setDate(c.getDataNascimento());
+        //this.ftxNascimento.setText(c.getDataNascimento());
         this.txtEmail.setText(c.getEmailCliente());
         this.txtEndereco.setText(c.getEnderecoCliente());
         this.txtBairro.setText(c.getBairroCliente());
@@ -91,6 +102,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         tblCliente = new javax.swing.JTable();
         btnConsultarNome = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuArquivo = new javax.swing.JMenu();
         mnuConsultaNome = new javax.swing.JMenuItem();
@@ -327,6 +339,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
             }
         });
 
+        jDateChooser1.setDateFormatString("dd/MM/yyyy");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -359,42 +373,44 @@ public class CadastroClienteView extends javax.swing.JFrame {
                             .addComponent(lblTelefone))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ftxTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                            .addComponent(ftxNascimento)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(12, 12, 12)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblEstado)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblCEPcliente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ftxCepCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(ftxCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnConsultarCPF)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnConsultarNome))
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExcluirCliente)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAlterarCliente)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLimpar)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(ftxTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(12, 12, 12)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(lblEstado)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(lblCEPcliente)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(ftxCepCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(ftxCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnConsultarCPF)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnConsultarNome))
+                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnExcluirCliente)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnAlterarCliente)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnLimpar))))
                 .addGap(90, 90, 90))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ftxNascimento)
+                .addGap(147, 147, 147))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterarCliente, btnExcluirCliente, btnLimpar, btnSalvar});
@@ -403,10 +419,14 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnConsultarCPF, btnConsultarNome});
 
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ftxTelefone, jDateChooser1});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
+                .addComponent(ftxNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCPF)
                     .addComponent(ftxCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -425,11 +445,11 @@ public class CadastroClienteView extends javax.swing.JFrame {
                         .addComponent(ftxTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDataNascimento)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblEstadoCivil)
                         .addComponent(cboEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ftxNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblDataNascimento))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail)
@@ -459,14 +479,16 @@ public class CadastroClienteView extends javax.swing.JFrame {
                     .addComponent(btnAlterarCliente)
                     .addComponent(btnLimpar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboEstado, cboEstadoCivil, cboGenero, ftxCPF, ftxCepCliente, ftxNascimento, ftxTelefone, txtBairro, txtCidade, txtEmail, txtEndereco, txtNome});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboEstado, ftxCPF, ftxCepCliente, ftxNascimento, jDateChooser1, txtBairro, txtCidade, txtEmail, txtEndereco, txtNome});
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAlterarCliente, btnExcluirCliente, btnLimpar, btnSalvar});
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnConsultarCPF, btnConsultarNome});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboEstadoCivil, cboGenero, ftxTelefone});
 
         txtCidade.getAccessibleContext().setAccessibleName("CIDADE");
 
@@ -567,6 +589,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderecoActionPerformed
 
+
     private void mnuSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalvarClienteActionPerformed
         Validadora validador = new Validadora();
         validador.ValidarCPF(ftxCPF);
@@ -593,7 +616,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 String genero = cboGenero.getSelectedItem().toString();
                 String estadoCivil = cboEstadoCivil.getSelectedItem().toString();
                 String telefone = ftxTelefone.getText();
-                String dtNascimento = ftxNascimento.getText();
+                Date dtNascimento = jDateChooser1.getDate();
+//String dtNascimento = ftxNascimento.getText();
                 String email = txtEmail.getText();
                 String endereco = txtEndereco.getText();
                 String bairro = txtBairro.getText();
@@ -607,6 +631,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 if (retorno == true) {
                     JOptionPane.showMessageDialog(null, "Cliente CADASTRADO com sucesso!",
                             "Cadastro realizado", JOptionPane.INFORMATION_MESSAGE);
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Falha no cadastro do cliente!",
                             "Falha", JOptionPane.ERROR_MESSAGE);
@@ -621,7 +646,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 String genero = cboGenero.getSelectedItem().toString();
                 String estadoCivil = cboEstadoCivil.getSelectedItem().toString();
                 String telefone = ftxTelefone.getText();
-                String dtNascimento = ftxNascimento.getText(); //fazer jCalendar
+                Date dtNascimento = jDateChooser1.getDate();
+//String dtNascimento = ftxNascimento.getText(); //fazer jCalendar
                 String email = txtEmail.getText();
                 String endereco = txtEndereco.getText();
                 String bairro = txtBairro.getText();
@@ -643,6 +669,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
             }
         }
+        listarClientes();
     }//GEN-LAST:event_mnuSalvarClienteActionPerformed
 
     private void mnuAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAlterarClienteActionPerformed
@@ -846,7 +873,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 String genero = cboGenero.getSelectedItem().toString();
                 String estadoCivil = cboEstadoCivil.getSelectedItem().toString();
                 String telefone = ftxTelefone.getText();
-                String dtNascimento = ftxNascimento.getText();
+                Date dtNascimento = jDateChooser1.getDate();
+                //String dtNascimento = ftxNascimento.getText();
                 String email = txtEmail.getText();
                 String endereco = txtEndereco.getText();
                 String bairro = txtBairro.getText();
@@ -874,7 +902,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 String genero = cboGenero.getSelectedItem().toString();
                 String estadoCivil = cboEstadoCivil.getSelectedItem().toString();
                 String telefone = ftxTelefone.getText();
-                String dtNascimento = ftxNascimento.getText(); //fazer jCalendar
+                Date dtNascimento = jDateChooser1.getDate();
+                //String dtNascimento = ftxNascimento.getText(); //fazer jCalendar
                 String email = txtEmail.getText();
                 String endereco = txtEndereco.getText();
                 String bairro = txtBairro.getText();
@@ -896,7 +925,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
             }
         }
-
+        listarClientes();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
@@ -1036,7 +1065,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
         this.cboGenero.setSelectedIndex(0);
         this.cboEstadoCivil.setSelectedIndex(0);
         this.ftxTelefone.setText("");
-        this.ftxNascimento.setText("");
+        this.jDateChooser1.setDateFormatString("");
+        //this.ftxNascimento.setText("");
         this.txtEmail.setText("");
         this.txtEndereco.setText("");
         this.txtBairro.setText("");
@@ -1085,6 +1115,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
     private void btnAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClienteActionPerformed
+        SimpleDateFormat formatadorDatas = new SimpleDateFormat("dd/MM/yyyy");
+
         if (tblCliente.getRowCount() > 0) {
             int numeroLinha = tblCliente.getSelectedRow();
 
@@ -1099,7 +1131,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 String genero = tblCliente.getModel().getValueAt(numeroLinha, 3).toString();
                 String estadoCivil = tblCliente.getModel().getValueAt(numeroLinha, 4).toString();
                 String telefone = tblCliente.getModel().getValueAt(numeroLinha, 5).toString();
-                String dtNascimento = tblCliente.getModel().getValueAt(numeroLinha, 6).toString(); //fazer jCalendar
+                
+                String dtNascimento = tblCliente.getModel().getValueAt(numeroLinha, 6).toString();
                 String email = tblCliente.getModel().getValueAt(numeroLinha, 7).toString();
                 String endereco = tblCliente.getModel().getValueAt(numeroLinha, 8).toString();
                 String bairro = tblCliente.getModel().getValueAt(numeroLinha, 9).toString();
@@ -1107,11 +1140,22 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 String estado = tblCliente.getModel().getValueAt(numeroLinha, 11).toString();
                 String CEP = tblCliente.getModel().getValueAt(numeroLinha, 12).toString();
 
+                SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+                Date data;
+                try {
+                    data = formatador.parse(dtNascimento);
+                    objCliente.setDataNascimento(data);
+                    jDateChooser1.setDateFormatString(formatador.format(data));
+                } catch (ParseException ex) {
+                    Logger.getLogger(CadastroClienteView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 objCliente.setId(IDcliente);
                 ftxCPF.setText(CPF);
                 txtNome.setText(nome);
                 ftxTelefone.setText(telefone);
-                ftxNascimento.setText(dtNascimento);
+                //jDateChooser1.setDate(data);
+                //ftxNascimento.setText(dtNascimento); //j calendar
                 txtEmail.setText(email);
                 txtEndereco.setText(endereco);
                 txtBairro.setText(bairro);
@@ -1230,7 +1274,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
         this.cboGenero.setSelectedIndex(0);
         this.cboEstadoCivil.setSelectedIndex(0);
         this.ftxTelefone.setText("");
-        this.ftxNascimento.setText("");
+        this.jDateChooser1.setDateFormatString("");
+        //this.ftxNascimento.setText("");
         this.txtEmail.setText("");
         this.txtEndereco.setText("");
         this.txtBairro.setText("");
@@ -1359,6 +1404,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxCepCliente;
     private javax.swing.JFormattedTextField ftxNascimento;
     private javax.swing.JFormattedTextField ftxTelefone;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

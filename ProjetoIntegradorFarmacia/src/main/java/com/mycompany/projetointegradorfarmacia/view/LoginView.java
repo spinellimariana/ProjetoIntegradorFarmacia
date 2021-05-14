@@ -5,8 +5,10 @@
  */
 package com.mycompany.projetointegradorfarmacia.view;
 
+import com.mycompany.projetointegradorfarmacia.controller.LoginController;
 import com.mycompany.projetointegradorfarmacia.view.TelaPrincipalView;
 import com.mycompany.projetointegradorfarmacia.utils.Validadora;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -211,17 +213,32 @@ public class LoginView extends javax.swing.JFrame {
         /*PARA O MARCO 2:
         1) Validar login e senha de acordo com o bando de dados??
          */
-
+        
         Validadora validarLogin = new Validadora();
         validarLogin.ValidarTexto(txtLogin);
         validarLogin.ValidarTexto(txtSenha);
         if (validarLogin.hasErro()) {
             JOptionPane.showMessageDialog(this, validarLogin.getMensagensErro());
         } else {
-            JOptionPane.showMessageDialog(this, "Bem-vindo(a), " + txtLogin.getText() + "!");
-            TelaPrincipalView frame = new TelaPrincipalView();
-            frame.setVisible(true);
+            //aqui entra a validação no banco
 
+            String usuario = txtLogin.getText();
+            String senha = txtSenha.getText();
+            
+            boolean retorno = LoginController.logar(usuario, senha);
+            
+            if (retorno == true) {
+                JOptionPane.showMessageDialog(this, "Bem-vindo(a), " + txtLogin.getText() + "!");
+                TelaPrincipalView frame = new TelaPrincipalView();
+                frame.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário ou Senha INCORRETOS. Tente novamente!",
+                        "Falha", JOptionPane.ERROR_MESSAGE);
+                txtLogin.setText("");
+                txtSenha.setText("");
+                
+            }
+            
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
@@ -234,7 +251,7 @@ public class LoginView extends javax.swing.JFrame {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Seu usuário deve conter, no máximo, 12 caracteres!");
         }
-
+        
         char c = evt.getKeyChar();
         if (c == ' ') {
             evt.consume();
@@ -247,7 +264,7 @@ public class LoginView extends javax.swing.JFrame {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Senha deve conter até 6 caracteres!");
         }
-
+        
         char c = evt.getKeyChar();
         if (c == ' ') {
             evt.consume();
@@ -260,7 +277,7 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-       
+
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**
