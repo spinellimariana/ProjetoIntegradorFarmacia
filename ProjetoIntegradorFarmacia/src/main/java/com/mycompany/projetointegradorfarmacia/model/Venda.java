@@ -7,6 +7,8 @@ package com.mycompany.projetointegradorfarmacia.model;
 
 import com.mycompany.projetointegradorfarmacia.model.Cliente;
 import java.awt.List;
+import java.util.Date;
+
 
 /**
  *
@@ -17,19 +19,19 @@ public class Venda {
     private int id;
     private double valorFinal;
     private List item;
-    private Cliente cliente;
-    private int idProduto;
+    private int cliente;
+    private Date dtvenda;
 
     public Venda() {
         //construtor vazio
     }
 
-    public Venda(int pID, double pValorFinal, List pItem, Cliente pCliente, int pIdProduto) {
-        this.id = pID;
-        this.valorFinal = pValorFinal;
-        this.item = pItem;
-        this.cliente = pCliente;
-        this.idProduto = pIdProduto;
+    public Venda(int id, double valorFinal, List item, int cliente, Date dtvenda) {
+        this.id = id;
+        this.valorFinal = valorFinal;
+        this.item = item;
+        this.cliente = cliente;
+        this.dtvenda = dtvenda;
     }
 
     public int getId() {
@@ -56,21 +58,20 @@ public class Venda {
         this.item = item;
     }
 
-    public Cliente getCliente() {
+    public int getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(int idCliente) {
         this.cliente = cliente;
     }
 
-    public int getIdProduto() {
-        return idProduto;
+    public Date getDtvenda() {
+        return dtvenda;
     }
 
-    //possibilidade de tabela explosão para as vendas.
-    public void setIdProduto(int idProduto) {
-        this.idProduto = idProduto;
+    public void setDtvenda(Date dtvenda) {
+        this.dtvenda = dtvenda;
     }
 
 }

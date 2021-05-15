@@ -60,7 +60,7 @@ public class Produto {
         this.pVenda = pVenda;
     }
 
-    public double getQuantProd() {
+    public int getQuantProd() {
         return quantProd;
     }
 
