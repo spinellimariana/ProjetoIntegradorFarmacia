@@ -15,6 +15,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -1115,7 +1116,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
     private void btnAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClienteActionPerformed
-        SimpleDateFormat formatadorDatas = new SimpleDateFormat("dd/MM/yyyy");
 
         if (tblCliente.getRowCount() > 0) {
             int numeroLinha = tblCliente.getSelectedRow();
@@ -1131,8 +1131,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 String genero = tblCliente.getModel().getValueAt(numeroLinha, 3).toString();
                 String estadoCivil = tblCliente.getModel().getValueAt(numeroLinha, 4).toString();
                 String telefone = tblCliente.getModel().getValueAt(numeroLinha, 5).toString();
-                
-                String dtNascimento = tblCliente.getModel().getValueAt(numeroLinha, 6).toString();
                 String email = tblCliente.getModel().getValueAt(numeroLinha, 7).toString();
                 String endereco = tblCliente.getModel().getValueAt(numeroLinha, 8).toString();
                 String bairro = tblCliente.getModel().getValueAt(numeroLinha, 9).toString();
@@ -1140,12 +1138,15 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 String estado = tblCliente.getModel().getValueAt(numeroLinha, 11).toString();
                 String CEP = tblCliente.getModel().getValueAt(numeroLinha, 12).toString();
 
-                SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-                Date data;
                 try {
-                    data = formatador.parse(dtNascimento);
-                    objCliente.setDataNascimento(data);
-                    jDateChooser1.setDateFormatString(formatador.format(data));
+
+                    String dataNasc = tblCliente.getModel().getValueAt(numeroLinha, 6).toString();
+                    Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(dataNasc);
+                    System.out.println(date1);
+                    java.util.Date hoje = new java.util.Date();
+                    System.out.println(hoje);
+                    jDateChooser1.setDate(date1);
+
                 } catch (ParseException ex) {
                     Logger.getLogger(CadastroClienteView.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1154,8 +1155,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 ftxCPF.setText(CPF);
                 txtNome.setText(nome);
                 ftxTelefone.setText(telefone);
-                //jDateChooser1.setDate(data);
-                //ftxNascimento.setText(dtNascimento); //j calendar
                 txtEmail.setText(email);
                 txtEndereco.setText(endereco);
                 txtBairro.setText(bairro);
