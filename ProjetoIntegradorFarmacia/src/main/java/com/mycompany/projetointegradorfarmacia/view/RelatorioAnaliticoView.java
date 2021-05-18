@@ -37,14 +37,10 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
         pnlPrincipal = new javax.swing.JPanel();
         txtPesquisa = new javax.swing.JTextField();
         lblCodVenda = new javax.swing.JLabel();
-        lblCliente = new javax.swing.JLabel();
-        lblValorTotal = new javax.swing.JLabel();
         pnlDetalhes = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
         btnPesquisar = new javax.swing.JToggleButton();
-        lblNomeClienteView = new javax.swing.JLabel();
-        lblValorTotalView = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Rede Farmácia - Relatório Analítico");
@@ -55,10 +51,6 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
 
         lblCodVenda.setText("Cód. de Venda:");
 
-        lblCliente.setText("Cliente:");
-
-        lblValorTotal.setText("Valor Total:");
-
         pnlDetalhes.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes da Compra"));
 
         tblProdutos.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes da Compra"));
@@ -67,7 +59,7 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cód. Produto", "Produto", "Descrição", "Quantidade", "Valor Unitário", "Subtotal"
+                "Cód. Produto", "Produto", "Quantidade", "Valor Unitário"
             }
         ));
         jScrollPane1.setViewportView(tblProdutos);
@@ -76,7 +68,7 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
         pnlDetalhes.setLayout(pnlDetalhesLayout);
         pnlDetalhesLayout.setHorizontalGroup(
             pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
         );
         pnlDetalhesLayout.setVerticalGroup(
             pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,10 +84,6 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
             }
         });
 
-        lblNomeClienteView.setText("Nome do Cliente Aqui");
-
-        lblValorTotalView.setText("valor total");
-
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
@@ -107,20 +95,11 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
                         .addComponent(pnlDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCodVenda)
-                            .addComponent(lblValorTotal))
+                        .addComponent(lblCodVenda)
                         .addGap(18, 18, 18)
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                            .addComponent(lblValorTotalView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                .addComponent(lblCliente)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblNomeClienteView, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -132,12 +111,6 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
                     .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodVenda))
                 .addGap(18, 18, 18)
-                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCliente)
-                    .addComponent(lblNomeClienteView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblValorTotal)
-                    .addComponent(lblValorTotalView))
-                .addGap(18, 18, 18)
                 .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -148,8 +121,8 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,11 +186,7 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnPesquisar;
     private javax.swing.ButtonGroup grupoFiltros;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblCodVenda;
-    private javax.swing.JLabel lblNomeClienteView;
-    private javax.swing.JLabel lblValorTotal;
-    private javax.swing.JLabel lblValorTotalView;
     private javax.swing.JPanel pnlDetalhes;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JTable tblProdutos;
