@@ -5,10 +5,14 @@
  */
 package com.mycompany.projetointegradorfarmacia.view;
 
+import com.mycompany.projetointegradorfarmacia.DAO.SinteticoDAO;
+import com.mycompany.projetointegradorfarmacia.model.Cliente;
 import com.mycompany.projetointegradorfarmacia.utils.Validadora;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -39,7 +43,7 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
         jfDataInicial = new javax.swing.JFormattedTextField();
         jfDataFinal = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblSintetico = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
         btnAnalitico = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
@@ -93,7 +97,7 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
                 .addGap(0, 16, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblSintetico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -101,7 +105,7 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
                 "Data", "Cliente", "Valor"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblSintetico);
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -178,7 +182,7 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         JFrame frame = new JFrame("CANCELAR");
-        if(JOptionPane.showConfirmDialog(frame, "Conforme se você quer cancelar"
+        if(JOptionPane.showConfirmDialog(frame, "Confirme se você quer cancelar"
                 ,"CANCELAR",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION)
         {
             System.exit(0);
@@ -187,12 +191,17 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         Validadora validar = new Validadora();
-        validar.ValidarNumero(jfDataInicial);
-        JTextField jfDatafinal = null;
-        validar.ValidarNumero(jfDatafinal);
+        validar.ValidarTexto(jfDataInicial);
+        validar.ValidarTexto(jfDataFinal);
         if (validar.hasErro()) {
             JOptionPane.showMessageDialog(this, validar.getMensagensErro());
-        }
+        } else {
+            
+            ArrayList<Cliente> Cliente = SinteticoDAO.NomeCliente(pNome).getText();
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblSintetico.getModel();
+        modelo.setRowCount(0);
+    }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
@@ -238,8 +247,8 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JFormattedTextField jfDataFinal;
     private javax.swing.JFormattedTextField jfDataInicial;
+    private javax.swing.JTable tblSintetico;
     // End of variables declaration//GEN-END:variables
 }
