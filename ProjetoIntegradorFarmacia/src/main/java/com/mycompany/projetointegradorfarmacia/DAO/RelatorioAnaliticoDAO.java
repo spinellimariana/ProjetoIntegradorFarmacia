@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  */
 public class RelatorioAnaliticoDAO {
     
-//    public static ArrayList<RelatorioAnalitico> filtroId(int id) {
+//    public static ArrayList<RelatorioAnalitico> filtroDatas(Date inicialDate, Date finalDate) {
 //        Connection conexao = null;
 //        PreparedStatement instrucaoSQL = null;
 //        ResultSet rs = null;

@@ -6,9 +6,14 @@
 package com.mycompany.projetointegradorfarmacia.view;
 
 import com.mycompany.projetointegradorfarmacia.DAO.SinteticoDAO;
+import com.mycompany.projetointegradorfarmacia.controller.SinteticoController;
 import com.mycompany.projetointegradorfarmacia.model.Cliente;
+import com.mycompany.projetointegradorfarmacia.model.RelatorioSintetico;
 import com.mycompany.projetointegradorfarmacia.utils.Validadora;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -40,8 +45,8 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jfDataInicial = new javax.swing.JFormattedTextField();
-        jfDataFinal = new javax.swing.JFormattedTextField();
+        jdtInicial = new com.toedter.calendar.JDateChooser();
+        jdtFinal = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSintetico = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
@@ -57,43 +62,33 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
 
         jLabel2.setText("Data Final");
 
-        try {
-            jfDataInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            jfDataFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jfDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addComponent(jdtInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jfDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(28, 28, 28))
+                    .addComponent(jdtFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jfDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jfDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jdtInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 16, Short.MAX_VALUE))
         );
 
@@ -190,18 +185,39 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        Validadora validar = new Validadora();
-        validar.ValidarTexto(jfDataInicial);
-        validar.ValidarTexto(jfDataFinal);
-        if (validar.hasErro()) {
-            JOptionPane.showMessageDialog(this, validar.getMensagensErro());
-        } else {
-            
-            ArrayList<Cliente> Cliente = SinteticoDAO.NomeCliente(pNome).getText();
         
-        DefaultTableModel modelo = (DefaultTableModel) tblSintetico.getModel();
-        modelo.setRowCount(0);
-    }
+        
+        try {
+        ArrayList<String[]> relatorio = SinteticoController.filtroData(jdtInicial.getDate(), jdtFinal.getDate());
+
+        DefaultTableModel tmSintetico = new DefaultTableModel();
+        tmSintetico.addColumn("dt venda");
+        tmSintetico.addColumn("Nome do Cliente");
+        tmSintetico.addColumn("Valor final");
+
+        tblSintetico.setModel(tmSintetico);
+        tmSintetico.setRowCount(0);
+
+        for (String[] item : relatorio) {
+            tmSintetico.addRow(item);
+
+        }
+        } catch (Exception e) {
+        }
+       
+
+//        Validadora validar = new Validadora();
+//        validar.ValidarTexto(jfDataInicial);
+//        validar.ValidarTexto(jfDataFinal);
+//        if (validar.hasErro()) {
+//            JOptionPane.showMessageDialog(this, validar.getMensagensErro());
+//        } else {
+//            
+//            ArrayList<Cliente> Cliente = SinteticoDAO.NomeCliente(pNome).getText();
+//        
+//        DefaultTableModel modelo = (DefaultTableModel) tblSintetico.getModel();
+//        modelo.setRowCount(0);
+//        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
@@ -247,8 +263,8 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JFormattedTextField jfDataFinal;
-    private javax.swing.JFormattedTextField jfDataInicial;
+    private com.toedter.calendar.JDateChooser jdtFinal;
+    private com.toedter.calendar.JDateChooser jdtInicial;
     private javax.swing.JTable tblSintetico;
     // End of variables declaration//GEN-END:variables
 }

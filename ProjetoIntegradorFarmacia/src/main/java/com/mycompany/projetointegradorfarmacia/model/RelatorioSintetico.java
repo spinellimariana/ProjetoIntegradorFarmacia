@@ -5,31 +5,48 @@
  */
 package com.mycompany.projetointegradorfarmacia.model;
 
+import java.util.Date;
+
 /**
  *
  * @author Matheus
  */
 public class RelatorioSintetico{
     
-    private String jfDataInicial;
-    private String jfDataFinal;
+    private String nome;
+    private Date dtCompra;
+    private Double valorFinal;
     
-    public RelatorioSintetico(){
-}
+    public RelatorioSintetico(){}
 
-    public String getJfDataInicial() {
-        return jfDataInicial;
+    public RelatorioSintetico(String nome, Date dtCompra, Double valorFinal) {
+        this.nome = nome;
+        this.dtCompra = dtCompra;
+        this.valorFinal = valorFinal;
     }
 
-    public void setJfDataInicial(String jfDataInicial) {
-        this.jfDataInicial = jfDataInicial;
+    public String getNome() {
+        return nome;
     }
 
-    public String getJfDataFinal() {
-        return jfDataFinal;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setJfDataFinal(String jfDataFinal) {
-        this.jfDataFinal = jfDataFinal;
+    public Date getDtCompra() {
+        return dtCompra;
     }
+
+    public void setDtCompra(Date dtCompra) {
+        this.dtCompra = dtCompra;
+    }
+
+    public Double getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(Double valorFinal) {
+        this.valorFinal = valorFinal;
+    }
+
 }
