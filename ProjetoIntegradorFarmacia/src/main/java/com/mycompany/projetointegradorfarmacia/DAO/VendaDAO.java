@@ -5,6 +5,7 @@
  */
 package com.mycompany.projetointegradorfarmacia.DAO;
 
+import com.mycompany.projetointegradorfarmacia.model.ItemVenda;
 import com.mycompany.projetointegradorfarmacia.model.Venda;
 import com.mycompany.projetointegradorfarmacia.utils.GerenciadorConexao;
 import java.sql.Connection;
@@ -19,20 +20,21 @@ import java.util.ArrayList;
  * @author vinic
  */
 public class VendaDAO {
- public static boolean salvar(Venda p) {
+ public static boolean salvar(Venda v) {
         boolean retorno = false;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
 
+        
         try {
             conexao = GerenciadorConexao.abrirConexao();
 
             instrucaoSQL = conexao.prepareStatement("INSERT INTO venda (valorFinal, idCliente, dtVenda) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
             //parametros para gravar
-            instrucaoSQL.setDouble(1, p.getValorFinal());
-            instrucaoSQL.setInt(2, p.getCliente());
-            instrucaoSQL.setDate(3, new java.sql.Date(p.getDtvenda().getTime()));
+            instrucaoSQL.setDouble(1, v.getValorFinal());
+            instrucaoSQL.setInt(2, v.getCliente());
+            instrucaoSQL.setDate(3, new java.sql.Date(v.getDtvenda().getTime()));
             
 
             int linhasAfetadas = instrucaoSQL.executeUpdate();
@@ -42,7 +44,20 @@ public class VendaDAO {
 
                 ResultSet generatedKeys = instrucaoSQL.getGeneratedKeys(); //para recuperar o id do cliente
                 if (generatedKeys.next()) {
-                    p.setId(generatedKeys.getInt(1));
+                    v.setId(generatedKeys.getInt(1));
+                   
+                    for(ItemVenda item : v.getItemVenda()){
+                        instrucaoSQL = conexao.prepareStatement("INSERT INTO ItemVenda (quantidade, idVenda, idProduto) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+
+                    //parametros para gravar
+                    instrucaoSQL.setInt(1, item.getQuantidade());
+                    instrucaoSQL.setInt(2, v.getId());
+                    instrucaoSQL.setInt(3, item.getProdutos());
+           
+                    linhasAfetadas = instrucaoSQL.executeUpdate();
+                    }
+                    
+                    
                 } else {
                     throw new SQLException("Falha ao obter ID do cliente!");
                 }

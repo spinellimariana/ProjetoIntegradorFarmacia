@@ -7,6 +7,7 @@ package com.mycompany.projetointegradorfarmacia.model;
 
 import com.mycompany.projetointegradorfarmacia.model.Cliente;
 import java.awt.List;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -18,7 +19,7 @@ public class Venda {
 
     private int id;
     private double valorFinal;
-    private List item;
+    private ArrayList<ItemVenda> itemVenda;
     private int cliente;
     private Date dtvenda;
 
@@ -26,13 +27,14 @@ public class Venda {
         //construtor vazio
     }
 
-    public Venda(int id, double valorFinal, List item, int cliente, Date dtvenda) {
+    public Venda(int id, double valorFinal, ArrayList<ItemVenda> itemVenda, int cliente, Date dtvenda) {
         this.id = id;
         this.valorFinal = valorFinal;
-        this.item = item;
+        this.itemVenda = itemVenda;
         this.cliente = cliente;
         this.dtvenda = dtvenda;
     }
+
 
     public int getId() {
         return id;
@@ -50,19 +52,11 @@ public class Venda {
         this.valorFinal = valorFinal;
     }
 
-    public List getItem() {
-        return item;
-    }
-
-    public void setItem(List item) {
-        this.item = item;
-    }
-
     public int getCliente() {
         return cliente;
     }
 
-    public void setCliente(int idCliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
 
@@ -72,6 +66,14 @@ public class Venda {
 
     public void setDtvenda(Date dtvenda) {
         this.dtvenda = dtvenda;
+    }
+
+    public ArrayList<ItemVenda> getItemVenda() {
+        return itemVenda;
+    }
+
+    public void setItemVenda(ArrayList<ItemVenda> itemVenda) {
+        this.itemVenda = itemVenda;
     }
 
 }

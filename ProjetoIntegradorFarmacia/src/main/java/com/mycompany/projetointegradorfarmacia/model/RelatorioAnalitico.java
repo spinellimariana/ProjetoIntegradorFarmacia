@@ -10,72 +10,32 @@ package com.mycompany.projetointegradorfarmacia.model;
  * @author Lenovo
  */
 public class RelatorioAnalitico {
-
-    private String dataAnalitico;
-    private int codVenda;
-    private String Produto;
-    private int Codproduto;
+    
+    private String nomeProduto;
     private int qtdProduto;
-    private float valorUnitario;
-    private float subTotal;
-    private float valorTotal;
-    private String CPFcliente;
-    private String nomeCliente;
-    private String descricaoProduto;
+    private double precoUnitario;
+    private double valorFinalProd;
+    
+    
 
     public RelatorioAnalitico() {
         //criando construtor da classe
     }
-    
-    public RelatorioAnalitico(String pDataAnalitico, int pCodVenda, String pProduto, int pCodProduto,
-            int pQtdProduto, float pValorUnitario, float pSubTotal, float pValorTotal, String pCPFcliente,
-            String pNomeCliente, String pDescricaoProduto){
-        
-        this.dataAnalitico = pDataAnalitico;
-        this.codVenda = pCodVenda;
-        this.Produto = pProduto;
-        this.Codproduto = pCodProduto;
-        this.qtdProduto = pQtdProduto;
-        this.valorUnitario = pValorUnitario;
-        this.subTotal = pSubTotal;
-        this.valorTotal = pValorTotal;
-        this.CPFcliente = pCPFcliente;
-        this.nomeCliente = pNomeCliente;
-        this.descricaoProduto = pDescricaoProduto;
-        
+
+    public RelatorioAnalitico(String nomeProduto, int qtdProduto, double precoUnitario, double valorFinalProd) {
+        this.nomeProduto = nomeProduto;
+        this.qtdProduto = qtdProduto;
+        this.precoUnitario = precoUnitario;
+        this.valorFinalProd = valorFinalProd;
     }
 
-    //abaixo todos os getters e setters
-    public String getDataAnalitico() {
-        return dataAnalitico;
+
+    public String getNomeProduto() {
+        return nomeProduto;
     }
 
-    public void setDataAnalitico(String dataAnalitico) {
-        this.dataAnalitico = dataAnalitico;
-    }
-
-    public int getCodvenda() {
-        return codVenda;
-    }
-
-    public void setCodvenda(int codVenda) {
-        this.codVenda = codVenda;
-    }
-
-    public String getProduto() {
-        return Produto;
-    }
-
-    public void setProduto(String Produto) {
-        this.Produto = Produto;
-    }
-
-    public int getCodproduto() {
-        return Codproduto;
-    }
-
-    public void setCodproduto(int Codproduto) {
-        this.Codproduto = Codproduto;
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
 
     public int getQtdProduto() {
@@ -86,52 +46,22 @@ public class RelatorioAnalitico {
         this.qtdProduto = qtdProduto;
     }
 
-    public float getValorUnitario() {
-        return valorUnitario;
+    public double getPrecoUnitario() {
+        return precoUnitario;
     }
 
-    public void setValorUnitario(float valorUnitario) {
-        this.valorUnitario = valorUnitario;
+    public void setPrecoUnitario(double precoUnitario) {
+        this.precoUnitario = precoUnitario;
     }
 
-    public float getSubTotal() {
-        return subTotal;
+    public double getValorFinalProd() {
+        return valorFinalProd;
     }
 
-    public void setSubTotal(float subTotal) {
-        this.subTotal = subTotal;
+    public void setValorFinalProd(double valorFinalProd) {
+        this.valorFinalProd = valorFinalProd;
     }
-
-    public float getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(float valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public String getCPFcliente() {
-        return CPFcliente;
-    }
-
-    public void setCPFcliente(String CPFcliente) {
-        this.CPFcliente = CPFcliente;
-    }
-
-    public String getNomeCliente() {
-        return nomeCliente;
-    }
-
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
-    }
-
-    public String getDescricaoProduto() {
-        return descricaoProduto;
-    }
-
-    public void setDescricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
-    }   
-
+   
+    
+    
 }

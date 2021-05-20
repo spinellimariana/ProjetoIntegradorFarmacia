@@ -8,11 +8,16 @@ package com.mycompany.projetointegradorfarmacia.view;
 import com.mycompany.projetointegradorfarmacia.DAO.ClienteDAO;
 import com.mycompany.projetointegradorfarmacia.DAO.ProdutoDAO;
 import com.mycompany.projetointegradorfarmacia.controller.ClienteController;
+import com.mycompany.projetointegradorfarmacia.controller.VendaController;
 import com.mycompany.projetointegradorfarmacia.model.Cliente;
 import com.mycompany.projetointegradorfarmacia.model.Produto;
+import com.mycompany.projetointegradorfarmacia.model.Venda;
 import com.mycompany.projetointegradorfarmacia.utils.Validadora;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,6 +34,9 @@ public class VendaView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
+    Cliente cliente = new Cliente();
+    Produto produto = new Produto();
+    double valorTotal = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +71,8 @@ public class VendaView extends javax.swing.JFrame {
         tbnCancelar1 = new javax.swing.JToggleButton();
         btnAdicionarProduto1 = new javax.swing.JButton();
         lblValorFinal = new javax.swing.JLabel();
+        lblNomeProduto = new javax.swing.JLabel();
+        lblValorProdutoDisplay1 = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JToggleButton();
         tbnCancelar = new javax.swing.JToggleButton();
 
@@ -149,20 +159,14 @@ public class VendaView extends javax.swing.JFrame {
 
         lblProduto.setText("Produto");
 
+        txtQuantidadeProdutos.setText("1");
         txtQuantidadeProdutos.setToolTipText("Digite a quantidade deste produto desejado");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Lista de Compras"));
 
         tblVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome do Produto", "Valor", "QTD. produtos", "valor final"
@@ -211,6 +215,11 @@ public class VendaView extends javax.swing.JFrame {
 
         tbnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelar.png"))); // NOI18N
         tbnCancelar1.setText("Cancelar");
+        tbnCancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbnCancelar1ActionPerformed(evt);
+            }
+        });
 
         btnAdicionarProduto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application-add-icon.png"))); // NOI18N
         btnAdicionarProduto1.setText("Adicionar");
@@ -220,6 +229,8 @@ public class VendaView extends javax.swing.JFrame {
                 btnAdicionarProduto1ActionPerformed(evt);
             }
         });
+
+        lblValorProdutoDisplay1.setText("Nome do produto:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -257,7 +268,12 @@ public class VendaView extends javax.swing.JFrame {
                                 .addComponent(txtQuantidadeProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnAdicionarProduto1))
-                            .addComponent(cbDeData1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cbDeData1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblValorProdutoDisplay1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblNomeProduto)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -271,7 +287,11 @@ public class VendaView extends javax.swing.JFrame {
                     .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAdicionarProduto1))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblValorProdutoDisplay1)
+                    .addComponent(lblNomeProduto))
+                .addGap(3, 3, 3)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblValorProdutoDisplay)
                     .addComponent(cbDeData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,6 +403,7 @@ public class VendaView extends javax.swing.JFrame {
 
             ArrayList<Cliente> filtro = ClienteDAO.filtroCPF(ftxCPF.getText());
             lblNomeCliente.setText(filtro.get(0).getNomeCliente());
+            cliente = filtro.get(0);
 
         }
         
@@ -390,7 +411,41 @@ public class VendaView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarClienteActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-       
+        Validadora validador = new Validadora();
+        validador.ValidarCPF(ftxCPF);
+        
+        if(tblVenda.getRowCount() == 0){
+            throw new IllegalArgumentException();    
+        }
+        
+        ArrayList<String[]> tblContent = new ArrayList<>();        
+        
+        int nLinhas = tblVenda.getRowCount();
+        
+        for(int i = 0; i < nLinhas; i++){
+            String idProd = tblVenda.getModel().getValueAt(i, 0).toString();
+            String qtd = tblVenda.getModel().getValueAt(i, 3).toString();
+            
+            String[] valores = {idProd,qtd};  
+            tblContent.add(valores);      
+        }
+        
+        Date hoje = new Date();
+ 
+        boolean retorno = VendaController.salvar(hoje, Double.parseDouble(lblValorFinal.getText()), cliente.getId(), tblContent);
+
+                if (retorno == true) {
+                    JOptionPane.showMessageDialog(null, "Venda CADASTRADA com sucesso!",
+                            "Venda realizado", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Falha no cadastro da venda!",
+                            "Falha", JOptionPane.ERROR_MESSAGE);
+                }
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void txtProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProdutoActionPerformed
@@ -406,6 +461,8 @@ public class VendaView extends javax.swing.JFrame {
             Produto prod = ProdutoDAO.listarPorId(Integer.parseInt(txtProduto.getText()));
             System.out.print(prod.getpVenda());
             lblValorProduto.setText(String.valueOf(prod.getpVenda()));
+            
+            produto = prod;
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -426,18 +483,32 @@ public class VendaView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, validadorConsulta.getMensagensErro());
         }    
         
-        
-        
-        
+        DefaultTableModel model = (DefaultTableModel)tblVenda.getModel();
+
+        model.addRow(new Object[]{produto.getCodProd(), produto.getNomeProduto(), produto.getpVenda(), txtQuantidadeProdutos.getText(), (produto.getpVenda() * Integer.parseInt(txtQuantidadeProdutos.getText()))});
         
         tblVenda.getColumnModel().getColumn(0).setPreferredWidth(10); //id
         tblVenda.getColumnModel().getColumn(1).setPreferredWidth(50); //CPF
         tblVenda.getColumnModel().getColumn(2).setPreferredWidth(50); //nome
         tblVenda.getColumnModel().getColumn(3).setPreferredWidth(30); //Genero
         tblVenda.getColumnModel().getColumn(4).setPreferredWidth(50); //E. Civil
-        tblVenda.getColumnModel().getColumn(5).setPreferredWidth(50); //Telefone
-        tblVenda.getColumnModel().getColumn(6).setPreferredWidth(50); //data nascimento
+        
+        valorTotal = valorTotal + (produto.getpVenda()* Integer.parseInt(txtQuantidadeProdutos.getText()));
+        
+        lblValorFinal.setText(String.valueOf(valorTotal));
     }//GEN-LAST:event_btnAdicionarProduto1ActionPerformed
+
+    private void tbnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnCancelar1ActionPerformed
+        int indiceLinha = tblVenda.getSelectedRow();
+        
+        DefaultTableModel model = (DefaultTableModel)tblVenda.getModel();
+        
+        String valor = model.getValueAt(indiceLinha, 4).toString();
+        valorTotal = valorTotal - Double.parseDouble(valor);
+        lblValorFinal.setText(String.valueOf(valorTotal));
+        
+        model.removeRow(indiceLinha);
+    }//GEN-LAST:event_tbnCancelar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -491,11 +562,13 @@ public class VendaView extends javax.swing.JFrame {
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblNomeCliente;
+    private javax.swing.JLabel lblNomeProduto;
     private javax.swing.JLabel lblProduto;
     private javax.swing.JLabel lblQTD;
     private javax.swing.JLabel lblValorFinal;
     private javax.swing.JLabel lblValorProduto;
     private javax.swing.JLabel lblValorProdutoDisplay;
+    private javax.swing.JLabel lblValorProdutoDisplay1;
     private javax.swing.JLabel lblValorTotal;
     private javax.swing.JTable tblVenda;
     private javax.swing.JToggleButton tbnCancelar;

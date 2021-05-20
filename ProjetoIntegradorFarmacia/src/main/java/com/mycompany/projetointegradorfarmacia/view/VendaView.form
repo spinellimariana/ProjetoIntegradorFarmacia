@@ -254,6 +254,12 @@
                                   <Component id="cbDeData1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblValorProdutoDisplay1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblNomeProduto" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -271,7 +277,12 @@
                           <Component id="btnConsultarProduto" alignment="3" max="32767" attributes="0"/>
                           <Component id="btnAdicionarProduto1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblValorProdutoDisplay1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblValorProdutoDisplay" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbDeData1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -304,6 +315,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtQuantidadeProdutos">
               <Properties>
+                <Property name="text" type="java.lang.String" value="1"/>
                 <Property name="toolTipText" type="java.lang.String" value="Digite a quantidade deste produto desejado"/>
               </Properties>
             </Component>
@@ -343,7 +355,7 @@
                     <Component class="javax.swing.JTable" name="tblVenda">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="5" rowCount="8">
+                          <Table columnCount="5" rowCount="0">
                             <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
                             <Column editable="true" title="Nome do Produto" type="java.lang.Object"/>
                             <Column editable="true" title="Valor" type="java.lang.Object"/>
@@ -446,6 +458,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbnCancelar1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnAdicionarProduto1">
               <Properties>
@@ -460,6 +475,13 @@
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblValorFinal">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblNomeProduto">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblValorProdutoDisplay1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome do produto:"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

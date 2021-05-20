@@ -8,6 +8,7 @@ package com.mycompany.projetointegradorfarmacia.controller;
 import com.mycompany.projetointegradorfarmacia.DAO.ClienteDAO;
 import com.mycompany.projetointegradorfarmacia.DAO.VendaDAO;
 import com.mycompany.projetointegradorfarmacia.model.Cliente;
+import com.mycompany.projetointegradorfarmacia.model.ItemVenda;
 import com.mycompany.projetointegradorfarmacia.model.Venda;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,12 +26,27 @@ public class VendaController {
      * @return true - para sucesso | false - para falha
      */
 
-    public static boolean salvar(Double valorFinal, int idCliente) {
+    public static boolean salvar(Date dtVenda,  Double valorFinal, int idCliente, ArrayList<String[]> itensVenda) {
 
         Venda objSalvar = new Venda();
 
         objSalvar.setValorFinal(valorFinal);
         objSalvar.setCliente(idCliente);
+        objSalvar.setDtvenda(dtVenda);
+        
+        ArrayList<ItemVenda> listItem = new ArrayList<ItemVenda>();
+        
+        for(String[] item : itensVenda) {
+            ItemVenda itemVenda = new ItemVenda();
+            
+            itemVenda.setProdutos(Integer.parseInt(item[0]));
+            itemVenda.setQuantidade(Integer.parseInt(item[1]));
+            
+            listItem.add(itemVenda);
+        }
+        
+        objSalvar.setItemVenda(listItem);
+        
 
         return VendaDAO.salvar(objSalvar);
     }
@@ -67,16 +83,16 @@ public class VendaController {
      * Método responsável por passar informações a serem listadas na tabela view
      * @return ArrayList String[]
      */
-    public static ArrayList<String[]> listarV() {
-        ArrayList<Venda> listaVendas = VendaDAO.listarProdutos();
-        ArrayList<String[]> retorno = new ArrayList<>();
-
-        for (Venda item : listaVendas) {
-            Venda temp = new Venda();
-            retorno.add(new String[]{String.valueOf(item.getId()), item.getValorFinal(), item.getCliente()});
-
-        }
-        return retorno;
-    }
+//    public static ArrayList<String[]> listarV() {
+//        ArrayList<Venda> listaVendas = VendaDAO.listarProdutos();
+//        ArrayList<String[]> retorno = new ArrayList<>();
+//
+//        for (Venda item : listaVendas) {
+//            Venda temp = new Venda();
+//            retorno.add(new String[]{String.valueOf(item.getId()), item.getValorFinal(), item.getCliente()});
+//
+//        }
+//        return retorno;
+//    }
 
 }
