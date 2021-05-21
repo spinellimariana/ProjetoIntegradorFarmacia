@@ -26,7 +26,7 @@ public class GerenciadorConexao {
     public static String DATABASE = "farmacia";              //nome do seu banco de dados
 
     public static String LOGIN = "root";                     //nome de um usuário de seu BD      
-    public static String SENHA = "VIni@612216";                         //sua senha de acesso
+    public static String SENHA = "";                         //sua senha de acesso
 
     public static String URL = "";
 

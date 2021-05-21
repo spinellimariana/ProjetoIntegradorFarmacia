@@ -5,18 +5,12 @@
  */
 package com.mycompany.projetointegradorfarmacia.view;
 
-import com.mycompany.projetointegradorfarmacia.DAO.SinteticoDAO;
 import com.mycompany.projetointegradorfarmacia.controller.SinteticoController;
-import com.mycompany.projetointegradorfarmacia.model.Cliente;
-import com.mycompany.projetointegradorfarmacia.model.RelatorioSintetico;
-import com.mycompany.projetointegradorfarmacia.utils.Validadora;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -156,13 +150,14 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(btnConsultar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAnalitico)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnCancelar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelar)
+                        .addGap(0, 64, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -203,6 +198,7 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
 
         }
         } catch (Exception e) {
+        System.out.println(e.getMessage());
         }
        
 

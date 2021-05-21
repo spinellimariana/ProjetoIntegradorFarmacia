@@ -5,7 +5,7 @@
  */
 package com.mycompany.projetointegradorfarmacia.DAO;
 
-import com.mycompany.projetointegradorfarmacia.model.Cliente;
+
 import com.mycompany.projetointegradorfarmacia.model.RelatorioSintetico;
 import com.mycompany.projetointegradorfarmacia.utils.GerenciadorConexao;
 import java.sql.Connection;
@@ -36,9 +36,9 @@ public static ArrayList<RelatorioSintetico> filtroData(Date inicialDate, Date fi
                                                     "FROM venda  \n" +
                                                     "INNER JOIN cliente  \n" +
                                                     "ON venda.idCliente = cliente.id \n" +
-                                                    "WHERE venda.dtvenda between ? AND ?; ");//montar o select
-            instrucaoSQL.setDate(0, new java.sql.Date(inicialDate.getTime()));
-            instrucaoSQL.setDate(1, new java.sql.Date(finalDate.getTime()));
+                                                    "WHERE venda.dtvenda BETWEEN ? AND ?;");//montar o select
+            instrucaoSQL.setDate(1, new java.sql.Date(inicialDate.getTime()));
+            instrucaoSQL.setDate(2, new java.sql.Date(finalDate.getTime()));
             rs = instrucaoSQL.executeQuery();
             
             while(rs.next())
