@@ -1,13 +1,13 @@
 package com.mycompany.projetointegradorfarmacia.view;
 
+import com.mycompany.projetointegradorfarmacia.DAO.ProdutoDAO;
+import static com.mycompany.projetointegradorfarmacia.DAO.ProdutoDAO.listarProdutos;
+import com.mycompany.projetointegradorfarmacia.controller.ProdutoController;
+import com.mycompany.projetointegradorfarmacia.model.Produto;
 import com.mycompany.projetointegradorfarmacia.utils.Validadora;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.net.URL;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import sun.awt.SunToolkit;
 
 /**
  *
@@ -15,8 +15,17 @@ import sun.awt.SunToolkit;
  */
 public class CadastroProdutoView extends javax.swing.JFrame {
 
+    public String modoTela = "Criação";
+    Produto objProduto;
+
     public CadastroProdutoView() {
         initComponents();
+
+        objProduto = new Produto();
+
+        setLocationRelativeTo(null);
+
+        listarProdutos();
 
 //        //Inserindo icone na janela
 //        URL url = this.getClass().getResource("/farmacia.png");
@@ -102,6 +111,11 @@ public class CadastroProdutoView extends javax.swing.JFrame {
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/alterar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom-icon.png"))); // NOI18N
         btnPesquisar.setText("Pesquisar");
@@ -112,6 +126,11 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         });
 
         txtCodProduto.setName("CÓDIGO"); // NOI18N
+        txtCodProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodProdutoActionPerformed(evt);
+            }
+        });
         txtCodProduto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodProdutoKeyTyped(evt);
@@ -151,7 +170,14 @@ public class CadastroProdutoView extends javax.swing.JFrame {
 
         tblProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
                 "Código", "Produto", "Descrição", "Fabricante", "Qtd.", "Preço"
@@ -289,11 +315,38 @@ public class CadastroProdutoView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCampoConsultaActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+        if (tblProduto.getRowCount() > 0) {
+
+            int numeroLinha = tblProduto.getSelectedRow();
+
+            if (numeroLinha < 0) {
+
+                JOptionPane.showMessageDialog(this, "Selecione um produto para excluir!");
+
+            } else {
+
+                int cod = Integer.parseInt(tblProduto.getModel().getValueAt(numeroLinha, 0).toString());
+                objProduto.setCodProd(cod);
+                int id = objProduto.getCodProd();
+                boolean retorno = ProdutoController.Excluir(id);
+
+                if (retorno == true) {
+                    JOptionPane.showMessageDialog(this, "Produto excluído com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Falha ao excluir Produto!");
+                }
+
+                listarProdutos();
+
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um produto da tabela!");
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-
+        //listarProdutos();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparMouseClicked
@@ -307,6 +360,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         for (int i = tbm.getRowCount() - 1; i >= 0; i--) {
             tbm.removeRow(i);
         }
+        listarProdutos();
     }//GEN-LAST:event_btnLimparMouseClicked
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -314,26 +368,222 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         validar.ValidarTexto(txtCampoConsulta);
         if (validar.hasErro()) {
             JOptionPane.showMessageDialog(this, validar.getMensagensErro());
+        } else {
+
+            int id = Integer.parseInt(txtCampoConsulta.getText());
+
+            ArrayList<String[]> filtro = ProdutoController.filtroProduto(id);
+
+            DefaultTableModel modelo = (DefaultTableModel) tblProduto.getModel();
+            modelo.setRowCount(0);
+
+            for (String[] item : filtro) {
+                modelo.addRow(item);
+            }
+
         }
+
+
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+
+        CadastroProdutoView telaCadastro = new CadastroProdutoView();
+        telaCadastro.setVisible(true);
+
         Validadora validar = new Validadora();
 
         validar.ValidarNumero(txtQtdEstoque);
-        validar.ValidarNumero(txtCodProduto);
+//      validar.ValidarNumero(txtCodProduto);
         validar.ValidarTexto(txtDescProduto);
         validar.ValidarTexto(txtNomeProduto);
         validar.ValidarTexto(txtPreco);
 
         if (validar.hasErro()) {
             JOptionPane.showMessageDialog(this, validar.getMensagensErro());
-        }
+        } else {
+
+            if (modoTela == "Criação") {
+
+                //implementar verificação de obrigatoriedade
+                String NomeProduto = txtNomeProduto.getText();
+                int quantProd = Integer.parseInt(txtQtdEstoque.getText());
+                double pVenda = Double.parseDouble(txtPreco.getText());
+                String DescProduto = txtDescProduto.getText();
+                String Fabricante = txtFabricante.getText();
+
+                //Passo as informações para o objeto produto (propriedade deste JFrame)
+//                objProduto.setNomeProduto(NomeProduto);
+//                objProduto.setQuantProd(quantProd);
+//                objProduto.setpVenda(pVenda);
+//                objProduto.setDescProduto(DescProduto);
+//                objProduto.setFabricante(Fabricante);
+                //Mando salvar no banco de dados usando a classe DAO
+                boolean retorno = ProdutoController.Cadastrar(pVenda, quantProd, DescProduto, Fabricante, NomeProduto);
+
+                if (retorno == true) {
+                    JOptionPane.showMessageDialog(null, "Produto CADASTRADO com sucesso!",
+                            "Cadastro realizado", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Falha no cadastro do Produto!",
+                            "Falha", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } else { //Modo de alteração
+
+                int id = objProduto.getCodProd();
+
+                //TODO: implementar verificação de obrigatoriedade
+                String NomeProduto = txtNomeProduto.getText();
+                int quantProd = Integer.parseInt(txtQtdEstoque.getText());
+                double pVenda = Double.parseDouble(txtPreco.getText());
+                String DescProduto = txtDescProduto.getText();
+                String Fabricante = txtFabricante.getText();
+
+                //Passo as informações para o objeto produto (propriedade deste JFrame)
+                objProduto.setNomeProduto(NomeProduto);
+//                objProduto.setCodProd(CodProd);
+                objProduto.setQuantProd(quantProd);
+                objProduto.setpVenda(pVenda);
+                objProduto.setDescProduto(DescProduto);
+                objProduto.setFabricante(Fabricante);
+
+                //Mando salvar no banco de dados usando a classe DAO
+                boolean retorno = ProdutoController.Alterar(id, pVenda, quantProd, DescProduto, Fabricante, NomeProduto);
+
+                if (retorno == true) {
+
+                    JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!", "Produto Cadastrado", JOptionPane.INFORMATION_MESSAGE);
+                    modoTela = "Criação";
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Erro ao cadastrar na base de dados\n",
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
+        listarProdutos();
+    }
 
     private void txtCodProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodProdutoKeyTyped
 
     }//GEN-LAST:event_txtCodProdutoKeyTyped
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+
+        if (tblProduto.getRowCount() > 0) {
+
+            //Resgato o número da linha pelo JTable
+            int numeroLinha = tblProduto.getSelectedRow();
+
+            if (numeroLinha < 0) {
+                JOptionPane.showMessageDialog(this, "Selecione um Produto da tabela!");
+
+            } else {
+
+                int idProduto = Integer.parseInt(tblProduto.getModel().getValueAt(numeroLinha, 0).toString());
+
+                
+                int CodProd = Integer.parseInt(tblProduto.getModel().getValueAt(numeroLinha, 0).toString());
+                String pVenda = (tblProduto.getModel().getValueAt(numeroLinha, 1).toString());
+                String quantProd = (tblProduto.getModel().getValueAt(numeroLinha, 2).toString());
+                String DescProduto = tblProduto.getModel().getValueAt(numeroLinha, 3).toString();
+                String Fabricante = tblProduto.getModel().getValueAt(numeroLinha, 4).toString();
+                String NomeProduto = tblProduto.getModel().getValueAt(numeroLinha, 5).toString();
+
+                objProduto.setCodProd(CodProd);
+//                objProduto.setpVenda(pVenda);
+//                objProduto.setQuantProd(quantProd);
+                objProduto.setDescProduto(DescProduto);
+                objProduto.setFabricante(Fabricante);
+                objProduto.setNomeProduto(NomeProduto);
+
+                objProduto.setCodProd(idProduto);
+
+                //Passo o objeto para a tela de Cadastro informando que é alteração
+                CadastroProdutoView telaCadastro = new CadastroProdutoView();
+                telaCadastro.modoTela = "Alteração";
+
+                //Exibir o JFrame
+                telaCadastro.setVisible(true);
+
+            }
+    }//GEN-LAST:event_btnAlterarActionPerformed
+    }
+
+    private void txtCodProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodProdutoActionPerformed
+
+//    public void CarregarJTable() {
+//
+//        int[] codProd = new int[5];
+//        double[] pVenda = new double[5];
+//        int[] QuantProd = new int[5];
+//        String[] DescProduto = new String[5];
+//        String[] Fabricante = new String[5];
+//        String[] NomeProduto = new String[5];
+//
+//        ArrayList<Produto> listaProdutos = ProdutoDAO.listarProdutos("");
+//
+//        DefaultTableModel tmProdutos = new DefaultTableModel();
+//        tmProdutos.addColumn("CodProd");
+//        tmProdutos.addColumn("pVenda");
+//        tmProdutos.addColumn("QuantProd");
+//        tmProdutos.addColumn("DescProduto");
+//        tmProdutos.addColumn("Fabricante");
+//        tmProdutos.addColumn("NomeProduto");
+//
+//        //Defina sua estrutura com a estrutura tmClientes;
+//        tblProduto.setModel(tmProdutos);
+//
+//        //Limpo a tabela, excluindo todas as linhas para depois mostrar os dados novamente
+//        tmProdutos.setRowCount(0);
+////        Iterable<Produto> listar = null;        
+//
+//        for (Produto c : listaProdutos) {
+//            tmProdutos.addRow(new Object[]{c.getCodProd(), c.getpVenda(), c.getQuantProd(), c.getDescProduto(), c.getFabricante(), c.getNomeProduto()});
+//        }
+//
+//        //Defino o tamanho para cada coluna
+//        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(50); //CodProduto
+//        tblProduto.getColumnModel().getColumn(1).setPreferredWidth(200); //Preco
+//        tblProduto.getColumnModel().getColumn(2).setPreferredWidth(100); // QtdEstoque
+//        tblProduto.getColumnModel().getColumn(3).setPreferredWidth(300); // DescProduto
+//        tblProduto.getColumnModel().getColumn(4).setPreferredWidth(300); // Fabricante
+//        tblProduto.getColumnModel().getColumn(5).setPreferredWidth(300); // NomeProduto
+//
+//    }
+
+    public void listarProdutos() {
+        //lista toda a base de dados daquela tabela
+        ArrayList<String[]> listaProdutos = ProdutoController.listarProdutos();
+
+        DefaultTableModel tmProduto = new DefaultTableModel();
+        tmProduto.addColumn("CodProd");
+        tmProduto.addColumn("pVenda");
+        tmProduto.addColumn("QuantProd");
+        tmProduto.addColumn("DescProduto");
+        tmProduto.addColumn("Fabricante");
+        tmProduto.addColumn("NomeProduto");
+
+        tblProduto.setModel(tmProduto);
+        tmProduto.setRowCount(0);
+
+        for (String[] item : listaProdutos) {
+            tmProduto.addRow(item);
+
+        }
+
+        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(10); //Cod
+        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(50); //pVenda
+        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(50); //QuantProd
+        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(50); //Desc
+        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(50); //Fabricante
+        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(50); //NomeProd
+    }
 
     /**
      * @param args the command line arguments
