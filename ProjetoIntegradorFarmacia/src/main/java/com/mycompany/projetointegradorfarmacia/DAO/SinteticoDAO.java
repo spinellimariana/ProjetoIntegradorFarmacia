@@ -32,7 +32,7 @@ public static ArrayList<RelatorioSintetico> filtroData(Date inicialDate, Date fi
         try {
 
             conexao = GerenciadorConexao.abrirConexao();
-            instrucaoSQL = conexao.prepareStatement("SELECT venda.dtvenda, cliente.nome, venda.valorFinal\n" +
+            instrucaoSQL = conexao.prepareStatement("SELECT venda.id, venda.dtvenda, cliente.nome, venda.valorFinal\n" +
                                                     "FROM venda  \n" +
                                                     "INNER JOIN cliente  \n" +
                                                     "ON venda.idCliente = cliente.id \n" +
@@ -44,6 +44,7 @@ public static ArrayList<RelatorioSintetico> filtroData(Date inicialDate, Date fi
             while(rs.next())
             {
                 RelatorioSintetico c = new RelatorioSintetico();
+                c.setIdVenda(rs.getInt("id"));
                 c.setDtCompra(rs.getDate("dtvenda"));
                 c.setNome(rs.getString("nome"));
                 c.setValorFinal(rs.getDouble("valorFinal"));

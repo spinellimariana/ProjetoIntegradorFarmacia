@@ -91,7 +91,7 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Data", "Cliente", "Valor"
+                "Cod Venda", "Data", "Cliente", "Valor"
             }
         ));
         jScrollPane1.setViewportView(tblSintetico);
@@ -165,7 +165,16 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnaliticoActionPerformed
-        RelatorioAnaliticoView ra = new RelatorioAnaliticoView();
+        int linhaSelecionada = tblSintetico.getSelectedRow();
+        
+        String id = tblSintetico.getModel().getValueAt(linhaSelecionada, 0).toString();
+        String nome = tblSintetico.getModel().getValueAt(linhaSelecionada, 2).toString();
+        String valorFinal = tblSintetico.getModel().getValueAt(linhaSelecionada, 3).toString();
+        
+        
+        String[] valores = {id, nome, valorFinal};
+        
+        RelatorioAnaliticoView ra = new RelatorioAnaliticoView(valores);
         ra.setVisible(true);
     }//GEN-LAST:event_btnAnaliticoActionPerformed
 
@@ -186,6 +195,7 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
         ArrayList<String[]> relatorio = SinteticoController.filtroData(jdtInicial.getDate(), jdtFinal.getDate());
 
         DefaultTableModel tmSintetico = new DefaultTableModel();
+        tmSintetico.addColumn("cod Venda");
         tmSintetico.addColumn("dt venda");
         tmSintetico.addColumn("Nome do Cliente");
         tmSintetico.addColumn("Valor final");

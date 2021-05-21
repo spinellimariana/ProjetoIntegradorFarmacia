@@ -13,20 +13,16 @@ public class RelatorioAnalitico {
     
     private String nomeProduto;
     private int qtdProduto;
-    private double precoUnitario;
-    private double valorFinalProd;
-    
-    
+    private double precoUnitario;    
 
     public RelatorioAnalitico() {
         //criando construtor da classe
     }
 
-    public RelatorioAnalitico(String nomeProduto, int qtdProduto, double precoUnitario, double valorFinalProd) {
+    public RelatorioAnalitico(String nomeProduto, int qtdProduto, double precoUnitario) {
         this.nomeProduto = nomeProduto;
         this.qtdProduto = qtdProduto;
         this.precoUnitario = precoUnitario;
-        this.valorFinalProd = valorFinalProd;
     }
 
 
@@ -53,15 +49,5 @@ public class RelatorioAnalitico {
     public void setPrecoUnitario(double precoUnitario) {
         this.precoUnitario = precoUnitario;
     }
-
-    public double getValorFinalProd() {
-        return valorFinalProd;
-    }
-
-    public void setValorFinalProd(double valorFinalProd) {
-        this.valorFinalProd = valorFinalProd;
-    }
-   
-    
     
 }

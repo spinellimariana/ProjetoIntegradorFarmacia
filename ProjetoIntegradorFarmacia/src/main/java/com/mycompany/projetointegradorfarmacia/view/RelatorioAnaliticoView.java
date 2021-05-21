@@ -5,9 +5,9 @@
  */
 package com.mycompany.projetointegradorfarmacia.view;
 
-import com.mycompany.projetointegradorfarmacia.utils.Validadora;
-import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
+import com.mycompany.projetointegradorfarmacia.controller.AnaliticoController;
+import java.text.ParseException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author belle
  */
 public class RelatorioAnaliticoView extends javax.swing.JFrame {
-
+    int id = 0;
     /**
      * Creates new form RelatorioAnalitico
      */
@@ -23,7 +23,18 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-
+    
+    public RelatorioAnaliticoView(String[] objSint) throws ParseException{
+        initComponents();
+        
+        this.lblNome.setText(objSint[1]);
+        this.lblValorTotal.setText(String.valueOf(objSint[2]));
+        id = Integer.parseInt(objSint[0]);
+        
+        listarClientes();
+        
+        setLocationRelativeTo(null);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,26 +45,23 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
     private void initComponents() {
 
         grupoFiltros = new javax.swing.ButtonGroup();
+        jProgressBar1 = new javax.swing.JProgressBar();
         pnlPrincipal = new javax.swing.JPanel();
-        txtPesquisa = new javax.swing.JTextField();
-        lblCodVenda = new javax.swing.JLabel();
         pnlDetalhes = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
-        btnPesquisar = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblValorTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Rede Farmácia - Relatório Analítico");
 
         pnlPrincipal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Relatório Analítico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
-        txtPesquisa.setName("PESQUISA"); // NOI18N
-
-        lblCodVenda.setText("Cód. de Venda:");
-
         pnlDetalhes.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes da Compra"));
 
-        tblProdutos.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalhes da Compra"));
         tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -63,6 +71,7 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tblProdutos);
+        tblProdutos.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout pnlDetalhesLayout = new javax.swing.GroupLayout(pnlDetalhes);
         pnlDetalhes.setLayout(pnlDetalhesLayout);
@@ -72,47 +81,42 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
         );
         pnlDetalhesLayout.setVerticalGroup(
             pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDetalhesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
         );
 
-        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom-icon.png"))); // NOI18N
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.setPreferredSize(new java.awt.Dimension(99, 48));
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Nome do Cliente:");
+
+        jLabel3.setText("Valor Total:");
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pnlDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(lblCodVenda)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(lblNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(lblValorTotal)
+                .addGap(82, 82, 82))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCodVenda))
-                .addGap(18, 18, 18)
-                .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(jLabel1)
+                    .addComponent(lblNome)
+                    .addComponent(jLabel3)
+                    .addComponent(lblValorTotal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,28 +126,53 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public void listarClientes() throws ParseException {
+        //lista toda a base de dados daquela tabela
+        
+        try {
+        ArrayList<String[]> listaItensVenda = AnaliticoController.filtroById(id);
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        Validadora validador = new Validadora();
-        validador.ValidarNumero(txtPesquisa);
-        if (validador.hasErro()) {
-            JOptionPane.showMessageDialog(this, validador.getMensagensErro());
+        DefaultTableModel tmItensVenda = new DefaultTableModel();
+        tmItensVenda.addColumn("Produto");
+        tmItensVenda.addColumn("quantidade");
+        tmItensVenda.addColumn("valor unitário");
+        tmItensVenda.addColumn("valor final");
+
+
+        tblProdutos.setModel(tmItensVenda);
+        tmItensVenda.setRowCount(0);
+
+        for (String[] item : listaItensVenda) {
+            tmItensVenda.addRow(item);
+
+        }
+
+        tblProdutos.getColumnModel().getColumn(0).setPreferredWidth(50); //id
+        tblProdutos.getColumnModel().getColumn(1).setPreferredWidth(50); //CPF
+        tblProdutos.getColumnModel().getColumn(2).setPreferredWidth(50); //nome
+        tblProdutos.getColumnModel().getColumn(3).setPreferredWidth(30); //Genero
+    
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         
-    }//GEN-LAST:event_btnPesquisarActionPerformed
+    }
 
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -183,13 +212,15 @@ public class RelatorioAnaliticoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnPesquisar;
     private javax.swing.ButtonGroup grupoFiltros;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCodVenda;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblValorTotal;
     private javax.swing.JPanel pnlDetalhes;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JTable tblProdutos;
-    private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,17 +13,29 @@ import java.util.Date;
  */
 public class RelatorioSintetico{
     
+    private int idVenda;
     private String nome;
     private Date dtCompra;
     private Double valorFinal;
     
     public RelatorioSintetico(){}
 
-    public RelatorioSintetico(String nome, Date dtCompra, Double valorFinal) {
+    public RelatorioSintetico(int idVenda, String nome, Date dtCompra, Double valorFinal) {
+        this.idVenda = idVenda;
         this.nome = nome;
         this.dtCompra = dtCompra;
         this.valorFinal = valorFinal;
     }
+
+    public int getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(int idVenda) {
+        this.idVenda = idVenda;
+    }
+
+    
 
     public String getNome() {
         return nome;

@@ -22,18 +22,11 @@ import java.util.Date;
 public class SinteticoController {
      public static ArrayList<String[]> filtroData(Date inicialDate, Date finalDate) throws ParseException {
          
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
-//        String strDateInicial = dateFormat.format(inicialDate);  
-//        Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(strDateInicial);  
-//        
-//        String strDateFinal = dateFormat.format(finalDate);
-//        Date date2=new SimpleDateFormat("yyyy-MM-dd").parse(strDateFinal);  
-         
         ArrayList<RelatorioSintetico> filtro = SinteticoDAO.filtroData(inicialDate, finalDate);
         ArrayList<String[]> listaFiltro = new ArrayList<>();
 
         for (RelatorioSintetico item : filtro) {
-            listaFiltro.add(new String[]{String.valueOf(item.getDtCompra()), item.getNome(), String.valueOf(item.getValorFinal())});
+            listaFiltro.add(new String[]{String.valueOf(item.getIdVenda()), String.valueOf(item.getDtCompra()), item.getNome(), String.valueOf(item.getValorFinal())});
 
         }
 
