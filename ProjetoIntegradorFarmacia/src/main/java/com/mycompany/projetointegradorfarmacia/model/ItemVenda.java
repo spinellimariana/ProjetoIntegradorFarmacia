@@ -11,7 +11,7 @@ package com.mycompany.projetointegradorfarmacia.model;
  */
 public class ItemVenda {
     
-//    private int id;
+
     private int idProduto;
     private int idVenda;
     private int quantidade;
@@ -22,21 +22,12 @@ public class ItemVenda {
     
     
     public ItemVenda(int pID, int pProduto, int pVenda, int pQuantidade){
-//        this.id = pID;
         this.idProduto = pProduto;
         this.quantidade = pQuantidade;
         this.idVenda = pVenda;
     }
     
 
-    
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
 
     public int getProdutos() {
         return idProduto;

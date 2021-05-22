@@ -103,16 +103,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
         btnConsultarNome = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        mnuArquivo = new javax.swing.JMenu();
-        mnuConsultaNome = new javax.swing.JMenuItem();
-        mnuConsultarCPF = new javax.swing.JMenuItem();
-        mnuSalvarCliente = new javax.swing.JMenuItem();
-        mnuExcluirCliente = new javax.swing.JMenuItem();
-        mnuAlterarCliente = new javax.swing.JMenuItem();
-        mnuLimpar = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        mnuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Rede Farmácia - Cadastro Cliente");
@@ -194,6 +184,11 @@ public class CadastroClienteView extends javax.swing.JFrame {
         ftxTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 ftxTelefoneFocusLost(evt);
+            }
+        });
+        ftxTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxTelefoneActionPerformed(evt);
             }
         });
         ftxTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -456,7 +451,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
                     .addComponent(btnAlterarCliente)
                     .addComponent(btnLimpar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboEstado, ftxCPF, ftxCepCliente, jDateChooser1, txtBairro, txtCidade, txtEmail, txtEndereco, txtNome});
@@ -468,77 +463,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboEstadoCivil, cboGenero, ftxTelefone});
 
         txtCidade.getAccessibleContext().setAccessibleName("CIDADE");
-
-        mnuArquivo.setText("Arquivo");
-
-        mnuConsultaNome.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        mnuConsultaNome.setText("Consultar Nome");
-        mnuConsultaNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuConsultaNomeActionPerformed(evt);
-            }
-        });
-        mnuArquivo.add(mnuConsultaNome);
-
-        mnuConsultarCPF.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        mnuConsultarCPF.setText("Consultar CPF");
-        mnuConsultarCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuConsultarCPFActionPerformed(evt);
-            }
-        });
-        mnuArquivo.add(mnuConsultarCPF);
-
-        mnuSalvarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        mnuSalvarCliente.setText("Salvar");
-        mnuSalvarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuSalvarClienteActionPerformed(evt);
-            }
-        });
-        mnuArquivo.add(mnuSalvarCliente);
-
-        mnuExcluirCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        mnuExcluirCliente.setText("Excluir");
-        mnuExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuExcluirClienteActionPerformed(evt);
-            }
-        });
-        mnuArquivo.add(mnuExcluirCliente);
-
-        mnuAlterarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        mnuAlterarCliente.setText("Alterar");
-        mnuAlterarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuAlterarClienteActionPerformed(evt);
-            }
-        });
-        mnuArquivo.add(mnuAlterarCliente);
-
-        mnuLimpar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-        mnuLimpar.setText("Limpar Campos");
-        mnuLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuLimparActionPerformed(evt);
-            }
-        });
-        mnuArquivo.add(mnuLimpar);
-        mnuArquivo.add(jSeparator1);
-
-        mnuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-        mnuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Log-Out-icon.png"))); // NOI18N
-        mnuSair.setText("Fechar");
-        mnuSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuSairActionPerformed(evt);
-            }
-        });
-        mnuArquivo.add(mnuSair);
-
-        jMenuBar1.add(mnuArquivo);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -566,230 +490,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderecoActionPerformed
 
-
-    private void mnuSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalvarClienteActionPerformed
-        Validadora validador = new Validadora();
-        validador.ValidarCPF(ftxCPF);
-        validador.ValidarCEP(ftxCepCliente);
-
-        //validando campos de texto
-        validador.ValidarTexto(txtNome);
-        validador.ValidarTexto(txtEndereco);
-        validador.ValidarTexto(txtEmail);
-        validador.ValidarTexto(txtBairro);
-        validador.ValidarTexto(txtCidade);
-
-        //validando campos de combo box
-        validador.ValidarComboBox(cboGenero);
-        validador.ValidarComboBox(cboEstado);
-
-        if (validador.hasErro()) {
-            JOptionPane.showMessageDialog(this, validador.getMensagensErro());
-        } else {
-            if (modoTela == "criação") {
-
-                String CPF = ftxCPF.getText();
-                String nome = txtNome.getText();
-                String genero = cboGenero.getSelectedItem().toString();
-                String estadoCivil = cboEstadoCivil.getSelectedItem().toString();
-                String telefone = ftxTelefone.getText();
-                Date dtNascimento = jDateChooser1.getDate();
-//String dtNascimento = ftxNascimento.getText();
-                String email = txtEmail.getText();
-                String endereco = txtEndereco.getText();
-                String bairro = txtBairro.getText();
-                String cidade = txtCidade.getText();
-                String estado = cboEstado.getSelectedItem().toString();
-                String CEP = ftxCepCliente.getText();
-
-                boolean retorno = ClienteController.salvar(CPF, nome, genero, estadoCivil, telefone, dtNascimento,
-                        email, endereco, bairro, cidade, estado, CEP);
-
-                if (retorno == true) {
-                    JOptionPane.showMessageDialog(null, "Cliente CADASTRADO com sucesso!",
-                            "Cadastro realizado", JOptionPane.INFORMATION_MESSAGE);
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Falha no cadastro do cliente!",
-                            "Falha", JOptionPane.ERROR_MESSAGE);
-                }
-
-            } else {
-                //MODO ALTERAÇÃO BOTAO ALTERAR
-                int id = objCliente.getId();
-
-                String CPF = ftxCPF.getText();
-                String nome = txtNome.getText();
-                String genero = cboGenero.getSelectedItem().toString();
-                String estadoCivil = cboEstadoCivil.getSelectedItem().toString();
-                String telefone = ftxTelefone.getText();
-                Date dtNascimento = jDateChooser1.getDate();
-//String dtNascimento = ftxNascimento.getText(); //fazer jCalendar
-                String email = txtEmail.getText();
-                String endereco = txtEndereco.getText();
-                String bairro = txtBairro.getText();
-                String cidade = txtCidade.getText();
-                String estado = cboEstado.getSelectedItem().toString();
-                String CEP = ftxCepCliente.getText();
-
-                boolean retorno = ClienteController.atualizar(id, CPF, nome, genero, estadoCivil, telefone, dtNascimento,
-                        email, endereco, bairro, cidade, estado, CEP);
-
-                if (retorno == true) {
-                    JOptionPane.showMessageDialog(null, "Cliente ALTERADO com sucesso!",
-                            "Cadastro realizado", JOptionPane.INFORMATION_MESSAGE);
-                    modoTela = "criação";
-                } else {
-                    JOptionPane.showMessageDialog(null, "Falha na ALTERAÇÃO de cliente!",
-                            "Falha", JOptionPane.ERROR_MESSAGE);
-                }
-
-            }
-        }
-        listarClientes();
-    }//GEN-LAST:event_mnuSalvarClienteActionPerformed
-
-    private void mnuAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAlterarClienteActionPerformed
-        if (tblCliente.getRowCount() > 0) {
-            int numeroLinha = tblCliente.getSelectedRow();
-
-            if (numeroLinha < 0) {
-                JOptionPane.showMessageDialog(this, "Selecione um cliente da tabela!");
-            } else {
-
-                int IDcliente = Integer.parseInt(tblCliente.getModel().getValueAt(numeroLinha, 0).toString());
-
-                String CPF = tblCliente.getModel().getValueAt(numeroLinha, 1).toString();
-                String nome = tblCliente.getModel().getValueAt(numeroLinha, 2).toString();
-                String genero = tblCliente.getModel().getValueAt(numeroLinha, 3).toString();
-                String estadoCivil = tblCliente.getModel().getValueAt(numeroLinha, 4).toString();
-                String telefone = tblCliente.getModel().getValueAt(numeroLinha, 5).toString();
-                String dtNascimento = tblCliente.getModel().getValueAt(numeroLinha, 6).toString(); //fazer jCalendar
-                String email = tblCliente.getModel().getValueAt(numeroLinha, 7).toString();
-                String endereco = tblCliente.getModel().getValueAt(numeroLinha, 8).toString();
-                String bairro = tblCliente.getModel().getValueAt(numeroLinha, 9).toString();
-                String cidade = tblCliente.getModel().getValueAt(numeroLinha, 10).toString();
-                String estado = tblCliente.getModel().getValueAt(numeroLinha, 11).toString();
-                String CEP = tblCliente.getModel().getValueAt(numeroLinha, 12).toString();
-
-                objCliente.setId(IDcliente);
-                ftxCPF.setText(CPF);
-                txtNome.setText(nome);
-                ftxTelefone.setText(telefone);
-                //ftxNascimento.setText(dtNascimento);
-                txtEmail.setText(email);
-                txtEndereco.setText(endereco);
-                txtBairro.setText(bairro);
-                txtCidade.setText(cidade);
-                cboEstado.setName(estado);
-                ftxCepCliente.setText(CEP);
-
-                if (genero.equals("Masculino")) {
-                    cboGenero.setSelectedIndex(1);
-                } else if (genero.equals("Feminino")) {
-                    cboGenero.setSelectedIndex(2);
-                }
-
-                if (estadoCivil.equals("Solteiro(a)")) {
-                    cboEstadoCivil.setSelectedIndex(1);
-                } else if (estadoCivil.equals("Casado(a)")) {
-                    cboEstadoCivil.setSelectedIndex(2);
-                } else if (estadoCivil.equals("Divorciado(a)")) {
-                    cboEstadoCivil.setSelectedIndex(3);
-                } else if (estadoCivil.equals("União Estável")) {
-                    cboEstadoCivil.setSelectedIndex(4);
-                }
-
-                if (estado.equals("AC")) {
-                    cboEstado.setSelectedIndex(1);
-                } else if (estado.equals("AL")) {
-                    cboEstado.setSelectedIndex(2);
-                } else if (estado.equals("AP")) {
-                    cboEstado.setSelectedIndex(3);
-                } else if (estado.equals("AM")) {
-                    cboEstado.setSelectedIndex(4);
-                } else if (estado.equals("BA")) {
-                    cboEstado.setSelectedIndex(5);
-                } else if (estado.equals("CE")) {
-                    cboEstado.setSelectedIndex(6);
-                } else if (estado.equals("DF")) {
-                    cboEstado.setSelectedIndex(7);
-                } else if (estado.equals("ES")) {
-                    cboEstado.setSelectedIndex(8);
-                } else if (estado.equals("GO")) {
-                    cboEstado.setSelectedIndex(9);
-                } else if (estado.equals("MA")) {
-                    cboEstado.setSelectedIndex(10);
-                } else if (estado.equals("MT")) {
-                    cboEstado.setSelectedIndex(11);
-                } else if (estado.equals("MG")) {
-                    cboEstado.setSelectedIndex(12);
-                } else if (estado.equals("PA")) {
-                    cboEstado.setSelectedIndex(13);
-                } else if (estado.equals("PB")) {
-                    cboEstado.setSelectedIndex(14);
-                } else if (estado.equals("PR")) {
-                    cboEstado.setSelectedIndex(15);
-                } else if (estado.equals("PE")) {
-                    cboEstado.setSelectedIndex(16);
-                } else if (estado.equals("PI")) {
-                    cboEstado.setSelectedIndex(17);
-                } else if (estado.equals("RJ")) {
-                    cboEstado.setSelectedIndex(18);
-                } else if (estado.equals("RN")) {
-                    cboEstado.setSelectedIndex(19);
-                } else if (estado.equals("RS")) {
-                    cboEstado.setSelectedIndex(20);
-                } else if (estado.equals("RO")) {
-                    cboEstado.setSelectedIndex(21);
-                } else if (estado.equals("RR")) {
-                    cboEstado.setSelectedIndex(22);
-                } else if (estado.equals("SC")) {
-                    cboEstado.setSelectedIndex(23);
-                } else if (estado.equals("SP")) {
-                    cboEstado.setSelectedIndex(24);
-                } else if (estado.equals("SE")) {
-                    cboEstado.setSelectedIndex(25);
-                } else if (estado.equals("TO")) {
-                    cboEstado.setSelectedIndex(26);
-                }
-
-                modoTela = "alteracao";
-                //aqui muda o "formato" da tela que permite a alteração pelo botão salvar sem precisar de duas telas
-
-            }
-        }
-    }//GEN-LAST:event_mnuAlterarClienteActionPerformed
-
-    private void mnuConsultaNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultaNomeActionPerformed
-
-        ArrayList<String[]> filtro = ClienteController.filtroNome(txtNome.getText());
-
-        DefaultTableModel modelo = (DefaultTableModel) tblCliente.getModel();
-        modelo.setRowCount(0);
-
-        for (String[] item : filtro) {
-            modelo.addRow(item);
-        }
-
-        tblCliente.getColumnModel().getColumn(0).setPreferredWidth(10); //id
-        tblCliente.getColumnModel().getColumn(1).setPreferredWidth(50); //CPF
-        tblCliente.getColumnModel().getColumn(2).setPreferredWidth(50); //nome
-        tblCliente.getColumnModel().getColumn(3).setPreferredWidth(30); //Genero
-        tblCliente.getColumnModel().getColumn(4).setPreferredWidth(50); //E. Civil
-        tblCliente.getColumnModel().getColumn(5).setPreferredWidth(50); //Telefone
-        tblCliente.getColumnModel().getColumn(6).setPreferredWidth(50); //data nascimento
-        tblCliente.getColumnModel().getColumn(7).setPreferredWidth(50); //e-mail
-        tblCliente.getColumnModel().getColumn(8).setPreferredWidth(50); //endereço
-        tblCliente.getColumnModel().getColumn(9).setPreferredWidth(50); //bairro
-        tblCliente.getColumnModel().getColumn(10).setPreferredWidth(50); //cidade
-        tblCliente.getColumnModel().getColumn(11).setPreferredWidth(10); //estado
-        tblCliente.getColumnModel().getColumn(12).setPreferredWidth(50); //CEP
-    }//GEN-LAST:event_mnuConsultaNomeActionPerformed
-
-    private void mnuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSairActionPerformed
-        dispose();
-    }//GEN-LAST:event_mnuSairActionPerformed
 
     private void btnConsultarCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarCPFActionPerformed
         Validadora validador = new Validadora();
@@ -992,46 +692,18 @@ public class CadastroClienteView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCidadeActionPerformed
 
-    private void mnuConsultarCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultarCPFActionPerformed
-        Validadora validador = new Validadora();
-        validador.ValidarCPF(ftxCPF);
-
-        if (validador.hasErro()) {
-            JOptionPane.showMessageDialog(this, validador.getMensagensErro());
-        } else {
-
-            ArrayList<String[]> filtro = ClienteController.filtroCPF(ftxCPF.getText());
-
-            DefaultTableModel modelo = (DefaultTableModel) tblCliente.getModel();
-            modelo.setRowCount(0);
-
-            for (String[] item : filtro) {
-                modelo.addRow(item);
-            }
-        }
-        tblCliente.getColumnModel().getColumn(0).setPreferredWidth(10); //id
-        tblCliente.getColumnModel().getColumn(1).setPreferredWidth(50); //CPF
-        tblCliente.getColumnModel().getColumn(2).setPreferredWidth(50); //nome
-        tblCliente.getColumnModel().getColumn(3).setPreferredWidth(30); //Genero
-        tblCliente.getColumnModel().getColumn(4).setPreferredWidth(50); //E. Civil
-        tblCliente.getColumnModel().getColumn(5).setPreferredWidth(50); //Telefone
-        tblCliente.getColumnModel().getColumn(6).setPreferredWidth(50); //data nascimento
-        tblCliente.getColumnModel().getColumn(7).setPreferredWidth(50); //e-mail
-        tblCliente.getColumnModel().getColumn(8).setPreferredWidth(50); //endereço
-        tblCliente.getColumnModel().getColumn(9).setPreferredWidth(50); //bairro
-        tblCliente.getColumnModel().getColumn(10).setPreferredWidth(50); //cidade
-        tblCliente.getColumnModel().getColumn(11).setPreferredWidth(10); //estado
-        tblCliente.getColumnModel().getColumn(12).setPreferredWidth(50); //CEP
-    }//GEN-LAST:event_mnuConsultarCPFActionPerformed
-
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        Date hoje = new Date();
         this.ftxCPF.setText("");
         this.txtNome.setText("");
         this.cboGenero.setSelectedIndex(0);
         this.cboEstadoCivil.setSelectedIndex(0);
         this.ftxTelefone.setText("");
-        //this.jDateChooser1.setDate();
-        //this.jDateChooser1.setDateFormatString("");
+        this.jDateChooser1.setDate(hoje);
+        /*String dia = String.valueOf(hoje);
+        dia = "";
+        this.jDateChooser1.setDateFormatString(dia);
+        this.jDateChooser1.setDateFormatString("");*/
         //this.ftxNascimento.setText("");
         this.txtEmail.setText("");
         this.txtEndereco.setText("");
@@ -1228,53 +900,9 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnConsultarNomeActionPerformed
 
-    private void mnuLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuLimparActionPerformed
-        this.ftxCPF.setText("");
-        this.txtNome.setText("");
-        this.cboGenero.setSelectedIndex(0);
-        this.cboEstadoCivil.setSelectedIndex(0);
-        this.ftxTelefone.setText("");
-        this.jDateChooser1.setDateFormatString("");
-        //this.ftxNascimento.setText("");
-        this.txtEmail.setText("");
-        this.txtEndereco.setText("");
-        this.txtBairro.setText("");
-        this.txtCidade.setText("");
-        this.cboEstado.setSelectedIndex(0);
-        this.ftxCepCliente.setText("");
-        listarClientes();
-        modoTela = "criação";
-    }//GEN-LAST:event_mnuLimparActionPerformed
-
-    private void mnuExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuExcluirClienteActionPerformed
-        if (tblCliente.getRowCount() > 0) {
-
-            int numeroLinha = tblCliente.getSelectedRow();
-
-            if (numeroLinha < 0) {
-
-                JOptionPane.showMessageDialog(this, "Selecione um cliente para excluir!");
-
-            } else {
-
-                int IDcliente = Integer.parseInt(tblCliente.getModel().getValueAt(numeroLinha, 0).toString());
-                objCliente.setId(IDcliente);
-                int id = objCliente.getId();
-                boolean retorno = ClienteController.excluir(id);
-
-                if (retorno == true) {
-                    JOptionPane.showMessageDialog(this, "Cliente excluído com sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Falha ao excluir cliente!");
-                }
-
-                listarClientes();
-
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Não há clientes cadastrados!");
-        }
-    }//GEN-LAST:event_mnuExcluirClienteActionPerformed
+    private void ftxTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxTelefoneActionPerformed
 
     public void listarClientes() {
         //lista toda a base de dados daquela tabela
@@ -1364,10 +992,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxCepCliente;
     private javax.swing.JFormattedTextField ftxTelefone;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel lblBairro;
     private javax.swing.JLabel lblCEPcliente;
     private javax.swing.JLabel lblCPF;
@@ -1380,14 +1006,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblTelefone;
-    private javax.swing.JMenuItem mnuAlterarCliente;
-    private javax.swing.JMenu mnuArquivo;
-    private javax.swing.JMenuItem mnuConsultaNome;
-    private javax.swing.JMenuItem mnuConsultarCPF;
-    private javax.swing.JMenuItem mnuExcluirCliente;
-    private javax.swing.JMenuItem mnuLimpar;
-    private javax.swing.JMenuItem mnuSair;
-    private javax.swing.JMenuItem mnuSalvarCliente;
     private javax.swing.JTable tblCliente;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCidade;

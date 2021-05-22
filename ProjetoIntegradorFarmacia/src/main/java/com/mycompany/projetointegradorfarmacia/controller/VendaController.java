@@ -5,9 +5,7 @@
  */
 package com.mycompany.projetointegradorfarmacia.controller;
 
-import com.mycompany.projetointegradorfarmacia.DAO.ClienteDAO;
 import com.mycompany.projetointegradorfarmacia.DAO.VendaDAO;
-import com.mycompany.projetointegradorfarmacia.model.Cliente;
 import com.mycompany.projetointegradorfarmacia.model.ItemVenda;
 import com.mycompany.projetointegradorfarmacia.model.Venda;
 import java.util.ArrayList;
@@ -18,47 +16,44 @@ import java.util.Date;
  * @author vinic
  */
 public class VendaController {
-    
+
     /**
      * Método responsável por passar informações a serem salvas
-     * 
+     *
      * @param valorFinal Double
      * @return true - para sucesso | false - para falha
      */
-
-    public static boolean salvar(Date dtVenda,  Double valorFinal, int idCliente, ArrayList<String[]> itensVenda) {
+    public static boolean salvar(Date dtVenda, Double valorFinal, int idCliente, ArrayList<String[]> itensVenda) {
 
         Venda objSalvar = new Venda();
 
         objSalvar.setValorFinal(valorFinal);
         objSalvar.setCliente(idCliente);
         objSalvar.setDtvenda(dtVenda);
-        
+
         ArrayList<ItemVenda> listItem = new ArrayList<ItemVenda>();
-        
-        for(String[] item : itensVenda) {
+
+        for (String[] item : itensVenda) {
             ItemVenda itemVenda = new ItemVenda();
-            
+
             itemVenda.setProdutos(Integer.parseInt(item[0]));
             itemVenda.setQuantidade(Integer.parseInt(item[1]));
-            
+
             listItem.add(itemVenda);
         }
-        
+
         objSalvar.setItemVenda(listItem);
-        
 
         return VendaDAO.salvar(objSalvar);
     }
-    
-        /**
+
+    /**
      * Método responsável por passar informações a serem atualizadas
-     * 
+     *
      * @param valorFinal Double
      * @param idCliente int
      * @return true - para sucesso | false - para falha
      */
-
     public static boolean atualizar(int ID, Double valorFinal, int idCliente) {
 
         Venda objAtualizar = new Venda();
@@ -71,28 +66,14 @@ public class VendaController {
     }
 
     /**
-     * Método responsável por passar informações a serem excluídas do banco de dados
+     * Método responsável por passar informações a serem excluídas do banco de
+     * dados
+     *
      * @param ID inteiro
      * @return true - para sucesso | false - para falha
      */
     public static boolean excluir(int ID) {
         return VendaDAO.excluir(ID);
     }
-
-    /**
-     * Método responsável por passar informações a serem listadas na tabela view
-     * @return ArrayList String[]
-     */
-//    public static ArrayList<String[]> listarV() {
-//        ArrayList<Venda> listaVendas = VendaDAO.listarProdutos();
-//        ArrayList<String[]> retorno = new ArrayList<>();
-//
-//        for (Venda item : listaVendas) {
-//            Venda temp = new Venda();
-//            retorno.add(new String[]{String.valueOf(item.getId()), item.getValorFinal(), item.getCliente()});
-//
-//        }
-//        return retorno;
-//    }
 
 }

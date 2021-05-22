@@ -1,7 +1,5 @@
 package com.mycompany.projetointegradorfarmacia.view;
 
-import com.mycompany.projetointegradorfarmacia.DAO.ProdutoDAO;
-import static com.mycompany.projetointegradorfarmacia.DAO.ProdutoDAO.listarProdutos;
 import com.mycompany.projetointegradorfarmacia.controller.ProdutoController;
 import com.mycompany.projetointegradorfarmacia.model.Produto;
 import com.mycompany.projetointegradorfarmacia.utils.Validadora;
@@ -23,10 +21,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
         objProduto = new Produto();
         setLocationRelativeTo(null);
         listarProdutos();
-//        //Inserindo icone na janela
-//        URL url = this.getClass().getResource("/farmacia.png");
-//        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
-//        this.setIconImage(imagemTitulo);
+
     }
 
     public CadastroProdutoView(Produto p) {
@@ -336,7 +331,7 @@ public class CadastroProdutoView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        //listarProdutos();
+      
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparMouseClicked

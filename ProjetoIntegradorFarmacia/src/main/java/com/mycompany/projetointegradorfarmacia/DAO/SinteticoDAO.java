@@ -6,7 +6,7 @@
 package com.mycompany.projetointegradorfarmacia.DAO;
 
 
-import com.mycompany.projetointegradorfarmacia.model.RelatorioSintetico;
+import com.mycompany.projetointegradorfarmacia.model.Sintetico;
 import com.mycompany.projetointegradorfarmacia.utils.GerenciadorConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,17 +17,25 @@ import java.util.Date;
 
 
 /**
- *
+ *  Classe responsável pela conexão da parte de relatório sintético com o banco de dados
  * @author Matheus
+ * @see RelatórioSinteticoController
  */
 public class SinteticoDAO {
 
-public static ArrayList<RelatorioSintetico> filtroData(Date inicialDate, Date finalDate){
+/**
+ * Método utilizado para selecionar todas as vendas cadastradas no banco de dados dentro de um período
+ * de tempo específico selecionado pelo usuário.
+ * @param inicialDate Date
+ * @param finalDate Date
+ * @return ArrayList da classe Relatório Sintético
+ */
+    public static ArrayList<Sintetico> filtroData(Date inicialDate, Date finalDate){
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
         ResultSet rs = null;
 
-        ArrayList<RelatorioSintetico> relatorioSinte = new ArrayList<RelatorioSintetico>();
+        ArrayList<Sintetico> relatorioSinte = new ArrayList<Sintetico>();
 
         try {
 
@@ -43,7 +51,7 @@ public static ArrayList<RelatorioSintetico> filtroData(Date inicialDate, Date fi
             
             while(rs.next())
             {
-                RelatorioSintetico c = new RelatorioSintetico();
+                Sintetico c = new Sintetico();
                 c.setIdVenda(rs.getInt("id"));
                 c.setDtCompra(rs.getDate("dtvenda"));
                 c.setNome(rs.getString("nome"));

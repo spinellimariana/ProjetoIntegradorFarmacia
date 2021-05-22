@@ -5,28 +5,33 @@
  */
 package com.mycompany.projetointegradorfarmacia.DAO;
 
-import com.mycompany.projetointegradorfarmacia.model.Cliente;
-import com.mycompany.projetointegradorfarmacia.model.RelatorioAnalitico;
+import com.mycompany.projetointegradorfarmacia.model.Analitico;
 import com.mycompany.projetointegradorfarmacia.utils.GerenciadorConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
- *
- * @author vinic
+ * Classe responsável por promover a conexão do relatório analítico com o banco de dados
+ * @author vinicius.reis
+ * @see RelatórioAnalíticoView
  */
-public class RelatorioAnaliticoDAO {
+public class AnaliticoDAO {
     
-    public static ArrayList<RelatorioAnalitico> filtroIdVenda(int id) {
+    /**
+     * Método para selecionar uma venda específica no banco de dados e mostrar seus detalhes na tela de
+     * relatório
+     * @param id inteiro
+     * @return  ArrayList da classe Relatório Analítico
+     */
+    public static ArrayList<Analitico> filtroIdVenda(int id) {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
         ResultSet rs = null;
 
-        ArrayList<RelatorioAnalitico> filtro = new ArrayList<>();
+        ArrayList<Analitico> filtro = new ArrayList<>();
 
         try {
 
@@ -40,7 +45,7 @@ public class RelatorioAnaliticoDAO {
             rs = instrucaoSQL.executeQuery();
 
             while (rs.next()) {
-                RelatorioAnalitico c = new RelatorioAnalitico();
+                Analitico c = new Analitico();
                 c.setNomeProduto(rs.getString("nomeProduto"));
                 c.setQtdProduto(rs.getInt("quantidade"));
                 c.setPrecoUnitario(rs.getDouble("valorVenda"));
