@@ -6,6 +6,7 @@
 package com.mycompany.projetointegradorfarmacia.view;
 
 import com.mycompany.projetointegradorfarmacia.controller.SinteticoController;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -165,7 +166,8 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnaliticoActionPerformed
-        int linhaSelecionada = tblSintetico.getSelectedRow();
+         try {
+              int linhaSelecionada = tblSintetico.getSelectedRow();
         
         String id = tblSintetico.getModel().getValueAt(linhaSelecionada, 0).toString();
         String nome = tblSintetico.getModel().getValueAt(linhaSelecionada, 2).toString();
@@ -176,6 +178,10 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
         
         RelatorioAnaliticoView ra = new RelatorioAnaliticoView(valores);
         ra.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(RelatorioSinteticoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }//GEN-LAST:event_btnAnaliticoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

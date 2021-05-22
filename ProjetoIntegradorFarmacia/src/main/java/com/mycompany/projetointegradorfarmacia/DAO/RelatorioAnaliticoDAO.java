@@ -31,7 +31,7 @@ public class RelatorioAnaliticoDAO {
         try {
 
             conexao = GerenciadorConexao.abrirConexao();
-            instrucaoSQL = conexao.prepareStatement("select produto.nomeProduto, itemvenda.quantidade, produto.pVenda\n" +
+            instrucaoSQL = conexao.prepareStatement("select produto.nomeProduto, itemvenda.quantidade, produto.valorVenda\n" +
                                                     "from itemvenda \n" +
                                                     "inner join produto \n" +
                                                     "on itemvenda.idProduto = produto.id\n" +
@@ -43,7 +43,7 @@ public class RelatorioAnaliticoDAO {
                 RelatorioAnalitico c = new RelatorioAnalitico();
                 c.setNomeProduto(rs.getString("nomeProduto"));
                 c.setQtdProduto(rs.getInt("quantidade"));
-                c.setPrecoUnitario(rs.getDouble("pVenda"));
+                c.setPrecoUnitario(rs.getDouble("valorVenda"));
 
                 filtro.add(c);
 

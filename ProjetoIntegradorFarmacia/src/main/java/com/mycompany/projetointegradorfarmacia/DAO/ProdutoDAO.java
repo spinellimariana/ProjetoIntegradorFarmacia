@@ -225,7 +225,7 @@ public class ProdutoDAO {
             rs = instrucaoSQL.executeQuery(); //executar a query
 
             if (rs.next()) {
-                produto.setCodProd(rs.getInt("CodProd"));
+                produto.setCodProd(rs.getInt("id"));
                 produto.setDescProduto(rs.getString("descricao"));
                 produto.setFabricante(rs.getString("fabricante"));
                 produto.setNomeProduto(rs.getString("nomeProduto"));
