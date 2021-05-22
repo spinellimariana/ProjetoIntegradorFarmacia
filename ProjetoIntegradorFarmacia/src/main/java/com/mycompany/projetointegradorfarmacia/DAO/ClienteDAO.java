@@ -52,7 +52,6 @@ public class ClienteDAO {
             instrucaoSQL.setString(4, p.getEstadoCivilCliente());
             instrucaoSQL.setString(5, p.getTelCliente());
             instrucaoSQL.setDate(6, new java.sql.Date(p.getDataNascimento().getTime()));
-
             instrucaoSQL.setString(7, p.getEmailCliente());
             instrucaoSQL.setString(8, p.getEnderecoCliente());
             instrucaoSQL.setString(9, p.getBairroCliente());

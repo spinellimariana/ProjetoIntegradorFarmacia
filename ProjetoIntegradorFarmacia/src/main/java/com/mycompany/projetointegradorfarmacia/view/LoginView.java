@@ -210,18 +210,14 @@ public class LoginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        /*PARA O MARCO 2:
-        1) Validar login e senha de acordo com o bando de dados??
-         */
-        
+           
         Validadora validarLogin = new Validadora();
         validarLogin.ValidarTexto(txtLogin);
         validarLogin.ValidarTexto(txtSenha);
         if (validarLogin.hasErro()) {
             JOptionPane.showMessageDialog(this, validarLogin.getMensagensErro());
         } else {
-            //aqui entra a validação no banco
-
+      
             String usuario = txtLogin.getText();
             String senha = txtSenha.getText();
             

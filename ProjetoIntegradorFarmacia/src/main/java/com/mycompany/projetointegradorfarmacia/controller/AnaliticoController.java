@@ -5,8 +5,8 @@
  */
 package com.mycompany.projetointegradorfarmacia.controller;
 
-import com.mycompany.projetointegradorfarmacia.DAO.RelatorioAnaliticoDAO;
-import com.mycompany.projetointegradorfarmacia.model.RelatorioAnalitico;
+import com.mycompany.projetointegradorfarmacia.DAO.AnaliticoDAO;
+import com.mycompany.projetointegradorfarmacia.model.Analitico;
 import java.text.ParseException;
 import java.util.ArrayList;
 /**
@@ -16,10 +16,10 @@ import java.util.ArrayList;
 public class AnaliticoController {
     public static ArrayList<String[]> filtroById(int id) throws ParseException {
          
-        ArrayList<RelatorioAnalitico> filtro = RelatorioAnaliticoDAO.filtroIdVenda(id);
+        ArrayList<Analitico> filtro = AnaliticoDAO.filtroIdVenda(id);
         ArrayList<String[]> listaFiltro = new ArrayList<>();
 
-        for (RelatorioAnalitico item : filtro) {
+        for (Analitico item : filtro) {
             listaFiltro.add(new String[]{item.getNomeProduto(), String.valueOf(item.getQtdProduto()), String.valueOf(item.getPrecoUnitario()), String.valueOf(item.getQtdProduto() * item.getPrecoUnitario())});
 
         }

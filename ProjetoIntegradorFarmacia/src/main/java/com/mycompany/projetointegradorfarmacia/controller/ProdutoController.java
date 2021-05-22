@@ -20,7 +20,7 @@ public class ProdutoController {
 
         Produto objCadastrar = new Produto();
 
-//        objCadastrar.setCodProd(CodProd);
+
         objCadastrar.setpVenda(pVenda);
         objCadastrar.setQuantProd(QuantProd);
         objCadastrar.setDescProduto(DescProduto);

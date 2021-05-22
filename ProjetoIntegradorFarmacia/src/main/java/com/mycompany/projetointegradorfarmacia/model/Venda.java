@@ -5,8 +5,6 @@
  */
 package com.mycompany.projetointegradorfarmacia.model;
 
-import com.mycompany.projetointegradorfarmacia.model.Cliente;
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Date;
 

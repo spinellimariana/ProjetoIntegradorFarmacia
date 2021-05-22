@@ -41,19 +41,12 @@ public class Login {
 
     }
 
-    /**
-     * Método getter id
-     * @return id
-     */
+
     public int getId() {
         return id;
     }
 
-    /**
-     * Método setter id
-     * @param id
-     * @return id
-     */
+
     public void setId(int id) {
         this.id = id;
     }

@@ -6,6 +6,7 @@
 package com.mycompany.projetointegradorfarmacia.DAO;
 
 import com.mycompany.projetointegradorfarmacia.model.ItemVenda;
+import com.mycompany.projetointegradorfarmacia.model.Produto;
 import com.mycompany.projetointegradorfarmacia.model.Venda;
 import com.mycompany.projetointegradorfarmacia.utils.GerenciadorConexao;
 import java.sql.Connection;
@@ -16,16 +17,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- *
- * @author vinic
+ *  Classe responsável pela conexão da parte de vendas do sistema com o banco de dados
+ * @author vinicius.reis
+ * @see ProdutoDAO
+ * @see ClienteDAO
+ * @see ClienteController, ProdutoController
+ * 
  */
 public class VendaDAO {
- public static boolean salvar(Venda v) {
+
+    /**
+     * Método responsável por promover o cadastro de todas as vendas efetuadas no banco de dados
+     * @param v obj da Classe Venda
+     * @return boolean true para sucesso | false para falha
+     */
+    public static boolean salvar(Venda v) {
         boolean retorno = false;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
 
-        
         try {
             conexao = GerenciadorConexao.abrirConexao();
 
@@ -35,7 +45,6 @@ public class VendaDAO {
             instrucaoSQL.setDouble(1, v.getValorFinal());
             instrucaoSQL.setInt(2, v.getCliente());
             instrucaoSQL.setDate(3, new java.sql.Date(v.getDtvenda().getTime()));
-            
 
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
@@ -45,19 +54,18 @@ public class VendaDAO {
                 ResultSet generatedKeys = instrucaoSQL.getGeneratedKeys(); //para recuperar o id do cliente
                 if (generatedKeys.next()) {
                     v.setId(generatedKeys.getInt(1));
-                   
-                    for(ItemVenda item : v.getItemVenda()){
+
+                    for (ItemVenda item : v.getItemVenda()) {
                         instrucaoSQL = conexao.prepareStatement("INSERT INTO ItemVenda (quantidade, idVenda, idProduto) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
-                    //parametros para gravar
-                    instrucaoSQL.setInt(1, item.getQuantidade());
-                    instrucaoSQL.setInt(2, v.getId());
-                    instrucaoSQL.setInt(3, item.getProdutos());
-           
-                    linhasAfetadas = instrucaoSQL.executeUpdate();
+                        //parametros para gravar
+                        instrucaoSQL.setInt(1, item.getQuantidade());
+                        instrucaoSQL.setInt(2, v.getId());
+                        instrucaoSQL.setInt(3, item.getProdutos());
+
+                        linhasAfetadas = instrucaoSQL.executeUpdate();
                     }
-                    
-                    
+
                 } else {
                     throw new SQLException("Falha ao obter ID do cliente!");
                 }
@@ -84,7 +92,8 @@ public class VendaDAO {
 
     /**
      * Método atualizar para alteração de informações no banco de dados
-     * @param p obj Cliente
+     *
+     * @param p obj Venda
      * @return true - para sucesso | false - para falha
      */
     public static boolean atualizar(Venda p) {
@@ -129,9 +138,10 @@ public class VendaDAO {
 
     /**
      * Método para excluir informações da base de dados
+     *
      * @param pID inteiro
      * @return true - para sucesso | false - falha
-     * 
+     *
      */
     public static boolean excluir(int pID) {
         boolean retorno = false;
@@ -168,13 +178,13 @@ public class VendaDAO {
 
         return retorno;
     }
-    
+
     /**
      * Método para listar toda a base de dados de uma só vez
-     * @return ArrayList da classe cliente
-     * 
+     *
+     * @return ArrayList da classe Produto
+     *
      */
-
     public static ArrayList<Venda> listarProdutos() {
         ResultSet rs = null;
         Connection conexao = null;
@@ -194,7 +204,7 @@ public class VendaDAO {
                 c.setValorFinal(rs.getDouble("pVenda"));
                 c.setCliente(rs.getInt("idCLiente"));
                 c.setDtvenda(rs.getDate("dtvenda"));
-         
+
                 listar.add(c);
 
             }
@@ -217,6 +227,5 @@ public class VendaDAO {
         }
         return listar;
     }
-    
-}
 
+}

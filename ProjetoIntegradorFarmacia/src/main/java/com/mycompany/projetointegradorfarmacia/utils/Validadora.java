@@ -53,7 +53,6 @@ public class Validadora {
 
     }
 
-//ver se ainda vai precisar desse método depois do jCalendar
     public void ValidarData(JFormattedTextField ftx) {
 
         try {
@@ -103,6 +102,7 @@ public class Validadora {
 
     /**
      * Método para validar a entrada de DDD + telefone
+     *
      * @param ftx JFormattedTextField
      * @return boolean - true se o campo estiver vazio | false se estiver
      * preenchido
@@ -127,12 +127,14 @@ public class Validadora {
         }
     }
 
-      /**
+    /**
      * Método para verificar se o ComboBox está selecionado
+     *
      * @param cbo JComboBox
-     * @return boolean - true: se o campo não tiver nenhuma opção selecionada (==0), retornando uma 
-     * mensagem de erro solicitando o preenchimento | false se estiver selecionada uma opção (>0)
-     * 
+     * @return boolean - true: se o campo não tiver nenhuma opção selecionada
+     * (==0), retornando uma mensagem de erro solicitando o preenchimento |
+     * false se estiver selecionada uma opção (>0)
+     *
      */
     public void ValidarComboBox(JComboBox cbo) {
         if (cbo.getSelectedIndex() == 0) {
@@ -144,11 +146,13 @@ public class Validadora {
     }
 
     /**
-     * Método para validar a entrada de números. 
-     * Recebe um txt e tenta converter para <b>inteiro<\b>
+     * Método para validar a entrada de números. Recebe um txt e tenta converter
+     * para <b>inteiro<\b>
+     *
      * @param txt JTextField
-     * @throws NumberFormatException -  se não conseguir converter o valor digitado em inteiros
-     * IllegalArgumentException - caso o campo esteja vazio sem nenhum dado digitado
+     * @throws NumberFormatException - se não conseguir converter o valor
+     * digitado em inteiros IllegalArgumentException - caso o campo esteja vazio
+     * sem nenhum dado digitado
      */
     public void ValidarNumero(JTextField txt) {
         try {
@@ -172,8 +176,10 @@ public class Validadora {
 
     /**
      * Método para validar a entrada de dados em formato texto
+     *
      * @param txt JTextField
-     * @throws IllegalArgumentException - caso o campo esteja vazio sem nenhum dado digitado
+     * @throws IllegalArgumentException - caso o campo esteja vazio sem nenhum
+     * dado digitado
      */
     public void ValidarTexto(JTextField txt) {
         try {
@@ -193,15 +199,17 @@ public class Validadora {
         }
 
     }
-    
-    /**
-     * Método para validar a entrada de tipos float
-     * Tenta converter a String digitada no campo txt em float
-     * @param txt JTextField
-     * @throws NumberFormatException - caso não consiga converter o valor digitado em tipo float
-     * IllegalArgumentException - caso o campo esteja vazio sem nenhum dado digitado
-     */
 
+
+    /**
+     * Método para validar a entrada de tipos float Tenta converter a String
+     * digitada no campo txt em float
+     *
+     * @param txt JTextField
+     * @throws NumberFormatException - caso não consiga converter o valor
+     * digitado em tipo float IllegalArgumentException - caso o campo esteja
+     * vazio sem nenhum dado digitado
+     */
     public void ValidarFloat(JTextField txt) {
         try {
             if (txt.getText().trim().equals("")) {
@@ -242,6 +250,7 @@ public class Validadora {
 
     /**
      * Método para armazenar as mensagens de erro
+     *
      * @return String informando para o usuário quais campos estão incorretos
      */
     public String getMensagensErro() {
@@ -258,6 +267,7 @@ public class Validadora {
 
     /**
      * Método para verificar se existe erro no preenchimento dos campos
+     *
      * @return true - para existência de erros | false - para ausência de erros
      */
     public boolean hasErro() {

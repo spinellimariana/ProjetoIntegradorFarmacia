@@ -73,7 +73,7 @@ public class ProdutoDAO {
     /**
      * Método atualizar para alteração de informações no banco de dados
      *
-     * @param p obj Cliente
+     * @param p obj Produto
      * @return true - para sucesso | false - para falha
      */
     public static boolean atualizar(Produto p) {
@@ -214,7 +214,13 @@ public class ProdutoDAO {
         return listar;
     }
 
-    public static Produto listarPorId(int id) {
+    /**
+     * Método para selecionar um produto pelo seu identificador no banco de dados.
+     * 
+     * @param id inteiro
+     * @return obj Produto
+     */
+    public static Produto listarPorId(int id) { //método usado para venda view
         ResultSet rs = null;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
@@ -261,7 +267,12 @@ public class ProdutoDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static ArrayList<Produto> filtroPorId(int ID) {
+    /**
+     * Método para selecionar um produto pelo seu identificador no banco de dados
+     * @param ID inteiro
+     * @return  ArrayList da classe Produto
+     */
+    public static ArrayList<Produto> filtroPorId(int ID) { //filtro para produto view
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
         ResultSet rs = null;
@@ -311,8 +322,13 @@ public class ProdutoDAO {
 
         return filtro;
     }
-    
-        public static ArrayList<Produto> filtroNome(String pNome) {
+
+    /**
+     * Método para selecionar um produto pelo seu nome no banco de dados
+     * @param pNome String
+     * @return ArrayList da classe Produtos
+     */
+    public static ArrayList<Produto> filtroNome(String pNome) { //filtro por nome produto view
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
         ResultSet rs = null;
@@ -358,8 +374,56 @@ public class ProdutoDAO {
             } catch (SQLException ex) {
             }
         }
-        
+
         return filtro;
+    }
+
+    /**
+     * Método usado para selecionar o produto pelo seu nome exato como cadastrado no banco de dados
+     * @param nome String
+     * @return obj da classe Produto
+     */
+    public static Produto fNome(String nome) { //método usado para vendas view
+        ResultSet rs = null;
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+
+        Produto produto = new Produto();
+
+        try {
+            conexao = GerenciadorConexao.abrirConexao();
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE nomeProduto=?;");
+            instrucaoSQL.setString(1, nome);
+            rs = instrucaoSQL.executeQuery(); //executar a query
+
+            if (rs.next()) {
+                produto.setCodProd(rs.getInt("id"));
+                produto.setNomeProduto(rs.getString("nomeProduto"));
+                produto.setDescProduto(rs.getString("descricao"));
+                produto.setFabricante(rs.getString("fabricante"));
+                produto.setQuantProd(rs.getInt("quantProduto"));
+                produto.setpVenda(rs.getDouble("valorVenda"));
+
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            produto = null;
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (instrucaoSQL != null) {
+                    instrucaoSQL.close();
+                }
+                GerenciadorConexao.fecharConexao();
+
+            } catch (SQLException ex) {
+            }
+        }
+        return produto;
+
     }
 
 }

@@ -9,17 +9,17 @@ package com.mycompany.projetointegradorfarmacia.model;
  *
  * @author Lenovo
  */
-public class RelatorioAnalitico {
+public class Analitico {
     
     private String nomeProduto;
     private int qtdProduto;
     private double precoUnitario;    
 
-    public RelatorioAnalitico() {
+    public Analitico() {
         //criando construtor da classe
     }
 
-    public RelatorioAnalitico(String nomeProduto, int qtdProduto, double precoUnitario) {
+    public Analitico(String nomeProduto, int qtdProduto, double precoUnitario) {
         this.nomeProduto = nomeProduto;
         this.qtdProduto = qtdProduto;
         this.precoUnitario = precoUnitario;
