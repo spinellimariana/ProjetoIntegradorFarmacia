@@ -31,7 +31,8 @@ public class ProdutoController {
 
     }
 
-    public static boolean Alterar(int CodProd, double pVenda, int QuantProd, String DescProduto, String Fabricante, String NomeProduto) {
+    public static boolean Alterar(int CodProd, double pVenda, int QuantProd, String DescProduto,
+            String Fabricante, String NomeProduto) {
 
         Produto objAlterar = new Produto();
 
@@ -54,13 +55,9 @@ public class ProdutoController {
         ArrayList<String[]> retorno = new ArrayList<>();
 
         for (Produto item : listar) {
-            if (item != null) {
-                retorno.add(new String[]{String.valueOf(item.getCodProd()),
-                    String.valueOf(item.getpVenda()),
-                    String.valueOf(item.getQuantProd()),
-                    item.getDescProduto(), item.getFabricante(),
-                    item.getNomeProduto()});
-            }
+            retorno.add(new String[]{String.valueOf(item.getCodProd()), item.getNomeProduto(), item.getDescProduto(),
+                item.getFabricante(), String.valueOf(item.getQuantProd()), String.valueOf(item.getpVenda())});
+
         }
 
         return retorno;
@@ -71,12 +68,25 @@ public class ProdutoController {
         ArrayList<String[]> listaFiltro = new ArrayList<>();
 
         for (Produto item : filtro) {
-            listaFiltro.add(new String[]{String.valueOf(item.getCodProd()), String.valueOf(item.getpVenda()), String.valueOf(item.getQuantProd()), item.getDescProduto(),
-                item.getFabricante(), item.getNomeProduto()});
+            listaFiltro.add(new String[]{String.valueOf(item.getCodProd()), item.getNomeProduto(), item.getDescProduto(),
+                item.getFabricante(), String.valueOf(item.getQuantProd()), String.valueOf(item.getpVenda())});
 
         }
 
         return listaFiltro;
 
+    }
+
+    public static ArrayList<String[]> filtroNome(String nome) {
+        ArrayList<Produto> filtro = ProdutoDAO.filtroNome(nome);
+        ArrayList<String[]> listaFiltro = new ArrayList<>();
+
+        for (Produto item : filtro) {
+            listaFiltro.add(new String[]{String.valueOf(item.getCodProd()), item.getNomeProduto(), item.getDescProduto(),
+                item.getFabricante(), String.valueOf(item.getQuantProd()), String.valueOf(item.getpVenda())});
+
+        }
+        
+        return listaFiltro;
     }
 }

@@ -6,6 +6,7 @@
 package com.mycompany.projetointegradorfarmacia.view;
 
 import com.mycompany.projetointegradorfarmacia.controller.SinteticoController;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -165,52 +166,52 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnaliticoActionPerformed
-        int linhaSelecionada = tblSintetico.getSelectedRow();
-        
-        String id = tblSintetico.getModel().getValueAt(linhaSelecionada, 0).toString();
-        String nome = tblSintetico.getModel().getValueAt(linhaSelecionada, 2).toString();
-        String valorFinal = tblSintetico.getModel().getValueAt(linhaSelecionada, 3).toString();
-        
-        
-        String[] valores = {id, nome, valorFinal};
-        
-        RelatorioAnaliticoView ra = new RelatorioAnaliticoView(valores);
-        ra.setVisible(true);
+        try {
+            int linhaSelecionada = tblSintetico.getSelectedRow();
+
+            String id = tblSintetico.getModel().getValueAt(linhaSelecionada, 0).toString();
+            String nome = tblSintetico.getModel().getValueAt(linhaSelecionada, 2).toString();
+            String valorFinal = tblSintetico.getModel().getValueAt(linhaSelecionada, 3).toString();
+
+            String[] valores = {id, nome, valorFinal};
+
+            RelatorioAnaliticoView ra = new RelatorioAnaliticoView(valores);
+            ra.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(RelatorioSinteticoView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnAnaliticoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         JFrame frame = new JFrame("CANCELAR");
-        if(JOptionPane.showConfirmDialog(frame, "Confirme se você quer cancelar"
-                ,"CANCELAR",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION)
-        {
+        if (JOptionPane.showConfirmDialog(frame, "Confirme se você quer cancelar",
+                 "CANCELAR", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        
-        
+
         try {
-        ArrayList<String[]> relatorio = SinteticoController.filtroData(jdtInicial.getDate(), jdtFinal.getDate());
+            ArrayList<String[]> relatorio = SinteticoController.filtroData(jdtInicial.getDate(), jdtFinal.getDate());
 
-        DefaultTableModel tmSintetico = new DefaultTableModel();
-        tmSintetico.addColumn("cod Venda");
-        tmSintetico.addColumn("dt venda");
-        tmSintetico.addColumn("Nome do Cliente");
-        tmSintetico.addColumn("Valor final");
+            DefaultTableModel tmSintetico = new DefaultTableModel();
+            tmSintetico.addColumn("Cod. Venda");
+            tmSintetico.addColumn("Data Venda");
+            tmSintetico.addColumn("Nome do Cliente");
+            tmSintetico.addColumn("Valor Final");
 
-        tblSintetico.setModel(tmSintetico);
-        tmSintetico.setRowCount(0);
+            tblSintetico.setModel(tmSintetico);
+            tmSintetico.setRowCount(0);
 
-        for (String[] item : relatorio) {
-            tmSintetico.addRow(item);
+            for (String[] item : relatorio) {
+                tmSintetico.addRow(item);
 
-        }
+            }
         } catch (Exception e) {
-        System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
-       
 
 //        Validadora validar = new Validadora();
 //        validar.ValidarTexto(jfDataInicial);

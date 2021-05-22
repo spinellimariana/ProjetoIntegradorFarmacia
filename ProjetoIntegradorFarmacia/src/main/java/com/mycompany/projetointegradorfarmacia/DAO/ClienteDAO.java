@@ -15,8 +15,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Classe responsável por promover a conexão com o banco de dados.
- * É possível fazer inclusão, alteração, exclusão e manutenção de clientes.
+ * Classe responsável por promover a conexão com o banco de dados. É possível
+ * fazer inclusão, alteração, exclusão e manutenção de clientes.
+ *
  * @author mariana.spinelli
  * @version 1.0
  * @since 2021.05.12
@@ -24,12 +25,13 @@ import java.util.ArrayList;
  * @see model.Cliente
  */
 public class ClienteDAO {
-    
+
     /**
      * Método salvar para gravação de informações no banco de dados
+     *
      * @param p obj Cliente
      * @return true - para sucesso | false - para falha
-     * 
+     *
      */
     public static boolean salvar(Cliente p) {
         boolean retorno = false;
@@ -50,7 +52,7 @@ public class ClienteDAO {
             instrucaoSQL.setString(4, p.getEstadoCivilCliente());
             instrucaoSQL.setString(5, p.getTelCliente());
             instrucaoSQL.setDate(6, new java.sql.Date(p.getDataNascimento().getTime()));
-            //instrucaoSQL.setString(6, p.getDataNascimento());
+
             instrucaoSQL.setString(7, p.getEmailCliente());
             instrucaoSQL.setString(8, p.getEnderecoCliente());
             instrucaoSQL.setString(9, p.getBairroCliente());
@@ -92,6 +94,7 @@ public class ClienteDAO {
 
     /**
      * Método atualizar para alteração de informações no banco de dados
+     *
      * @param p obj Cliente
      * @return true - para sucesso | false - para falha
      */
@@ -150,9 +153,10 @@ public class ClienteDAO {
 
     /**
      * Método para excluir informações da base de dados
+     *
      * @param pID inteiro
      * @return true - para sucesso | false - falha
-     * 
+     *
      */
     public static boolean excluir(int pID) {
         boolean retorno = false;
@@ -189,13 +193,13 @@ public class ClienteDAO {
 
         return retorno;
     }
-    
+
     /**
      * Método para listar toda a base de dados de uma só vez
+     *
      * @return ArrayList da classe cliente
-     * 
+     *
      */
-
     public static ArrayList<Cliente> listarClientes() {
         ResultSet rs = null;
         Connection conexao = null;
@@ -248,14 +252,15 @@ public class ClienteDAO {
         }
         return listar;
     }
-    
+
     /**
-     * Método para realizar a filtragem de dados inseridos no banco de dados levando como parâmetro o nome do cliente
+     * Método para realizar a filtragem de dados inseridos no banco de dados
+     * levando como parâmetro o nome do cliente
+     *
      * @param pNome String
      * @return ArrayLyst da Classe Cliente
      *
      */
-
     public static ArrayList<Cliente> filtroNome(String pNome) {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
@@ -279,7 +284,7 @@ public class ClienteDAO {
                 c.setEstadoCivilCliente(rs.getString("estadoCivil"));
                 c.setTelCliente(rs.getString("telCliente"));
                 c.setDataNascimento(rs.getDate("dtNascimento"));
-                //c.setDataNascimento(rs.getString("dtNascimento")); //refazer usando aula 10 jCalendar
+
                 c.setEmailCliente(rs.getString("email"));
                 c.setEnderecoCliente(rs.getString("endereco"));
                 c.setBairroCliente(rs.getString("bairro"));
@@ -314,13 +319,14 @@ public class ClienteDAO {
 
         return filtro;
     }
-    
-  /**
-   * Método para realizar a filtragem de dados inseridos no banco de dados levando como parâmetro o CPF do cliente
-   * @param pCPF String
-   * @return ArrayList da Classe Cliente
-   */
 
+    /**
+     * Método para realizar a filtragem de dados inseridos no banco de dados
+     * levando como parâmetro o CPF do cliente
+     *
+     * @param pCPF String
+     * @return ArrayList da Classe Cliente
+     */
     public static ArrayList<Cliente> filtroCPF(String pCPF) {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
