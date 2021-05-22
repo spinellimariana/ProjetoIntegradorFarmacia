@@ -211,8 +211,6 @@ public class VendaView extends javax.swing.JFrame {
             }
         });
 
-        lblValorProduto.setText("jLabel1");
-
         tbnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelar.png"))); // NOI18N
         tbnCancelar1.setText("Cancelar");
         tbnCancelar1.addActionListener(new java.awt.event.ActionListener() {
