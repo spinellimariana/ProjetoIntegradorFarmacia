@@ -50,7 +50,8 @@ public class ClienteController {
         objSalvar.setGeneroCliente(genero);
         objSalvar.setEstadoCivilCliente(estadoCivil);
         objSalvar.setTelCliente(telefone);
-        objSalvar.setDataNascimento(dtNascimento);  //usar jCalendar
+        objSalvar.setDataNascimento(dtNascimento);
+        //objSalvar.setDataNascimento(dtNascimento);//usar jCalendar
         objSalvar.setEmailCliente(email);
         objSalvar.setEnderecoCliente(endereco);
         objSalvar.setBairroCliente(bairro);

@@ -166,7 +166,7 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnaliticoActionPerformed
-         try {
+        try {
               int linhaSelecionada = tblSintetico.getSelectedRow();
         
         String id = tblSintetico.getModel().getValueAt(linhaSelecionada, 0).toString();
@@ -180,43 +180,39 @@ public class RelatorioSinteticoView extends javax.swing.JFrame {
         ra.setVisible(true);
         } catch (ParseException ex) {
             Logger.getLogger(RelatorioSinteticoView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
+        }    
     }//GEN-LAST:event_btnAnaliticoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         JFrame frame = new JFrame("CANCELAR");
-        if(JOptionPane.showConfirmDialog(frame, "Confirme se você quer cancelar"
-                ,"CANCELAR",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION)
-        {
+        if (JOptionPane.showConfirmDialog(frame, "Confirme se você quer cancelar",
+                 "CANCELAR", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        
-        
+
         try {
-        ArrayList<String[]> relatorio = SinteticoController.filtroData(jdtInicial.getDate(), jdtFinal.getDate());
+            ArrayList<String[]> relatorio = SinteticoController.filtroData(jdtInicial.getDate(), jdtFinal.getDate());
 
-        DefaultTableModel tmSintetico = new DefaultTableModel();
-        tmSintetico.addColumn("cod Venda");
-        tmSintetico.addColumn("dt venda");
-        tmSintetico.addColumn("Nome do Cliente");
-        tmSintetico.addColumn("Valor final");
+            DefaultTableModel tmSintetico = new DefaultTableModel();
+            tmSintetico.addColumn("Cod. Venda");
+            tmSintetico.addColumn("Data Venda");
+            tmSintetico.addColumn("Nome do Cliente");
+            tmSintetico.addColumn("Valor Final");
 
-        tblSintetico.setModel(tmSintetico);
-        tmSintetico.setRowCount(0);
+            tblSintetico.setModel(tmSintetico);
+            tmSintetico.setRowCount(0);
 
-        for (String[] item : relatorio) {
-            tmSintetico.addRow(item);
+            for (String[] item : relatorio) {
+                tmSintetico.addRow(item);
 
-        }
+            }
         } catch (Exception e) {
-        System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
-       
 
 //        Validadora validar = new Validadora();
 //        validar.ValidarTexto(jfDataInicial);

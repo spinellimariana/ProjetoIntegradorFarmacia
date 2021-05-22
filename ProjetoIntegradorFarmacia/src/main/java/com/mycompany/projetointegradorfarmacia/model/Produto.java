@@ -11,6 +11,8 @@ package com.mycompany.projetointegradorfarmacia.model;
  */
 public class Produto {
 
+    private static int qtdProdutos;
+
     private int codProd;
     private double pVenda;
     private int quantProd;
@@ -19,13 +21,30 @@ public class Produto {
     private String nomeProduto;
 
     public Produto() {
+        qtdProdutos++;
+        this.codProd = qtdProdutos;
     }
 
-    public Produto(int pCodProd, double pVenda, int pQuantProd, String pDescProduto) {
-        this.codProd = pCodProd;
-        this.pVenda = pVenda;
+    public Produto(double pPVenda, int pQuantProd, String pDescProduto,
+            String pFabricante, String pNomeProduto) {
+
+        qtdProdutos++;
+        this.codProd = qtdProdutos;
+        this.pVenda = pPVenda;
         this.quantProd = pQuantProd;
         this.descProduto = pDescProduto;
+        this.fabricante = pFabricante;
+        this.nomeProduto = pNomeProduto;
+    }
+
+    public Produto(int pCodProd, double pPVenda, int pQuantProd, String pDescProduto,
+            String pFabricante, String pNomeProduto) {
+        this.codProd = pCodProd;
+        this.pVenda = pPVenda;
+        this.quantProd = pQuantProd;
+        this.descProduto = pDescProduto;
+        this.fabricante = pFabricante;
+        this.nomeProduto = pNomeProduto;
     }
 
     public String getFabricante() {

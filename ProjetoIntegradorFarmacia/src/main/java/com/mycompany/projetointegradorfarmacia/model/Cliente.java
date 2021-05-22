@@ -9,12 +9,14 @@ import java.util.Date;
  * and open the template in the editor.
  */
 /**
- * Classe model para definição de atributos, construtores e getters/setters dos clientes
+ * Classe model para definição de atributos, construtores e getters/setters dos
+ * clientes
+ *
  * @author mariana.spinelli
  * @version 1.0
  * @since 2021.05.12
- * 
- * 
+ *
+ *
  */
 public class Cliente {
 
@@ -23,7 +25,6 @@ public class Cliente {
     private int id;
     private String CPF;
     private String telCliente;
-    //private String dataNascimento;
     private Date dataNascimento;
     private String CEPcliente;
     private String nomeCliente;

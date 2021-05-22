@@ -28,14 +28,15 @@ public class ProdutoDAO {
         try {
             conexao = GerenciadorConexao.abrirConexao();
 
-            instrucaoSQL = conexao.prepareStatement("INSERT INTO produto (valorVenda, quantProduto, descricao, fabricante, nomeProduto) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            instrucaoSQL = conexao.prepareStatement("INSERT INTO produto (nomeProduto, descricao, "
+                    + "fabricante, quantProduto, valorVenda) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
             //parametros para gravar
-            instrucaoSQL.setDouble(1, p.getpVenda());
-            instrucaoSQL.setInt(2, (int) p.getQuantProd());
-            instrucaoSQL.setString(3, p.getDescProduto());
-            instrucaoSQL.setString(4, p.getFabricante());
-            instrucaoSQL.setString(5, p.getNomeProduto());
+            instrucaoSQL.setString(1, p.getNomeProduto());
+            instrucaoSQL.setString(2, p.getDescProduto());
+            instrucaoSQL.setString(3, p.getFabricante());
+            instrucaoSQL.setInt(4, (int) p.getQuantProd());
+            instrucaoSQL.setDouble(5, p.getpVenda());
 
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
@@ -83,13 +84,15 @@ public class ProdutoDAO {
         try {
 
             conexao = GerenciadorConexao.abrirConexao();
-            instrucaoSQL = conexao.prepareStatement("UPDATE produto SET valorVenda=?, quantProduto=?, descricao=?, fabricante=?, nomeProduto=?");
+            instrucaoSQL = conexao.prepareStatement("UPDATE produto SET nomeProduto=?, descricao=?, fabricante=?,"
+                    + " quantProduto=?, valorVenda=? WHERE id=?");
 
-            instrucaoSQL.setDouble(1, p.getpVenda());
-            instrucaoSQL.setInt(2, (int) p.getQuantProd());
-            instrucaoSQL.setString(3, p.getDescProduto());
-            instrucaoSQL.setString(4, p.getFabricante());
-            instrucaoSQL.setString(5, p.getNomeProduto());
+            instrucaoSQL.setString(1, p.getNomeProduto());
+            instrucaoSQL.setString(2, p.getDescProduto());
+            instrucaoSQL.setString(3, p.getFabricante());
+            instrucaoSQL.setInt(4, (int) p.getQuantProd());
+            instrucaoSQL.setDouble(5, p.getpVenda());
+            instrucaoSQL.setInt(6, p.getCodProd());
 
             int linhasAfetadas = instrucaoSQL.executeUpdate();
             if (linhasAfetadas > 0) {
@@ -163,7 +166,7 @@ public class ProdutoDAO {
     /**
      * Método para listar toda a base de dados de uma só vez
      *
-     * @return ArrayList da classe cliente
+     * @return ArrayList da classe produto
      *
      */
     public static ArrayList<Produto> listarProdutos() {
@@ -182,11 +185,11 @@ public class ProdutoDAO {
             while (rs.next()) {
                 Produto c = new Produto();
                 c.setCodProd(rs.getInt("id"));
-                c.setpVenda(rs.getDouble("valorVenda"));
-                c.setQuantProd(rs.getInt("quantProduto"));
+                c.setNomeProduto(rs.getString("nomeProduto"));
                 c.setDescProduto(rs.getString("descricao"));
                 c.setFabricante(rs.getString("fabricante"));
-                c.setNomeProduto(rs.getString("nomeProduto"));
+                c.setQuantProd(rs.getInt("quantProduto"));
+                c.setpVenda(rs.getDouble("valorVenda"));
 
                 listar.add(c);
 
@@ -226,10 +229,10 @@ public class ProdutoDAO {
 
             if (rs.next()) {
                 produto.setCodProd(rs.getInt("id"));
+                produto.setNomeProduto(rs.getString("nomeProduto"));
                 produto.setDescProduto(rs.getString("descricao"));
                 produto.setFabricante(rs.getString("fabricante"));
-                produto.setNomeProduto(rs.getString("nomeProduto"));
-                produto.setQuantProd(rs.getInt("QuantProduto"));
+                produto.setQuantProd(rs.getInt("quantProduto"));
                 produto.setpVenda(rs.getDouble("valorVenda"));
 
             }
@@ -275,11 +278,11 @@ public class ProdutoDAO {
             while (rs.next()) {
                 Produto c = new Produto();
                 c.setCodProd(rs.getInt("id"));
-                c.setDescProduto(rs.getString("Descricao"));
+                c.setNomeProduto(rs.getString("nomeProduto"));
+                c.setDescProduto(rs.getString("descricao"));
                 c.setFabricante(rs.getString("fabricante"));
                 c.setQuantProd(rs.getInt("quantProduto"));
                 c.setpVenda(rs.getDouble("valorVenda"));
-                c.setNomeProduto(rs.getString("nomeProduto"));
 
                 filtro.add(c);
 
@@ -306,6 +309,56 @@ public class ProdutoDAO {
             }
         }
 
+        return filtro;
+    }
+    
+        public static ArrayList<Produto> filtroNome(String pNome) {
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+        ResultSet rs = null;
+
+        ArrayList<Produto> filtro = new ArrayList<Produto>();
+
+        try {
+
+            conexao = GerenciadorConexao.abrirConexao();
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE nomeProduto LIKE ?;");
+            instrucaoSQL.setString(1, "%" + pNome + '%');
+            rs = instrucaoSQL.executeQuery();
+
+            while (rs.next()) {
+                Produto c = new Produto();
+                c.setCodProd(rs.getInt("id"));
+                c.setNomeProduto(rs.getString("nomeProduto"));
+                c.setDescProduto(rs.getString("descricao"));
+                c.setFabricante(rs.getString("fabricante"));
+                c.setQuantProd(rs.getInt("quantProduto"));
+                c.setpVenda(rs.getDouble("valorVenda"));
+
+                filtro.add(c);
+
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            filtro = null;
+
+        } finally {
+            try {
+
+                if (rs != null) {
+                    rs.close();
+                }
+                if (instrucaoSQL != null) {
+                    instrucaoSQL.close();
+                }
+
+                GerenciadorConexao.fecharConexao();
+
+            } catch (SQLException ex) {
+            }
+        }
+        
         return filtro;
     }
 
